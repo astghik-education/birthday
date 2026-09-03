@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hy">
 <head>
@@ -23,7 +24,6 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* Վարագույրի էֆեկտ */
         .curtain {
             position: fixed;
             top: 0;
@@ -51,32 +51,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 50px,
-                rgba(88, 129, 87, 0.1) 50px,
-                rgba(88, 129, 87, 0.1) 51px
-            );
+            background: repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(88, 129, 87, 0.1) 50px, rgba(88, 129, 87, 0.1) 51px);
         }
 
-        .curtain-left {
-            transform-origin: left;
-            border-right: 2px solid var(--gold);
-        }
+        .curtain-left { transform-origin: left; border-right: 2px solid var(--gold); }
+        .curtain-right { transform-origin: right; border-left: 2px solid var(--gold); }
 
-        .curtain-right {
-            transform-origin: right;
-            border-left: 2px solid var(--gold);
-        }
-
-        .curtain.open .curtain-left {
-            transform: translateX(-100%) skewY(-3deg);
-        }
-
-        .curtain.open .curtain-right {
-            transform: translateX(100%) skewY(3deg);
-        }
+        .curtain.open .curtain-left { transform: translateX(-100%) skewY(-3deg); }
+        .curtain.open .curtain-right { transform: translateX(100%) skewY(3deg); }
 
         .curtain-content {
             position: absolute;
@@ -89,9 +71,7 @@
             transition: opacity 0.5s;
         }
 
-        .curtain.open .curtain-content {
-            opacity: 0;
-        }
+        .curtain.open .curtain-content { opacity: 0; }
 
         .curtain-btn {
             padding: 18px 50px;
@@ -121,7 +101,6 @@
             line-height: 1.6;
         }
 
-        /* Գեղեցիկ ծաղիկների դեկորացիա */
         .flower-decoration {
             position: fixed;
             pointer-events: none;
@@ -229,7 +208,6 @@
             z-index: 2;
         }
 
-        /* Գլխավոր մաս */
         .hero-image {
             width: 280px;
             height: 280px;
@@ -244,10 +222,7 @@
         }
 
         @keyframes fadeInScale {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .hero-subtitle {
@@ -299,20 +274,10 @@
             animation: fadeInUp 1s ease forwards 1.8s;
         }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Հետհաշվարկ */
         .countdown-container {
             display: flex;
             gap: 30px;
@@ -349,7 +314,6 @@
             display: block;
         }
 
-        /* Մանրամասներ */
         .details-card {
             background: var(--white);
             border: 2px solid var(--beige-dark);
@@ -362,23 +326,8 @@
             overflow: hidden;
         }
 
-        .details-card::before {
-            content: '🌸';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            opacity: 0.3;
-        }
-
-        .details-card::after {
-            content: '🌿';
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            font-size: 2rem;
-            opacity: 0.3;
-        }
+        .details-card::before { content: ''; position: absolute; top: 20px; right: 20px; font-size: 2rem; opacity: 0.3; }
+        .details-card::after { content: ''; position: absolute; bottom: 20px; left: 20px; font-size: 2rem; opacity: 0.3; }
 
         .details-card h2 {
             font-family: 'Cormorant Garamond', serif;
@@ -397,18 +346,8 @@
             font-size: 1.2rem;
         }
 
-        .detail-item i {
-            color: var(--gold);
-            font-size: 1.3rem;
-            width: 25px;
-        }
-
-        .detail-item span {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            color: var(--text-dark);
-            letter-spacing: 1px;
-        }
+        .detail-item i { color: var(--gold); font-size: 1.3rem; width: 25px; }
+        .detail-item span { font-family: 'Montserrat', sans-serif; font-size: 1rem; color: var(--text-dark); letter-spacing: 1px; }
 
         .restaurant-image {
             width: 100%;
@@ -431,16 +370,9 @@
             box-shadow: 0 8px 30px rgba(88, 129, 87, 0.2);
         }
 
-        .map-container iframe {
-            width: 100%;
-            height: 300px;
-            border: none;
-        }
+        .map-container iframe { width: 100%; height: 300px; border: none; }
 
-        /* RSVP */
-        .rsvp-section {
-            background: linear-gradient(135deg, var(--beige) 0%, var(--beige-dark) 100%);
-        }
+        .rsvp-section { background: linear-gradient(135deg, var(--beige) 0%, var(--beige-dark) 100%); }
 
         .rsvp-card {
             background: var(--white);
@@ -534,6 +466,14 @@
             transform: translateY(0);
         }
 
+        /* YouTube Player - թաքնված */
+        #youtube-player {
+            position: fixed;
+            top: -9999px;
+            left: -9999px;
+            visibility: hidden;
+        }
+
         @media (max-width: 768px) {
             .countdown-container { gap: 15px; flex-wrap: wrap; justify-content: center; }
             .countdown-box { min-width: 70px; padding: 15px 18px; }
@@ -555,12 +495,12 @@
         <div class="curtain-content">
             <button class="curtain-btn" onclick="openCurtain()">
                 <i class="fas fa-gift" style="margin-right: 10px;"></i>
-                ԲԱՑԵԼ ՀՐԱՎԵՐԸ
+                ԱՑԵԼ ՀՐԱՎԵՐԸ
             </button>
         </div>
     </div>
 
-    <!-- Գեղեցիկ ծաղիկներ -->
+    <!-- Ծաղիկներ -->
     <div class="flower-decoration flower-1">🌸</div>
     <div class="flower-decoration flower-2">🌺</div>
     <div class="flower-decoration flower-3">🌷</div>
@@ -580,14 +520,13 @@
         <button class="lang-btn" onclick="setLanguage('ru')">РУС</button>
     </div>
 
-    <!-- Երաժշտություն -->
+    <!-- Երաժշտության կոակ -->
     <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
         <i class="fas fa-music"></i>
     </button>
 
-    <audio id="bgMusic" loop>
-        <source src="birthday-song.mp3" type="audio/mpeg">
-    </audio>
+    <!-- YouTube iframe API -->
+    <div id="youtube-player"></div>
 
     <!-- Գլխավոր -->
     <section>
@@ -626,7 +565,7 @@
             
             <div class="detail-item">
                 <i class="far fa-calendar-alt"></i>
-                <span data-lang-key="dateDetail">Կիրակի, Հոկտեմբերի 11, 2026</span>
+                <span data-lang-key="dateDetail">իրակի, Հոկտեմբերի 11, 2026</span>
             </div>
             
             <div class="detail-item">
@@ -650,10 +589,10 @@
     <!-- RSVP -->
     <section class="rsvp-section">
         <div class="rsvp-card reveal">
-            <h2 data-lang-key="rsvpTitle">Ձեր մասնակցությունը</h2>
+            <h2 data-lang-key="rsvpTitle">եր մասնակցությունը</h2>
             <p class="rsvp-text" data-lang-key="rsvpText">
-                Շատ կուրախանամ, եթե կկարողանաք միանալ մեզ այս հատուկ օրը։<br>
-                Խնդրում եմ տեղեկացրեք՝ կկարողանա՞ք ներկա լինել։
+                ատ կուրախանամ, եթե կկարողանաք միանալ մեզ այս հատուկ օրը։<br>
+                նդրում եմ տեղեկացրեք՝ կկարողանա՞ք ներկա ինել։
             </p>
             
             <div class="rsvp-buttons">
@@ -663,7 +602,7 @@
                 </a>
                 <a href="https://wa.me/37477599195?text=" id="waLinkNo" target="_blank" class="rsvp-btn rsvp-no">
                     <i class="fas fa-times"></i>
-                    <span data-lang-key="noBtn">Ցավոք, չեմ կարող</span>
+                    <span data-lang-key="noBtn">ավոք, չեմ կարող</span>
                 </a>
             </div>
             
@@ -679,26 +618,69 @@
     </footer>
 
     <script>
-        // Վարագույրի բացում և երաժշտության ավտոմատ միացում
+        // YouTube Player
+        let player;
+        let isPlaying = false;
+        
+        // Load YouTube IFrame API
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-player', {
+                height: '0',
+                width: '0',
+                videoId: 'nSDgHBxUbVQ', // Katy Perry - Birthday (official video ID)
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 0,
+                    'loop': 1,
+                    'playlist': 'nSDgHBxUbVQ'
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // Player is ready
+        }
+
         function openCurtain() {
             const curtain = document.getElementById('curtain');
             curtain.classList.add('open');
             
-            // Անմիջապես միացնել երաժշտությունը
-            const bgMusic = document.getElementById('bgMusic');
-            const musicBtn = document.getElementById('musicBtn');
+            // Միացնել երաժշտությունը 1 վայրկյան անց
+            setTimeout(() => {
+                if (player && player.playVideo) {
+                    player.playVideo();
+                    isPlaying = true;
+                    document.getElementById('musicBtn').classList.add('playing');
+                    document.getElementById('musicBtn').innerHTML = '<i class="fas fa-pause"></i>';
+                }
+            }, 1000);
             
-            bgMusic.play().then(() => {
-                musicBtn.classList.add('playing');
-                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            }).catch(e => {
-                console.log("Audio autoplay prevented by browser");
-            });
-            
-            // Վարագույրը հեռացնել 2 վայրկյան անց
             setTimeout(() => {
                 curtain.style.display = 'none';
             }, 2000);
+        }
+
+        function toggleMusic() {
+            if (!player) return;
+            
+            if (isPlaying) {
+                player.pauseVideo();
+                document.getElementById('musicBtn').classList.remove('playing');
+                document.getElementById('musicBtn').innerHTML = '<i class="fas fa-music"></i>';
+            } else {
+                player.playVideo();
+                document.getElementById('musicBtn').classList.add('playing');
+                document.getElementById('musicBtn').innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
         }
 
         const translations = {
@@ -712,7 +694,7 @@
                 timeDetail: "Ժամը 17:00",
                 locationDetail: "Ապոլլո ռեստորան, Երևան",
                 rsvpTitle: "Ձեր մասնակցությունը",
-                rsvpText: "Շատ կուրախանամ, եթե կկարողանաք միանալ մեզ այս հատուկ օրը։ Խնդրում եմ տեղեկացրեք՝ կկարողանա՞ք ներկա լինել։",
+                rsvpText: "Շատ կուրախանամ, եթե կկարողանաք միանալ մեզ այս հատուկ օրը։ Խնդրում եմ տեղեկացրեք՝ կկարողանա՞ք ներկա ինել։",
                 yesBtn: "Այո, կգամ",
                 noBtn: "Ցավոք, չեմ կարող",
                 footer: "Սպասում եմ Ձեզ իմ 20-ամյակի տոնակատարությանը 💚",
@@ -774,7 +756,6 @@
             document.getElementById('waLinkNo').href = "https://wa.me/37477599195?text=" + encodeURIComponent(translations[lang].waNo);
         }
 
-        // Հետհաշվարկ
         const eventDate = new Date('2026-10-11T17:00:00+04:00').getTime();
 
         function updateCountdown() {
@@ -795,25 +776,6 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Երաժշտության կառավարում
-        const bgMusic = document.getElementById('bgMusic');
-        const musicBtn = document.getElementById('musicBtn');
-        let isPlaying = false;
-
-        function toggleMusic() {
-            if (isPlaying) {
-                bgMusic.pause();
-                musicBtn.classList.remove('playing');
-                musicBtn.innerHTML = '<i class="fas fa-music"></i>';
-            } else {
-                bgMusic.play();
-                musicBtn.classList.add('playing');
-                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            }
-            isPlaying = !isPlaying;
-        }
-
-        // Scroll անիմացիա
         window.addEventListener('scroll', () => {
             document.querySelectorAll('.reveal').forEach(el => {
                 if (el.getBoundingClientRect().top < window.innerHeight - 100) {
@@ -822,7 +784,6 @@
             });
         });
 
-        // Սկզբնական WhatsApp հղումներ
         document.getElementById('waLinkYes').href = "https://wa.me/37477599195?text=" + encodeURIComponent(translations.am.waYes);
         document.getElementById('waLinkNo').href = "https://wa.me/37477599195?text=" + encodeURIComponent(translations.am.waNo);
     </script>
