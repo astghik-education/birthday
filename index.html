@@ -3,38 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Լիլիթի Ծննդյան Հրավեր</title>
+    <title>Լիլիթի 20-ամյակ</title>
     
-    <!-- Նուրբ և շքեղ տառատեսակներ -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --bg-color: #FAF9F6; /* Կրեմագույն */
-            --card-bg: #FFFFFF;
-            --rose-gold: #B76E79;
-            --gold: #D4AF37;
-            --text-dark: #2C2C2C;
-            --text-muted: #666666;
+            --beige: #F5F1E8;
+            --beige-dark: #E8DFD0;
+            --soft-green: #9CAF88;
+            --soft-green-dark: #7D8B6F;
+            --gold: #C9B99A;
+            --text-dark: #3D3D3D;
+            --text-muted: #6B6B6B;
+            --white: #FFFFFF;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+
+        /* Վարագույրի էֆեկտ */
+        .curtain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: flex;
+            pointer-events: none;
+        }
+
+        .curtain-left, .curtain-right {
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--beige) 0%, var(--beige-dark) 100%);
+            transition: transform 2s cubic-bezier(0.77, 0, 0.175, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .curtain-left::before, .curtain-right::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 50px,
+                rgba(156, 175, 136, 0.1) 50px,
+                rgba(156, 175, 136, 0.1) 51px
+            );
+        }
+
+        .curtain-left {
+            transform-origin: left;
+            border-right: 2px solid var(--gold);
+        }
+
+        .curtain-right {
+            transform-origin: right;
+            border-left: 2px solid var(--gold);
+        }
+
+        .curtain.open .curtain-left {
+            transform: translateX(-100%) skewY(-3deg);
+        }
+
+        .curtain.open .curtain-right {
+            transform: translateX(100%) skewY(3deg);
+        }
+
+        .curtain-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+
+        .curtain.open .curtain-content {
+            opacity: 0;
+        }
+
+        .curtain-btn {
+            padding: 18px 50px;
+            background: var(--soft-green);
+            color: white;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            cursor: pointer;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(156, 175, 136, 0.4);
+            transition: all 0.3s ease;
+            pointer-events: all;
+        }
+
+        .curtain-btn:hover {
+            background: var(--soft-green-dark);
+            transform: scale(1.05);
+        }
 
         body {
             font-family: 'Cormorant Garamond', serif;
-            background-color: var(--bg-color);
+            background-color: var(--beige);
             color: var(--text-dark);
             overflow-x: hidden;
             line-height: 1.6;
-            background-image: radial-gradient(#D4AF37 0.5px, transparent 0.5px), radial-gradient(#D4AF37 0.5px, var(--bg-color) 0.5px);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
-            background-attachment: fixed;
         }
 
-        /* Լեզվի փոխարկիչ */
+        /* Ծաղիկների դեկորացիա */
+        .flower-decoration {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.15;
+        }
+
+        .flower-1 { top: 5%; left: 5%; font-size: 8rem; color: var(--soft-green); transform: rotate(-15deg); }
+        .flower-2 { top: 10%; right: 5%; font-size: 6rem; color: var(--gold); transform: rotate(25deg); }
+        .flower-3 { bottom: 15%; left: 3%; font-size: 7rem; color: var(--soft-green); transform: rotate(-10deg); }
+        .flower-4 { bottom: 10%; right: 8%; font-size: 5rem; color: var(--gold); transform: rotate(15deg); }
+
+        .champagne {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.1;
+            font-size: 4rem;
+            color: var(--gold);
+        }
+
+        .champagne-1 { top: 15%; left: 8%; transform: rotate(-20deg); }
+        .champagne-2 { top: 20%; right: 10%; transform: rotate(15deg); }
+        .champagne-3 { bottom: 20%; left: 5%; transform: rotate(10deg); }
+        .champagne-4 { bottom: 25%; right: 5%; transform: rotate(-15deg); }
+
+        html { scroll-behavior: smooth; }
+
         .lang-switcher {
             position: fixed;
             top: 20px;
@@ -42,11 +156,11 @@
             z-index: 1000;
             display: flex;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             padding: 8px 15px;
             border-radius: 30px;
-            border: 1px solid var(--rose-gold);
-            box-shadow: 0 4px 15px rgba(183, 110, 121, 0.15);
+            border: 1px solid var(--soft-green);
+            box-shadow: 0 4px 15px rgba(156, 175, 136, 0.2);
         }
 
         .lang-btn {
@@ -61,29 +175,28 @@
         }
 
         .lang-btn:hover, .lang-btn.active {
-            color: var(--rose-gold);
+            color: var(--soft-green);
             font-weight: 600;
         }
 
-        /* Երաժշտության կոճակ */
         .music-btn {
             position: fixed;
             bottom: 30px;
             right: 30px;
             z-index: 1000;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
-            background: var(--card-bg);
-            border: 1px solid var(--rose-gold);
-            color: var(--rose-gold);
-            font-size: 1.1rem;
+            background: var(--white);
+            border: 2px solid var(--soft-green);
+            color: var(--soft-green);
+            font-size: 1.2rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(183, 110, 121, 0.2);
+            box-shadow: 0 4px 20px rgba(156, 175, 136, 0.3);
         }
 
         .music-btn:hover { transform: scale(1.1); }
@@ -101,118 +214,212 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         /* Գլխավոր մաս */
-        .hero-subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 15px;
+        .hero-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            box-shadow: 0 10px 40px rgba(156, 175, 136, 0.3);
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeInScale 1.5s ease forwards 0.5s;
         }
 
-        .hero-name {
+        @keyframes fadeInScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--soft-green);
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeInDown 1s ease forwards 1s;
+        }
+
+        .hero-title {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(4rem, 12vw, 8rem);
-            color: var(--rose-gold);
+            font-size: clamp(3rem, 10vw, 6rem);
+            color: var(--soft-green);
             line-height: 1.2;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.2s;
+        }
+
+        .hero-age {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.4s;
+        }
+
+        .divider {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--soft-green), transparent);
+            margin: 25px auto;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 1.6s;
         }
 
         .hero-date {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.1rem;
             letter-spacing: 3px;
-            color: var(--gold);
-            margin-top: 10px;
+            color: var(--text-muted);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.8s;
         }
 
-        .divider {
-            width: 100px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--rose-gold), transparent);
-            margin: 25px auto;
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* Հետհաշվարկ */
         .countdown-container {
             display: flex;
-            gap: 25px;
-            margin-top: 40px;
+            gap: 30px;
+            margin-top: 50px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 2s;
         }
 
-        .countdown-box { text-align: center; }
+        .countdown-box {
+            text-align: center;
+            background: var(--white);
+            padding: 20px 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(156, 175, 136, 0.15);
+            min-width: 90px;
+        }
+
         .countdown-num {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.5rem;
             font-weight: 600;
-            color: var(--rose-gold);
+            color: var(--soft-green);
             display: block;
             line-height: 1;
         }
+
         .countdown-label {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--text-muted);
-            margin-top: 5px;
+            margin-top: 8px;
+            display: block;
         }
 
-        /* Մանրամասներ և Քարտ */
+        /* Մանրամասներ */
         .details-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(183, 110, 121, 0.2);
-            padding: 50px 40px;
-            border-radius: 8px;
-            max-width: 550px;
+            background: var(--white);
+            border: 2px solid var(--beige-dark);
+            padding: 60px 50px;
+            border-radius: 20px;
+            max-width: 650px;
             width: 100%;
-            box-shadow: 0 15px 40px rgba(183, 110, 121, 0.1);
+            box-shadow: 0 15px 50px rgba(156, 175, 136, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .details-card::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+
+        .details-card::after {
+            content: '🌸';
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 2rem;
+            opacity: 0.3;
         }
 
         .details-card h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
-            color: var(--rose-gold);
-            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: var(--soft-green);
+            margin-bottom: 40px;
             font-weight: 400;
         }
 
         .detail-item {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
+            font-size: 1.2rem;
         }
 
         .detail-item i {
             color: var(--gold);
-            font-size: 1.1rem;
-            width: 20px;
+            font-size: 1.3rem;
+            width: 25px;
         }
 
         .detail-item span {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-dark);
             letter-spacing: 1px;
         }
 
-        /* Քարտեզ */
+        .restaurant-image {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 30px auto;
+            display: block;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
         .map-container {
             width: 100%;
-            max-width: 600px;
-            margin-top: 30px;
-            border-radius: 8px;
+            max-width: 500px;
+            margin: 30px auto;
+            border-radius: 15px;
             overflow: hidden;
-            border: 1px solid rgba(183, 110, 121, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 2px solid var(--beige-dark);
+            box-shadow: 0 8px 30px rgba(156, 175, 136, 0.2);
         }
 
         .map-container iframe {
@@ -221,61 +428,139 @@
             border: none;
         }
 
-        /* RSVP Կոճակ */
+        /* RSVP */
+        .rsvp-section {
+            background: linear-gradient(135deg, var(--beige) 0%, var(--beige-dark) 100%);
+        }
+
+        .rsvp-card {
+            background: var(--white);
+            padding: 50px 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 15px 50px rgba(156, 175, 136, 0.2);
+        }
+
+        .rsvp-card h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.3rem;
+            color: var(--soft-green);
+            margin-bottom: 20px;
+        }
+
+        .rsvp-text {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .rsvp-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
         .rsvp-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            margin-top: 30px;
-            padding: 16px 40px;
-            background: var(--rose-gold);
-            color: white;
+            padding: 16px 35px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 500;
             letter-spacing: 2px;
             text-transform: uppercase;
             text-decoration: none;
             border-radius: 50px;
             transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(183, 110, 121, 0.3);
+            border: 2px solid transparent;
         }
 
-        .rsvp-btn:hover {
-            background: #a05a63;
+        .rsvp-yes {
+            background: var(--soft-green);
+            color: white;
+            box-shadow: 0 5px 20px rgba(156, 175, 136, 0.4);
+        }
+
+        .rsvp-yes:hover {
+            background: var(--soft-green-dark);
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(183, 110, 121, 0.4);
+            box-shadow: 0 8px 25px rgba(156, 175, 136, 0.5);
+        }
+
+        .rsvp-no {
+            background: transparent;
+            color: var(--text-muted);
+            border-color: var(--beige-dark);
+        }
+
+        .rsvp-no:hover {
+            border-color: var(--soft-green);
+            color: var(--soft-green);
+            transform: translateY(-3px);
         }
 
         .footer {
             padding: 40px 20px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-align: center;
+            background: var(--white);
         }
 
-        /* Անիմացիաներ */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
             transition: all 1s ease;
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
         @media (max-width: 768px) {
-            .countdown-container { gap: 15px; }
+            .countdown-container { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .countdown-box { min-width: 70px; padding: 15px 18px; }
             .countdown-num { font-size: 2rem; }
             .details-card { padding: 40px 25px; }
-            .hero-name { font-size: 4.5rem; }
+            .rsvp-buttons { flex-direction: column; align-items: center; }
+            .rsvp-btn { width: 100%; max-width: 300px; justify-content: center; }
+            .flower-decoration { display: none; }
+            .champagne { display: none; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Վարագույր -->
+    <div class="curtain" id="curtain">
+        <div class="curtain-left"></div>
+        <div class="curtain-right"></div>
+        <div class="curtain-content">
+            <button class="curtain-btn" onclick="openCurtain()">
+                <i class="fas fa-gift" style="margin-right: 10px;"></i>
+                ԲԱՑԵԼ ՀՐԱՎԵՐԸ
+            </button>
+        </div>
+    </div>
+
+    <!-- Ծաղիկներ և շամպայն -->
+    <div class="flower-decoration flower-1"><i class="fas fa-flower"></i></div>
+    <div class="flower-decoration flower-2"><i class="fas fa-flower"></i></div>
+    <div class="flower-decoration flower-3"><i class="fas fa-leaf"></i></div>
+    <div class="flower-decoration flower-4"><i class="fas fa-seedling"></i></div>
+    
+    <div class="champagne champagne-1"><i class="fas fa-wine-glass-alt"></i></div>
+    <div class="champagne champagne-2"><i class="fas fa-wine-glass-alt"></i></div>
+    <div class="champagne champagne-3"><i class="fas fa-champagne-glasses"></i></div>
+    <div class="champagne champagne-4"><i class="fas fa-champagne-glasses"></i></div>
 
     <!-- Լեզվի փոխարկիչ -->
     <div class="lang-switcher">
@@ -284,22 +569,25 @@
         <button class="lang-btn" onclick="setLanguage('ru')">РУС</button>
     </div>
 
-    <!-- Երաժշտության կոճակ -->
+    <!-- Երաժշտություն -->
     <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
         <i class="fas fa-music"></i>
     </button>
 
-    <!-- Աուդիո -->
     <audio id="bgMusic" loop>
         <source src="birthday-song.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Գլխավոր մաս -->
+    <!-- Գլխավոր -->
     <section>
-        <p class="hero-subtitle" data-lang-key="subtitle">Սիրով հրավիրում ենք Ձեզ</p>
-        <h1 class="hero-name">Լիլիթ</h1>
+        <!-- Նկար - ոխարինեք Ձեր նկարով -->
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" alt="Lilit" class="hero-image" id="heroImage">
+        
+        <p class="hero-subtitle" data-lang-key="subtitle">Սիրով հրավիրում եմ</p>
+        <h1 class="hero-title">Լիլիթ</h1>
+        <p class="hero-age" data-lang-key="ageText">20-ամյակս միասին նշենք</p>
         <div class="divider"></div>
-        <p class="hero-date" data-lang-key="heroDate">Հոկտեմբերի 11, 2026</p>
+        <p class="hero-date" data-lang-key="heroDate">Հոկտեմբերի 11, 2026 • 17:00</p>
         
         <div class="countdown-container">
             <div class="countdown-box">
@@ -312,11 +600,11 @@
             </div>
             <div class="countdown-box">
                 <span class="countdown-num" id="minutes">00</span>
-                <span class="countdown-label" data-lang-key="minutes">Րոպե</span>
+                <span class="countdown-label" data-lang-key="minutes">ոպե</span>
             </div>
             <div class="countdown-box">
                 <span class="countdown-num" id="seconds">00</span>
-                <span class="countdown-label" data-lang-key="seconds">Վայրկյան</span>
+                <span class="countdown-label" data-lang-key="seconds">այրկյան</span>
             </div>
         </div>
     </section>
@@ -338,8 +626,11 @@
             
             <div class="detail-item">
                 <i class="fas fa-map-marker-alt"></i>
-                <span data-lang-key="locationDetail">Ապոլո, Երևան</span>
+                <span data-lang-key="locationDetail">Ապոլլո ռեստորան, Երևան</span>
             </div>
+
+            <!-- եստորանի նկար -->
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="Apollo Restaurant" class="restaurant-image">
 
             <div class="map-container">
                 <iframe src="https://www.google.com/maps?q=Apollo+Yerevan&output=embed" allowfullscreen="" loading="lazy"></iframe>
@@ -348,66 +639,104 @@
     </section>
 
     <!-- RSVP -->
-    <section>
-        <div class="reveal">
-            <h2 style="font-size: 2rem; color: var(--rose-gold); margin-bottom: 15px;" data-lang-key="rsvpTitle">Խնդրում ենք հաստատել</h2>
-            <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 5px;" data-lang-key="rsvpText">Սպասում ենք Ձեզ մեր տոնակատարությանը:</p>
-            <p style="color: var(--gold); font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 500; margin-bottom: 25px;">077 599195</p>
+    <section class="rsvp-section">
+        <div class="rsvp-card reveal">
+            <h2 data-lang-key="rsvpTitle">Ձեր մասնակցությունը</h2>
+            <p class="rsvp-text" data-lang-key="rsvpText">
+                Շատ կուրախանամ, եթե կկարողանաք միանալ մեզ այս հատուկ օրը։<br>
+                Խնդրում եմ տեղեկացրեք՝ կկարողանա՞ք ներկա լինել։
+            </p>
             
-            <a href="https://wa.me/37477599195?text=" id="waLink" target="_blank" class="rsvp-btn">
-                <i class="fab fa-whatsapp"></i>
-                <span data-lang-key="rsvpBtn">Հաստատել WhatsApp-ով</span>
-            </a>
+            <div class="rsvp-buttons">
+                <a href="https://wa.me/37477599195?text=" id="waLinkYes" target="_blank" class="rsvp-btn rsvp-yes">
+                    <i class="fas fa-check"></i>
+                    <span data-lang-key="yesBtn">Այո, կգամ</span>
+                </a>
+                <a href="https://wa.me/37477599195?text=" id="waLinkNo" target="_blank" class="rsvp-btn rsvp-no">
+                    <i class="fas fa-times"></i>
+                    <span data-lang-key="noBtn">Ցավոք, չեմ կարող</span>
+                </a>
+            </div>
+            
+            <p style="margin-top: 30px; color: var(--gold); font-family: 'Montserrat', sans-serif; font-size: 0.9rem;">
+                <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>
+                077 599195
+            </p>
         </div>
     </section>
 
     <footer class="footer">
-        <p data-lang-key="footer">Սիրով՝ Լիլիթի ընտանիք</p>
+        <p data-lang-key="footer">Սպասում եմ Ձեզ իմ 20-ամյակի տոնակատարությանը 💚</p>
     </footer>
 
     <script>
+        // Վարագույրի բացում
+        function openCurtain() {
+            const curtain = document.getElementById('curtain');
+            curtain.classList.add('open');
+            
+            // Երաժշտություն միացնել վարագույրը բացելուց հետո
+            setTimeout(() => {
+                playMusic();
+            }, 1000);
+            
+            // Վարագույրը հեռացնել DOM-ից 2 վայրկյան անց
+            setTimeout(() => {
+                curtain.style.display = 'none';
+            }, 2000);
+        }
+
         const translations = {
             am: {
-                subtitle: "Սիրով հրավիրում ենք Ձեզ",
-                heroDate: "Հոկտեմբերի 11, 2026",
+                subtitle: "Սիրով հրավիրում եմ",
+                ageText: "20-ամյակս միասին նշենք",
+                heroDate: "Հոկտեմբերի 11, 2026 • 17:00",
                 days: "Օր", hours: "Ժամ", minutes: "Րոպե", seconds: "Վայրկյան",
                 detailsTitle: "Միջոցառման մանրամասներ",
                 dateDetail: "Կիրակի, Հոկտեմբերի 11, 2026",
                 timeDetail: "Ժամը 17:00",
-                locationDetail: "Ապոլո, Երևան",
-                rsvpTitle: "Խնդրում ենք հաստատել",
-                rsvpText: "Սպասում ենք Ձեզ մեր տոնակատարությանը:",
-                rsvpBtn: "Հաստատել WhatsApp-ով",
-                footer: "Սիրով՝ Լիլիթի ընտանիք",
-                waMsg: "Ողջույն: Ես ուրախությամբ կներկայանամ Լիլիթի ծննդյան երեկույթին:"
+                locationDetail: "Ապոլլո ռեստորան, Երևան",
+                rsvpTitle: "Ձեր մասնակցությունը",
+                rsvpText: "Շատ կուրախանամ, եթե կկարողանաք միանալ մեզ այս հատուկ օրը։Խնդրում եմ տեղեկացրեք՝ կկարողանա՞ք ներկա լինել։",
+                yesBtn: "Այո, կգամ",
+                noBtn: "Ցավոք, չեմ կարող",
+                footer: "Սպասում եմ Ձեզ իմ 20-ամյակի տոնակատարությանը 💚",
+                waYes: "ղջույն։ Այո, ուրախությամբ կներկայանամ Լիլիթի 20-ամյակի տոնակատարությանը։",
+                waNo: "Ողջույն։ Ցավոք, չեմ կարող ներկա գտնվել Լիլիթի 20-ամյակի տոնակատարությանը։"
             },
             en: {
-                subtitle: "You are cordially invited to",
-                heroDate: "October 11, 2026",
+                subtitle: "You're invited to celebrate",
+                ageText: "My 20th Birthday Together",
+                heroDate: "October 11, 2026 • 17:00",
                 days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds",
                 detailsTitle: "Event Details",
                 dateDetail: "Sunday, October 11, 2026",
                 timeDetail: "17:00",
-                locationDetail: "Apollo, Yerevan",
-                rsvpTitle: "Kindly Respond",
-                rsvpText: "We look forward to celebrating with you.",
-                rsvpBtn: "RSVP via WhatsApp",
-                footer: "With love, Lilit's family",
-                waMsg: "Hello! I will gladly attend Lilit's Birthday Party!"
+                locationDetail: "Apollo Restaurant, Yerevan",
+                rsvpTitle: "Your Participation",
+                rsvpText: "I would be delighted if you could join me on this special day.Please let me know if you can attend.",
+                yesBtn: "Yes, I'll be there",
+                noBtn: "Sorry, can't make it",
+                footer: "Looking forward to celebrating my 20th with you 💚",
+                waYes: "Hello! Yes, I will gladly attend Lilit's 20th Birthday celebration!",
+                waNo: "Hello! Unfortunately, I cannot attend Lilit's 20th Birthday celebration."
             },
             ru: {
-                subtitle: "Мы сердечно приглашаем вас на",
-                heroDate: "11 октября 2026",
+                subtitle: "Приглашаю вас отметить",
+                ageText: "Мой 20-й день рождения вместе",
+                heroDate: "11 октября 2026 • 17:00",
                 days: "Дней", hours: "Часов", minutes: "Минут", seconds: "Секунд",
                 detailsTitle: "Детали события",
                 dateDetail: "Воскресенье, 11 октября 2026",
                 timeDetail: "17:00",
-                locationDetail: "Аполло, Ереван",
-                rsvpTitle: "Просим подтвердить",
-                rsvpText: "Мы с нетерпением ждем праздника вместе с вами.",
-                rsvpBtn: "Подтвердить через WhatsApp",
-                footer: "С любовью, семья Лилит",
-                waMsg: "Привет! Я с радостью приду на День Рождения Лилит!"
+                locationDetail: "Ресторан Аполло, Ереван",
+                rsvpTitle: "Ваше участие",
+                rsvpText: "Я буду очень рада, если вы сможете присоединиться ко мне в этот особенный день.Пожалуйста, сообщите, сможете ли вы прийти.",
+                yesBtn: "Да, я приду",
+                noBtn: "К сожалению, не смогу",
+                footer: "Жду вас на праздновании моего 20-летия ",
+                waYes: "Привет! Да, я с радостью приду на празднование 20-летия Лилит!",
+                waNo: "Привет! К сожалению, я не смогу прийти на празднование 20-летия Лилит."
             }
         };
 
@@ -420,16 +749,17 @@
             
             const keys = Object.keys(translations[lang]);
             keys.forEach(key => {
-                if (key !== 'waMsg') {
+                if (!key.startsWith('wa')) {
                     const elements = document.querySelectorAll(`[data-lang-key="${key}"]`);
                     elements.forEach(el => el.textContent = translations[lang][key]);
                 }
             });
             
-            document.getElementById('waLink').href = "https://wa.me/37477599195?text=" + encodeURIComponent(translations[lang].waMsg);
+            document.getElementById('waLinkYes').href = "https://wa.me/37477599195?text=" + encodeURIComponent(translations[lang].waYes);
+            document.getElementById('waLinkNo').href = "https://wa.me/37477599195?text=" + encodeURIComponent(translations[lang].waNo);
         }
 
-        // Հետհաշվարկ (Երևանի ժամանակով՝ UTC+4)
+        // Հետհաշվարկ
         const eventDate = new Date('2026-10-11T17:00:00+04:00').getTime();
 
         function updateCountdown() {
@@ -450,10 +780,22 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Երաժշտություն
+        // րաժշտություն
         const bgMusic = document.getElementById('bgMusic');
         const musicBtn = document.getElementById('musicBtn');
         let isPlaying = false;
+
+        function playMusic() {
+            bgMusic.play().then(() => {
+                isPlaying = true;
+                musicBtn.classList.add('playing');
+                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }).catch(e => {
+                console.log("Audio autoplay prevented by browser");
+                // Show music button to let user click
+                musicBtn.style.display = 'flex';
+            });
+        }
 
         function toggleMusic() {
             if (isPlaying) {
@@ -461,7 +803,7 @@
                 musicBtn.classList.remove('playing');
                 musicBtn.innerHTML = '<i class="fas fa-music"></i>';
             } else {
-                bgMusic.play().catch(e => console.log("Audio play prevented"));
+                bgMusic.play();
                 musicBtn.classList.add('playing');
                 musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
             }
@@ -476,12 +818,10 @@
                 }
             });
         });
-        window.addEventListener('load', () => {
-            document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
-        });
-        
-        // Սկզբնական WhatsApp հղման թարմացում
-        document.getElementById('waLink').href = "https://wa.me/37477599195?text=" + encodeURIComponent(translations.am.waMsg);
+
+        // Սկզբնական WhatsApp հղումներ
+        document.getElementById('waLinkYes').href = "https://wa.me/37477599195?text=" + encodeURIComponent(translations.am.waYes);
+        document.getElementById('waLinkNo').href = "https://wa.me/37477599195?text=" + encodeURIComponent(translations.am.waNo);
     </script>
 </body>
 </html>
