@@ -12,8 +12,9 @@
         :root {
             --beige: #F5F1E8;
             --beige-dark: #E8DFD0;
-            --soft-green: #9CAF88;
-            --soft-green-dark: #7D8B6F;
+            --soft-green: #588157;
+            --soft-green-light: #a3b18a;
+            --soft-green-dark: #3a5a40;
             --gold: #C9B99A;
             --text-dark: #3D3D3D;
             --text-muted: #6B6B6B;
@@ -54,8 +55,8 @@
                 90deg,
                 transparent,
                 transparent 50px,
-                rgba(156, 175, 136, 0.1) 50px,
-                rgba(156, 175, 136, 0.1) 51px
+                rgba(88, 129, 87, 0.1) 50px,
+                rgba(88, 129, 87, 0.1) 51px
             );
         }
 
@@ -102,7 +103,7 @@
             letter-spacing: 3px;
             cursor: pointer;
             border-radius: 50px;
-            box-shadow: 0 5px 20px rgba(156, 175, 136, 0.4);
+            box-shadow: 0 5px 20px rgba(88, 129, 87, 0.4);
             transition: all 0.3s ease;
             pointer-events: all;
         }
@@ -120,32 +121,40 @@
             line-height: 1.6;
         }
 
-        /* Ծաղիկների դեկորացիա */
+        /* Գեղեցիկ ծաղիկների դեկորացիա */
         .flower-decoration {
             position: fixed;
             pointer-events: none;
             z-index: 1;
-            opacity: 0.15;
+            opacity: 0.2;
+            font-size: 3rem;
         }
 
-        .flower-1 { top: 5%; left: 5%; font-size: 8rem; color: var(--soft-green); transform: rotate(-15deg); }
-        .flower-2 { top: 10%; right: 5%; font-size: 6rem; color: var(--gold); transform: rotate(25deg); }
-        .flower-3 { bottom: 15%; left: 3%; font-size: 7rem; color: var(--soft-green); transform: rotate(-10deg); }
-        .flower-4 { bottom: 10%; right: 8%; font-size: 5rem; color: var(--gold); transform: rotate(15deg); }
+        .flower-1 { top: 5%; left: 5%; color: var(--soft-green); transform: rotate(-15deg); animation: float 6s ease-in-out infinite; }
+        .flower-2 { top: 10%; right: 5%; color: var(--soft-green-light); transform: rotate(25deg); animation: float 7s ease-in-out infinite 1s; }
+        .flower-3 { bottom: 15%; left: 3%; color: var(--soft-green); transform: rotate(-10deg); animation: float 8s ease-in-out infinite 2s; }
+        .flower-4 { bottom: 10%; right: 8%; color: var(--soft-green-light); transform: rotate(15deg); animation: float 6.5s ease-in-out infinite 0.5s; }
+        .flower-5 { top: 30%; left: 2%; color: var(--soft-green-light); transform: rotate(10deg); animation: float 7.5s ease-in-out infinite 1.5s; }
+        .flower-6 { top: 40%; right: 3%; color: var(--soft-green); transform: rotate(-20deg); animation: float 6s ease-in-out infinite 2.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(var(--rotation, 0deg)); }
+            50% { transform: translateY(-20px) rotate(var(--rotation, 0deg)); }
+        }
 
         .champagne {
             position: fixed;
             pointer-events: none;
             z-index: 1;
-            opacity: 0.1;
-            font-size: 4rem;
+            opacity: 0.15;
+            font-size: 2.5rem;
             color: var(--gold);
         }
 
-        .champagne-1 { top: 15%; left: 8%; transform: rotate(-20deg); }
-        .champagne-2 { top: 20%; right: 10%; transform: rotate(15deg); }
-        .champagne-3 { bottom: 20%; left: 5%; transform: rotate(10deg); }
-        .champagne-4 { bottom: 25%; right: 5%; transform: rotate(-15deg); }
+        .champagne-1 { top: 15%; left: 8%; transform: rotate(-20deg); animation: float 7s ease-in-out infinite; }
+        .champagne-2 { top: 20%; right: 10%; transform: rotate(15deg); animation: float 6s ease-in-out infinite 1s; }
+        .champagne-3 { bottom: 20%; left: 5%; transform: rotate(10deg); animation: float 8s ease-in-out infinite 2s; }
+        .champagne-4 { bottom: 25%; right: 5%; transform: rotate(-15deg); animation: float 7.5s ease-in-out infinite 0.5s; }
 
         html { scroll-behavior: smooth; }
 
@@ -160,7 +169,7 @@
             padding: 8px 15px;
             border-radius: 30px;
             border: 1px solid var(--soft-green);
-            box-shadow: 0 4px 15px rgba(156, 175, 136, 0.2);
+            box-shadow: 0 4px 15px rgba(88, 129, 87, 0.2);
         }
 
         .lang-btn {
@@ -196,7 +205,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(156, 175, 136, 0.3);
+            box-shadow: 0 4px 20px rgba(88, 129, 87, 0.3);
         }
 
         .music-btn:hover { transform: scale(1.1); }
@@ -227,7 +236,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid var(--white);
-            box-shadow: 0 10px 40px rgba(156, 175, 136, 0.3);
+            box-shadow: 0 10px 40px rgba(88, 129, 87, 0.3);
             margin-bottom: 30px;
             opacity: 0;
             transform: scale(0.8);
@@ -317,7 +326,7 @@
             background: var(--white);
             padding: 20px 25px;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(156, 175, 136, 0.15);
+            box-shadow: 0 5px 20px rgba(88, 129, 87, 0.15);
             min-width: 90px;
         }
 
@@ -348,13 +357,13 @@
             border-radius: 20px;
             max-width: 650px;
             width: 100%;
-            box-shadow: 0 15px 50px rgba(156, 175, 136, 0.2);
+            box-shadow: 0 15px 50px rgba(88, 129, 87, 0.2);
             position: relative;
             overflow: hidden;
         }
 
         .details-card::before {
-            content: '';
+            content: '🌸';
             position: absolute;
             top: 20px;
             right: 20px;
@@ -363,7 +372,7 @@
         }
 
         .details-card::after {
-            content: '🌸';
+            content: '🌿';
             position: absolute;
             bottom: 20px;
             left: 20px;
@@ -419,7 +428,7 @@
             border-radius: 15px;
             overflow: hidden;
             border: 2px solid var(--beige-dark);
-            box-shadow: 0 8px 30px rgba(156, 175, 136, 0.2);
+            box-shadow: 0 8px 30px rgba(88, 129, 87, 0.2);
         }
 
         .map-container iframe {
@@ -439,7 +448,7 @@
             border-radius: 20px;
             max-width: 600px;
             width: 100%;
-            box-shadow: 0 15px 50px rgba(156, 175, 136, 0.2);
+            box-shadow: 0 15px 50px rgba(88, 129, 87, 0.2);
         }
 
         .rsvp-card h2 {
@@ -483,13 +492,13 @@
         .rsvp-yes {
             background: var(--soft-green);
             color: white;
-            box-shadow: 0 5px 20px rgba(156, 175, 136, 0.4);
+            box-shadow: 0 5px 20px rgba(88, 129, 87, 0.4);
         }
 
         .rsvp-yes:hover {
             background: var(--soft-green-dark);
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(156, 175, 136, 0.5);
+            box-shadow: 0 8px 25px rgba(88, 129, 87, 0.5);
         }
 
         .rsvp-no {
@@ -551,11 +560,13 @@
         </div>
     </div>
 
-    <!-- Ծաղիկներ և շամպայն -->
-    <div class="flower-decoration flower-1"><i class="fas fa-flower"></i></div>
-    <div class="flower-decoration flower-2"><i class="fas fa-flower"></i></div>
-    <div class="flower-decoration flower-3"><i class="fas fa-leaf"></i></div>
-    <div class="flower-decoration flower-4"><i class="fas fa-seedling"></i></div>
+    <!-- Գեղեցիկ ծաղիկներ -->
+    <div class="flower-decoration flower-1">🌸</div>
+    <div class="flower-decoration flower-2">🌺</div>
+    <div class="flower-decoration flower-3">🌷</div>
+    <div class="flower-decoration flower-4">🌼</div>
+    <div class="flower-decoration flower-5">🌿</div>
+    <div class="flower-decoration flower-6">🍃</div>
     
     <div class="champagne champagne-1"><i class="fas fa-wine-glass-alt"></i></div>
     <div class="champagne champagne-2"><i class="fas fa-wine-glass-alt"></i></div>
@@ -580,7 +591,6 @@
 
     <!-- Գլխավոր -->
     <section>
-        <!-- Նկար - ոխարինեք Ձեր նկարով -->
         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" alt="Lilit" class="hero-image" id="heroImage">
         
         <p class="hero-subtitle" data-lang-key="subtitle">Սիրով հրավիրում եմ</p>
@@ -600,11 +610,11 @@
             </div>
             <div class="countdown-box">
                 <span class="countdown-num" id="minutes">00</span>
-                <span class="countdown-label" data-lang-key="minutes">ոպե</span>
+                <span class="countdown-label" data-lang-key="minutes">Րոպե</span>
             </div>
             <div class="countdown-box">
                 <span class="countdown-num" id="seconds">00</span>
-                <span class="countdown-label" data-lang-key="seconds">այրկյան</span>
+                <span class="countdown-label" data-lang-key="seconds">Վայրկյան</span>
             </div>
         </div>
     </section>
@@ -629,7 +639,6 @@
                 <span data-lang-key="locationDetail">Ապոլլո ռեստորան, Երևան</span>
             </div>
 
-            <!-- եստորանի նկար -->
             <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="Apollo Restaurant" class="restaurant-image">
 
             <div class="map-container">
@@ -670,17 +679,23 @@
     </footer>
 
     <script>
-        // Վարագույրի բացում
+        // Վարագույրի բացում և երաժշտության ավտոմատ միացում
         function openCurtain() {
             const curtain = document.getElementById('curtain');
             curtain.classList.add('open');
             
-            // Երաժշտություն միացնել վարագույրը բացելուց հետո
-            setTimeout(() => {
-                playMusic();
-            }, 1000);
+            // Անմիջապես միացնել երաժշտությունը
+            const bgMusic = document.getElementById('bgMusic');
+            const musicBtn = document.getElementById('musicBtn');
             
-            // Վարագույրը հեռացնել DOM-ից 2 վայրկյան անց
+            bgMusic.play().then(() => {
+                musicBtn.classList.add('playing');
+                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }).catch(e => {
+                console.log("Audio autoplay prevented by browser");
+            });
+            
+            // Վարագույրը հեռացնել 2 վայրկյան անց
             setTimeout(() => {
                 curtain.style.display = 'none';
             }, 2000);
@@ -697,11 +712,11 @@
                 timeDetail: "Ժամը 17:00",
                 locationDetail: "Ապոլլո ռեստորան, Երևան",
                 rsvpTitle: "Ձեր մասնակցությունը",
-                rsvpText: "Շատ կուրախանամ, եթե կկարողանաք միանալ մեզ այս հատուկ օրը։Խնդրում եմ տեղեկացրեք՝ կկարողանա՞ք ներկա լինել։",
+                rsvpText: "Շատ կուրախանամ, եթե կկարողանաք միանալ մեզ այս հատուկ օրը։ Խնդրում եմ տեղեկացրեք՝ կկարողանա՞ք ներկա լինել։",
                 yesBtn: "Այո, կգամ",
                 noBtn: "Ցավոք, չեմ կարող",
                 footer: "Սպասում եմ Ձեզ իմ 20-ամյակի տոնակատարությանը 💚",
-                waYes: "ղջույն։ Այո, ուրախությամբ կներկայանամ Լիլիթի 20-ամյակի տոնակատարությանը։",
+                waYes: "Ողջույն։ Այո, ուրախությամբ կներկայանամ Լիլիթի 20-ամյակի տոնակատարությանը։",
                 waNo: "Ողջույն։ Ցավոք, չեմ կարող ներկա գտնվել Լիլիթի 20-ամյակի տոնակատարությանը։"
             },
             en: {
@@ -714,7 +729,7 @@
                 timeDetail: "17:00",
                 locationDetail: "Apollo Restaurant, Yerevan",
                 rsvpTitle: "Your Participation",
-                rsvpText: "I would be delighted if you could join me on this special day.Please let me know if you can attend.",
+                rsvpText: "I would be delighted if you could join me on this special day. Please let me know if you can attend.",
                 yesBtn: "Yes, I'll be there",
                 noBtn: "Sorry, can't make it",
                 footer: "Looking forward to celebrating my 20th with you 💚",
@@ -731,10 +746,10 @@
                 timeDetail: "17:00",
                 locationDetail: "Ресторан Аполло, Ереван",
                 rsvpTitle: "Ваше участие",
-                rsvpText: "Я буду очень рада, если вы сможете присоединиться ко мне в этот особенный день.Пожалуйста, сообщите, сможете ли вы прийти.",
+                rsvpText: "Я буду очень рада, если вы сможете присоединиться ко мне в этот особенный день. Пожалуйста, сообщите, сможете ли вы прийти.",
                 yesBtn: "Да, я приду",
                 noBtn: "К сожалению, не смогу",
-                footer: "Жду вас на праздновании моего 20-летия ",
+                footer: "Жду вас на праздновании моего 20-летия 💚",
                 waYes: "Привет! Да, я с радостью приду на празднование 20-летия Лилит!",
                 waNo: "Привет! К сожалению, я не смогу прийти на празднование 20-летия Лилит."
             }
@@ -780,22 +795,10 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // րաժշտություն
+        // Երաժշտության կառավարում
         const bgMusic = document.getElementById('bgMusic');
         const musicBtn = document.getElementById('musicBtn');
         let isPlaying = false;
-
-        function playMusic() {
-            bgMusic.play().then(() => {
-                isPlaying = true;
-                musicBtn.classList.add('playing');
-                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            }).catch(e => {
-                console.log("Audio autoplay prevented by browser");
-                // Show music button to let user click
-                musicBtn.style.display = 'flex';
-            });
-        }
 
         function toggleMusic() {
             if (isPlaying) {
