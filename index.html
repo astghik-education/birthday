@@ -3,546 +3,508 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Արմինեի հրավերը 🤍</title>
+<title>Armine • Birthday Celebration 2026</title>
+
+<!--
+  ԼՈՒՍԱՆԿԱՐՆԵՐ — դի՛ր համապատասխան ֆայլերը index.html-ի կողքին.
+  armine.jpg    → Արմինեի մեծ լուսանկարը (ուղղահայաց, full-screen)
+  venue.jpg     → Dvin Restaurant Complex (հորիզոնական)
+  moment-1.jpg  → տորթ
+  moment-2.jpg  → շամպայն
+  moment-3.jpg  → ծաղիկներ / մոմեր
+  moment-4.jpg  → նվեր
+  (Վերը ստեղծված նկարները կարող ես օգտագործել որպես placeholder՝ նույն անուններով։)
+-->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Armenian:wght@400;600;700&family=Noto+Sans+Armenian:wght@300;400;600&family=Noto+Sans:wght@400;600&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Noto+Serif+Armenian:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
 :root{
-  --green-900:#1d3527; --green-800:#24422f; --green-700:#2e4b3a;
-  --gold:#c9a227; --gold-soft:#a8842f; --gold-light:#e6c87a;
-  --cream:#f6f1e7; --paper:#fffdf7; --ink:#2b2b26;
+  --black:#0a0807;
+  --espresso:#191009;
+  --espresso-2:#241811;
+  --ivory:#f2e9db;
+  --ivory-dim:#c9bda9;
+  --gold:#c9a876;          /* champagne gold, ոչ վառ */
+  --gold-dim:rgba(201,168,118,.42);
+  --gold-faint:rgba(201,168,118,.12);
+  --serif:'Cormorant Garamond','Noto Serif Armenian',serif;
+  --display:'Bodoni Moda',serif;
 }
-*{box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:'Noto Sans Armenian','Noto Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+body{
+  background:var(--black);
+  color:var(--ivory);
+  font-family:var(--serif);
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
 body.locked{overflow:hidden}
-body::before{content:"";position:fixed;inset:0;background:
-  radial-gradient(60% 40% at 15% 10%, rgba(201,162,39,.07), transparent 60%),
-  radial-gradient(50% 40% at 90% 90%, rgba(46,75,58,.08), transparent 60%);
-  pointer-events:none;z-index:0}
+::selection{background:var(--gold);color:#140d08}
+img{display:block;max-width:100%}
 
-/* ---------- ԼԵԶՎԻ ԱՆՋԱՏԻՉ ---------- */
-#langBar{position:fixed;top:14px;right:14px;z-index:95;display:flex;gap:4px;
-  background:rgba(255,253,247,.85);backdrop-filter:blur(6px);
-  border:1px solid rgba(201,162,39,.6);border-radius:999px;padding:5px;box-shadow:0 8px 20px rgba(29,53,39,.15)}
-#langBar button{border:none;background:transparent;padding:6px 13px;border-radius:999px;font-size:12px;
-  letter-spacing:.06em;cursor:pointer;color:var(--green-700);font-weight:600;font-family:inherit;transition:all .25s}
-#langBar button.active{background:var(--green-800);color:var(--gold-light)}
+/* ============ 1. INTRO — փակ էկրան ============ */
+#intro{
+  position:fixed;inset:0;z-index:100;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(120% 90% at 50% 12%, #17100a 0%, #0a0807 62%);
+  transition:opacity 1s ease;
+}
+#intro::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(58% 38% at 50% 46%, rgba(201,168,118,.07), transparent 70%);
+  animation:breathe 5.5s ease-in-out infinite;
+}
+.invited{
+  font-style:italic;font-size:clamp(1.15rem,2.6vw,1.55rem);
+  letter-spacing:.32em;color:var(--ivory);text-indent:.32em;
+}
+.tap{
+  position:absolute;bottom:6vh;
+  font-size:.7rem;letter-spacing:.55em;text-indent:.55em;text-transform:uppercase;
+  color:var(--gold);animation:tapPulse 2.8s ease-in-out infinite;
+}
+body.entered #intro{opacity:0;pointer-events:none}
+@keyframes breathe{0%,100%{opacity:.45}50%{opacity:1}}
+@keyframes tapPulse{0%,100%{opacity:.4}50%{opacity:.95}}
 
-/* ---------- ՄԵՂՄ ԿԱԹՆԱԳՈՒՅՆ ՎԱՐԱԳՈՒՅՐՆԵ ---------- */
-#curtains{position:fixed;inset:0;z-index:60;overflow:hidden}
-.curtain{position:absolute;top:0;bottom:0;width:53%;
-  background:repeating-linear-gradient(90deg,#fdfaf3 0 18px,#f5eee0 18px 36px,#efe6d4 36px 54px,#f9f4ea 54px 72px);
-  box-shadow:inset 0 -60px 90px rgba(170,150,110,.28), inset 0 40px 60px rgba(255,255,255,.65);
-  animation:sway 5s ease-in-out infinite}
-.curtain::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.55) 50%,transparent 58%);
-  background-size:300% 100%;animation:wind 4s linear infinite}
-.curtain.left{left:0;border-right:3px solid var(--gold)}
-.curtain.right{right:0;border-left:3px solid var(--gold);animation-delay:-2.5s}
-.valance{position:absolute;top:0;left:0;right:0;height:58px;z-index:3;
-  background:repeating-linear-gradient(90deg,#fdfaf3 0 26px,#f1e9d9 26px 52px);
-  border-bottom:3px solid var(--gold);box-shadow:0 8px 20px rgba(150,130,90,.35)}
-@keyframes sway{0%,100%{transform:skewY(.4deg)}50%{transform:skewY(-.4deg)}}
-@keyframes wind{0%{background-position:120% 0}100%{background-position:-180% 0}}
-#curtains.open .left{animation:openL 3s cubic-bezier(.7,.05,.3,1) forwards}
-#curtains.open .right{animation:openR 3s cubic-bezier(.7,.05,.3,1) forwards}
-#curtains.open .valance{animation:valUp 1.8s ease forwards}
-#curtains.open .center{opacity:0;transition:opacity .5s}
-@keyframes openL{0%{transform:translateX(0) skewX(0)}25%{transform:translateX(-12%) skewX(5deg)}55%{transform:translateX(-46%) skewX(-7deg)}100%{transform:translateX(-115%) skewX(0)}}
-@keyframes openR{0%{transform:translateX(0) skewX(0)}25%{transform:translateX(12%) skewX(-5deg)}55%{transform:translateX(46%) skewX(7deg)}100%{transform:translateX(115%) skewX(0)}}
-@keyframes valUp{to{transform:translateY(-110%)}}
-.center{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:20px}
-.seal{width:108px;height:108px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  background:radial-gradient(circle at 35% 30%,#35573f,#1d3527 72%);
-  border:2px solid var(--gold);box-shadow:0 0 0 7px rgba(201,162,39,.16),0 16px 34px rgba(0,0,0,.35);
-  font-family:'Noto Serif Armenian',serif;font-size:52px;color:var(--gold-light)}
-.center h2{margin:0;font-family:'Noto Serif Armenian',serif;color:var(--green-800);letter-spacing:.16em;font-size:22px}
-.center p{margin:0;color:var(--gold-soft);font-size:14px;letter-spacing:.08em}
+/* ============ 2. ՄԵԱՔՍ ՎԱՐԱԳՈՒՅՐՆԵՐ ============ */
+#curtains{position:fixed;inset:0;z-index:90;pointer-events:none}
+.curtain{
+  position:absolute;top:0;bottom:0;width:51%;
+  background:
+    repeating-linear-gradient(90deg, rgba(201,168,118,.045) 0 2px, transparent 2px 26px),
+    repeating-linear-gradient(90deg, #150d08 0 22px, #22150c 22px 40px, #100a05 40px 64px),
+    #120b06;
+  box-shadow:0 0 90px rgba(0,0,0,.9);
+  transition:transform 2s cubic-bezier(.77,0,.18,1) .15s;
+}
+.curtain::after{
+  content:'';position:absolute;inset:0;mix-blend-mode:screen;
+  background:linear-gradient(180deg, rgba(201,168,118,.10), transparent 30%, transparent 70%, rgba(201,168,118,.06));
+}
+.curtain.left{left:0}
+.curtain.right{right:0}
+body.entered .curtain.left{transform:translateX(-102%)}
+body.entered .curtain.right{transform:translateX(102%)}
+#goldLight{
+  position:absolute;top:0;bottom:0;left:50%;width:2px;opacity:0;
+  transform:translateX(-50%);
+  background:linear-gradient(180deg,transparent,#e8cf9e,transparent);
+}
+body.entered #goldLight{animation:lightSpread 2.3s ease .1s forwards}
+@keyframes lightSpread{
+  0%{opacity:0;width:2px;filter:blur(2px)}
+  22%{opacity:.9}
+  100%{opacity:0;width:80vw;filter:blur(30px)}
+}
 
-/* ---------- ԿՃԱԿ ---------- */
-.btn-gold{position:relative;display:inline-block;padding:15px 38px;border-radius:999px;border:none;cursor:pointer;
-  background:linear-gradient(135deg,#e6c87a,#c9a227 45%,#a8842f);color:#241d08;
-  font-family:inherit;font-weight:700;font-size:15px;letter-spacing:.06em;
-  box-shadow:0 12px 26px rgba(168,132,47,.4),inset 0 1px 0 rgba(255,255,255,.6);overflow:hidden;transition:transform .25s}
-.btn-gold:hover{transform:translateY(-2px) scale(1.02)}
-.btn-gold::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
-  transform:skewX(-20deg);animation:shine 3.2s ease infinite}
-@keyframes shine{0%{left:-70%}55%{left:130%}100%{left:130%}}
+/* ============ 3. HERO — Արմինեի լուսանկարը ============ */
+#heroWrap{height:220vh;position:relative}
+.hero{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--black)}
+.hero-img{
+  position:absolute;inset:-6%;
+  background:url('armine.jpg') center 28%/cover no-repeat #0a0807;
+  filter:blur(18px) brightness(.72);
+  transition:filter 2.8s ease .35s;
+  animation:kenburns 26s ease-in-out infinite alternate;
+}
+body.entered .hero-img{filter:blur(0) brightness(.95)}
+@keyframes kenburns{from{transform:scale(1.0)}to{transform:scale(1.1)}}
+.hero-shade{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(7,5,3,.88) 0%, rgba(7,5,3,.14) 35%, rgba(7,5,3,.26) 75%, rgba(7,5,3,.5) 100%);
+}
+#heroDark{position:absolute;inset:0;background:#050302;opacity:0;will-change:opacity}
+.hero-text{
+  position:absolute;inset:0;z-index:3;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:0 5vw;
+}
+.kicker{
+  font-size:.74rem;letter-spacing:.6em;text-indent:.6em;text-transform:uppercase;
+  color:var(--gold);opacity:0;
+}
+.name{
+  font-family:var(--display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(3rem,12.5vw,9.5rem);line-height:1.02;
+  letter-spacing:.42em;text-indent:.42em;
+  margin:.35em 0 .3em;opacity:0;
+}
+.sub{
+  font-style:italic;color:var(--ivory-dim);
+  font-size:clamp(.98rem,2.1vw,1.25rem);letter-spacing:.22em;text-indent:.22em;opacity:0;
+}
+body.entered .kicker{animation:riseIn 1.6s cubic-bezier(.2,.6,.2,1) 2.2s forwards}
+body.entered .name  {animation:riseIn 2s   cubic-bezier(.2,.6,.2,1) 2.9s forwards}
+body.entered .sub   {animation:riseIn 2s   cubic-bezier(.2,.6,.2,1) 3.6s forwards}
+@keyframes riseIn{from{opacity:0;transform:translateY(28px);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+.scroll-hint{position:absolute;left:50%;bottom:4vh;transform:translateX(-50%);z-index:3;opacity:0}
+body.entered .scroll-hint{animation:fadeIn 2s ease 4.5s forwards}
+.scroll-hint span{
+  display:block;width:1px;height:56px;
+  background:linear-gradient(to bottom,var(--gold),transparent);
+  animation:drop 2.8s ease-in-out infinite;
+}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-/* ---------- FULL SCREEN ՀԵՐՈՍ ---------- */
-.hero{position:relative;height:100svh;min-height:620px;overflow:hidden}
-.hero-photo,.hero-photo img{position:absolute;inset:0;width:100%;height:100%}
-.hero-photo img{object-fit:cover;opacity:0;transform:scale(1.12);filter:blur(10px)}
-body.revealed .hero-photo img{opacity:1;transform:scale(1);filter:blur(0);transition:all 2.2s ease 1s}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(246,241,231,0) 50%,rgba(246,241,231,.55) 74%,rgba(246,241,231,.95) 92%,var(--cream) 100%)}
-.hero-text{position:absolute;left:0;right:0;bottom:5vh;text-align:center;padding:0 16px;
-  opacity:0;transform:translateY(34px);transition:all 1.2s ease 1.8s}
-body.revealed .hero-text{opacity:1;transform:none}
-h1.name{font-family:'Noto Serif Armenian',serif;font-weight:700;color:var(--green-800);
-  font-size:clamp(52px,10vw,86px);margin:0;letter-spacing:.04em;text-shadow:0 2px 18px rgba(246,241,231,.8)}
-.tagline{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-soft);
-  font-size:clamp(19px,4.4vw,28px);margin:8px 0 16px;letter-spacing:.04em}
-.date-badge{display:inline-block;padding:9px 28px;border-radius:999px;background:var(--green-800);
-  color:var(--gold-light);letter-spacing:.35em;font-size:14px;font-weight:600;box-shadow:0 10px 22px rgba(29,53,39,.25)}
+/* ============ 5. STORY + ԱՄՍԱԹԻՎ ============ */
+#story{
+  position:relative;text-align:center;
+  background:linear-gradient(180deg,#0a0807 0%, #150d08 30%, #0a0807 100%);
+  padding:18vh 6vw 16vh;
+}
+.story-line{
+  font-style:italic;font-size:clamp(1.35rem,3.1vw,2.1rem);
+  line-height:1.75;color:var(--ivory);max-width:44ch;margin:0 auto;
+}
+.story-sub{
+  margin:4.5vh auto 0;max-width:52ch;
+  color:var(--ivory-dim);font-size:clamp(1.05rem,2.2vw,1.35rem);line-height:1.9;
+}
+.date{
+  margin-top:11vh;font-family:var(--display);
+  font-size:clamp(2.4rem,8.6vw,6.8rem);letter-spacing:.05em;color:var(--ivory);
+  display:flex;justify-content:center;align-items:baseline;gap:.35em;flex-wrap:wrap;
+}
+.date span{display:inline-block;opacity:0;transform:translateY(60px);filter:blur(10px);
+  transition:opacity 1.3s ease,transform 1.3s cubic-bezier(.2,.6,.2,1),filter 1.3s ease}
+.date.on span{opacity:1;transform:none;filter:none}
+.date span:nth-child(1){transition-delay:.05s}
+.date span:nth-child(2){transition-delay:.35s}
+.date span:nth-child(3){transition-delay:.5s}
+.date span:nth-child(4){transition-delay:.8s}
+.date span:nth-child(5){transition-delay:.95s}
+.date .dot{color:var(--gold);font-size:.4em;transform:translateY(-.6em)}
+.time{margin-top:5vh;color:var(--gold);letter-spacing:.5em;text-indent:.5em;font-size:1rem}
+#calBtn{
+  margin-top:3.5vh;display:inline-block;cursor:pointer;
+  background:transparent;border:1px solid var(--gold-dim);color:var(--ivory);
+  font-family:var(--serif);font-size:.72rem;letter-spacing:.4em;text-indent:.4em;text-transform:uppercase;
+  padding:1em 2.4em;transition:background .5s,border-color .5s;
+}
+#calBtn:hover{background:var(--gold-faint);border-color:var(--gold)}
 
-/* ---------- ԸՆԴՀԱՆՈՒՐ ---------- */
-main{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:30px 22px 90px}
-.reveal{opacity:0;transform:translateY(36px);transition:opacity 1s ease,transform 1s ease}
-.reveal.visible{opacity:1;transform:none}
-.divider{display:flex;align-items:center;gap:12px;max-width:430px;margin:44px auto}
-.divider span{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
-.divider span:last-child{background:linear-gradient(90deg,var(--gold),transparent)}
-.divider svg{width:22px;height:22px;fill:none;stroke:var(--gold);stroke-width:1.6;flex:none}
-h2.title{font-family:'Noto Serif Armenian',serif;color:var(--green-800);text-align:center;font-size:clamp(26px,5vw,36px);margin:0 0 8px}
-.sub{text-align:center;color:var(--gold-soft);letter-spacing:.06em;margin:0 0 26px;line-height:1.8}
-.script{font-family:'Great Vibes',cursive;color:var(--gold-soft)}
+/* ============ 6. VENUE — Dvin ============ */
+#venue{position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden}
+.venue-bg{
+  position:absolute;inset:-14% 0;will-change:transform;transform:scale(1.12);
+  background:url('venue.jpg') center/cover no-repeat #120b06;
+}
+.venue-shade{position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(7,5,3,.75), rgba(7,5,3,.25) 45%, rgba(7,5,3,.8));}
+.venue-text{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:0 6vw;
+}
+.venue-kicker{font-size:.72rem;letter-spacing:.65em;text-indent:.65em;text-transform:uppercase;color:var(--gold)}
+.venue-name{font-family:var(--display);font-weight:400;font-size:clamp(2.1rem,6.4vw,4.6rem);margin-top:1.4rem;line-height:1.15}
+.map-link{
+  margin-top:2.6rem;font-style:italic;color:var(--ivory);
+  letter-spacing:.14em;text-decoration:none;border-bottom:1px solid var(--gold-dim);
+  padding-bottom:.4em;transition:color .4s,border-color .4s;
+}
+.map-link:hover{color:var(--gold);border-color:var(--gold)}
 
-/* ---------- ՀԵՏՀԱՇՎԱՐ ---------- */
-.count{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.cell{min-width:88px;padding:18px 10px 14px;background:var(--paper);border:1px solid rgba(201,162,39,.55);
-  border-radius:18px;box-shadow:0 14px 28px rgba(46,75,58,.12);text-align:center}
-.cell b{display:block;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:var(--green-800);line-height:1}
-.cell span{display:block;margin-top:6px;font-size:11px;letter-spacing:.22em;color:var(--gold-soft);text-transform:uppercase}
-#ageLine{text-align:center;margin-top:20px;color:var(--green-700);font-weight:600}
+/* ============ 7. MOMENTS — editorial gallery ============ */
+#moments{background:#0c0906;padding:16vh 6vw 14vh}
+.moments-kicker{text-align:center;font-size:.72rem;letter-spacing:.65em;text-indent:.65em;text-transform:uppercase;color:var(--gold)}
+.m-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:3vw 2.5vw;margin-top:9vh;max-width:1200px;margin-left:auto;margin-right:auto}
+.m1{grid-column:1/6}
+.m2{grid-column:7/13;margin-top:14vh}
+.m3{grid-column:2/7;margin-top:4vh}
+.m4{grid-column:8/12;margin-top:12vh}
+.m-grid img{width:100%;height:auto;filter:sepia(.06) saturate(.92)}
+figcaption{margin-top:1.1rem;font-style:italic;color:var(--ivory-dim);letter-spacing:.18em;font-size:.95rem}
+figcaption::before{content:'';display:block;width:26px;height:1px;background:var(--gold-dim);margin-bottom:.75rem}
 
-/* ---------- ՔԱՐՏԵՐ / ՆԿԱՐՆԵ ---------- */
-.card{background:var(--paper);border:1px solid rgba(201,162,39,.4);border-radius:22px;padding:32px 28px;
-  box-shadow:0 18px 40px rgba(46,75,58,.12);font-size:17px;line-height:1.9}
-.card .lead{font-family:'Noto Serif Armenian',serif;color:var(--green-800);font-size:21px;font-weight:600}
-figure{margin:0}
-figure .frame{border-radius:20px;overflow:hidden;border:6px solid var(--paper);outline:1px solid var(--gold);
-  box-shadow:0 22px 46px rgba(29,53,39,.22)}
-figure img{display:block;width:100%;height:auto;object-fit:cover}
-.kenburns img{animation:kb 14s ease-in-out infinite alternate}
-@keyframes kb{from{transform:scale(1)}to{transform:scale(1.12) translate(2%,-2%)}}
-figcaption{text-align:center;color:var(--gold-soft);font-size:14px;letter-spacing:.12em;margin-top:12px;text-transform:uppercase}
+/* ============ 8. RSVP ============ */
+#rsvp{
+  text-align:center;padding:18vh 6vw 12vh;
+  background:radial-gradient(80% 60% at 50% 0%, #17100a, #0a0807 72%);
+}
+.rsvp-q{font-family:var(--display);font-weight:400;font-size:clamp(2.1rem,6vw,4.2rem)}
+.rsvp-btns{display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap;margin-top:6vh}
+.btn{
+  display:inline-block;text-decoration:none;cursor:pointer;
+  border:1px solid var(--gold-dim);color:var(--ivory);background:transparent;
+  font-family:var(--serif);font-size:.78rem;letter-spacing:.32em;text-indent:.32em;text-transform:uppercase;
+  padding:1.15em 2.6em;transition:background .5s,color .5s,border-color .5s;
+}
+.btn.primary:hover{background:var(--gold);color:#140d08;border-color:var(--gold)}
+.btn.ghost:hover{border-color:var(--ivory-dim)}
+#wishForm{margin:11vh auto 0;max-width:600px;display:flex;flex-direction:column;align-items:center}
+.wish-label{font-size:.72rem;letter-spacing:.45em;text-indent:.45em;text-transform:uppercase;color:var(--gold)}
+#wish{
+  margin-top:2.2rem;width:100%;background:transparent;border:0;
+  border-bottom:1px solid var(--gold-dim);color:var(--ivory);
+  font-family:var(--serif);font-style:italic;font-size:1.15rem;line-height:1.7;
+  padding:.9em .2em;text-align:center;resize:vertical;min-height:110px;outline:none;
+  transition:border-color .5s;
+}
+#wish:focus{border-color:var(--gold)}
+#wish::placeholder{color:rgba(201,189,169,.45)}
+.wish-send{
+  margin-top:2.4rem;cursor:pointer;background:transparent;border:1px solid var(--gold-dim);
+  color:var(--gold);font-family:var(--serif);font-size:.72rem;letter-spacing:.4em;text-indent:.4em;
+  text-transform:uppercase;padding:.95em 2.2em;transition:background .5s,color .5s;
+}
+.wish-send:hover:not(:disabled){background:var(--gold);color:#140d08}
+.wish-send:disabled{opacity:.4;cursor:default}
+.wish-thanks{margin-top:1.8rem;font-style:italic;color:var(--gold);letter-spacing:.1em}
 
-/* ---------- ՁՎԵ ---------- */
-input,textarea{width:100%;padding:13px 16px;border-radius:12px;border:1px solid rgba(46,75,58,.28);
-  background:#fff;font-family:inherit;font-size:15px;color:var(--ink);outline:none;transition:border .25s,box-shadow .25s}
-input:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,162,39,.15)}
-textarea{min-height:110px;resize:vertical}
-label{display:block;font-size:13px;letter-spacing:.1em;color:var(--green-700);margin:14px 0 6px;font-weight:600}
+footer{
+  padding:7vh 0 6vh;text-align:center;
+  font-size:.75rem;letter-spacing:.42em;text-indent:.42em;text-transform:uppercase;color:var(--ivory-dim);
+}
 
-/* ---------- MODAL ---------- */
-.modal{position:fixed;inset:0;z-index:80;background:rgba(18,28,20,.55);backdrop-filter:blur(5px);
-  display:none;align-items:center;justify-content:center;padding:20px}
-.modal.show{display:flex}
-.modal .box{background:var(--cream);border:1px solid var(--gold);border-radius:24px;max-width:430px;width:100%;
-  padding:34px 28px;position:relative;box-shadow:0 30px 70px rgba(0,0,0,.35);animation:pop .5s ease}
-@keyframes pop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
-.modal .close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:26px;color:var(--gold-soft);cursor:pointer}
-.radio-row{display:flex;gap:10px;flex-wrap:wrap}
-.radio-row label{flex:1;margin:0;cursor:pointer}
-.radio-row input{position:absolute;opacity:0}
-.radio-row .opt{display:block;text-align:center;padding:12px 10px;border-radius:12px;border:1px solid rgba(46,75,58,.28);
-  background:#fff;font-weight:600;color:var(--green-700);transition:all .25s;font-size:14px}
-.radio-row input:checked + .opt{background:var(--green-800);color:var(--gold-light);border-color:var(--green-800);box-shadow:0 8px 18px rgba(29,53,39,.3)}
+/* ============ ԵՐԱԺՇՏՈՒԹՅԱՆ ԿՈՃԱԿ ============ */
+#musicBtn{
+  position:fixed;right:22px;bottom:22px;z-index:80;
+  width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--gold-dim);background:rgba(10,8,6,.55);
+  color:var(--gold);font-size:1.05rem;cursor:pointer;
+  opacity:0;pointer-events:none;backdrop-filter:blur(4px);
+  transition:opacity 1s ease 2.6s, color .4s;
+}
+body.entered #musicBtn{opacity:1;pointer-events:auto}
+#musicBtn.paused{color:var(--ivory-dim)}
+#yt{position:fixed;bottom:0;right:0;width:2px;height:2px;opacity:0;pointer-events:none;overflow:hidden}
 
-/* ---------- ԲԱՐԵԱՂԹԱՆՔՆԵՐ ---------- */
-.wishes{display:grid;gap:14px;margin-top:24px}
-.wish{background:var(--paper);border-left:3px solid var(--gold);border-radius:14px;padding:14px 18px;
-  box-shadow:0 10px 22px rgba(46,75,58,.1);animation:pop .6s ease}
-.wish b{color:var(--green-800)}
-.wish p{margin:6px 0 0;line-height:1.7;color:#4a4a42}
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(34px);
+  transition:opacity 1.5s ease,transform 1.5s cubic-bezier(.2,.6,.2,1)}
+.reveal.on{opacity:1;transform:none}
 
-/* ---------- ՆՈՒՐԲ ԾԱՂԻԿՆԵՐ ---------- */
-.flowers{position:fixed;width:150px;opacity:.6;z-index:0;pointer-events:none;filter:drop-shadow(0 6px 10px rgba(120,90,40,.15))}
-.fl-bl{left:-14px;bottom:-10px}
-.fl-tr{right:-14px;top:-8px;transform:rotate(180deg)}
-
-/* ---------- ՄԱՍՆԻԿՆԵ / ՍՐՏԻԿՆԵՐ ---------- */
-#particles{position:fixed;inset:0;pointer-events:none;z-index:2}
-#particles span{position:absolute;bottom:-12px;border-radius:50%;
-  background:radial-gradient(circle,#ffe9a8,#c9a227);opacity:0;animation:rise linear infinite}
-@keyframes rise{0%{transform:translateY(0);opacity:0}12%{opacity:.85}100%{transform:translateY(-110vh);opacity:0}}
-.float-heart{position:fixed;z-index:90;pointer-events:none;font-size:20px;animation:heartUp 1.6s ease forwards}
-@keyframes heartUp{to{transform:translateY(-140px) rotate(14deg);opacity:0}}
-
-footer{text-align:center;padding:10px 20px 46px;position:relative;z-index:1}
-footer .sign{font-family:'Noto Serif Armenian',serif;font-size:24px;color:var(--green-800);font-weight:600}
-footer .bd{color:var(--gold-soft);letter-spacing:.3em;font-size:13px;margin-top:6px}
-
-#musicBtn{position:fixed;right:18px;bottom:18px;z-index:70;width:54px;height:54px;border-radius:50%;
-  background:var(--green-800);border:2px solid var(--gold);color:var(--gold-light);font-size:22px;cursor:pointer;
-  box-shadow:0 12px 26px rgba(0,0,0,.35);display:none;align-items:center;justify-content:center}
-#ytPlayer{position:fixed;bottom:-200px;left:-200px;width:2px;height:2px;opacity:0;pointer-events:none}
-@media (max-width:560px){.card{padding:26px 20px}.cell{min-width:74px}.cell b{font-size:30px}.flowers{width:110px}}
+/* ============ RESPONSIVE ============ */
+@media (max-width:760px){
+  .m1{grid-column:1/11}
+  .m2{grid-column:3/13;margin-top:7vh}
+  .m3{grid-column:1/10;margin-top:7vh}
+  .m4{grid-column:4/13;margin-top:7vh}
+  #story{padding:14vh 7vw 12vh}
+  .rsvp-btns{flex-direction:column;align-items:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01s!important;transition-duration:.01s!important;transition-delay:0s!important}
+}
 </style>
 </head>
+
 <body class="locked">
 
-<!-- Նուրբ ծաղիկներ -->
-<svg class="flowers fl-bl" viewBox="0 0 220 340" aria-hidden="true">
-  <defs>
-    <g id="bloom">
-      <g fill="#f7ecdc" stroke="#d9b45e" stroke-width=".8">
-        <ellipse cx="0" cy="-9" rx="5.5" ry="9"/>
-        <ellipse cx="0" cy="-9" rx="5.5" ry="9" transform="rotate(72)"/>
-        <ellipse cx="0" cy="-9" rx="5.5" ry="9" transform="rotate(144)"/>
-        <ellipse cx="0" cy="-9" rx="5.5" ry="9" transform="rotate(216)"/>
-        <ellipse cx="0" cy="-9" rx="5.5" ry="9" transform="rotate(288)"/>
-      </g>
-      <circle r="4" fill="#c9a227"/>
-    </g>
-    <g id="bud"><ellipse rx="4.5" ry="7" fill="#e9d8b8" stroke="#cbb06a" stroke-width="1"/></g>
-  </defs>
-  <g fill="none" stroke="#c2a25c" stroke-width="2" stroke-linecap="round">
-    <path d="M110 340 C 106 268 114 196 108 96"/>
-    <path d="M109 240 C 78 220 58 196 50 164"/>
-    <path d="M110 196 C 142 176 160 152 168 120"/>
-    <path d="M108 140 C 86 122 74 104 70 80"/>
-    <path d="M108 112 C 126 98 136 84 140 64"/>
-  </g>
-  <use href="#bloom" transform="translate(108,88)"/>
-  <use href="#bloom" transform="translate(50,158) scale(.85)"/>
-  <use href="#bloom" transform="translate(168,114) scale(.9)"/>
-  <use href="#bloom" transform="translate(70,74) scale(.72)"/>
-  <use href="#bud" transform="translate(140,58) rotate(20)"/>
-  <circle cx="126" cy="252" r="3" fill="#e6d3ae"/><circle cx="92" cy="288" r="2.5" fill="#e6d3ae"/><circle cx="134" cy="300" r="2" fill="#e6d3ae"/>
-</svg>
-<svg class="flowers fl-tr" viewBox="0 0 220 340" aria-hidden="true">
-  <g fill="none" stroke="#c2a25c" stroke-width="2" stroke-linecap="round">
-    <path d="M110 340 C 106 268 114 196 108 96"/>
-    <path d="M109 240 C 78 220 58 196 50 164"/>
-    <path d="M110 196 C 142 176 160 152 168 120"/>
-    <path d="M108 140 C 86 122 74 104 70 80"/>
-    <path d="M108 112 C 126 98 136 84 140 64"/>
-  </g>
-  <use href="#bloom" transform="translate(108,88)"/>
-  <use href="#bloom" transform="translate(50,158) scale(.85)"/>
-  <use href="#bloom" transform="translate(168,114) scale(.9)"/>
-  <use href="#bloom" transform="translate(70,74) scale(.72)"/>
-  <use href="#bud" transform="translate(140,58) rotate(20)"/>
-  <circle cx="126" cy="252" r="3" fill="#e6d3ae"/><circle cx="92" cy="288" r="2.5" fill="#e6d3ae"/>
-</svg>
-
-<div id="particles"></div>
-
-<!-- ԼԵԶՈՒՆԵՐ -->
-<div id="langBar">
-  <button data-lang="hy" class="active">Հայ</button>
-  <button data-lang="en">Eng</button>
-  <button data-lang="ru">Рус</button>
+<!-- 1. Փակ էկրան -->
+<div id="intro">
+  <p class="invited">You’re Invited</p>
+  <p class="tap">Tap to Enter</p>
 </div>
 
-<!-- ԿԱԹՆԱԳՈՒՅՆ ՎԱՐԱԳՈՒՅՐՆԵ -->
-<div id="curtains">
-  <div class="valance"></div>
+<!-- 2. Վարագույրներ -->
+<div id="curtains" aria-hidden="true">
   <div class="curtain left"></div>
   <div class="curtain right"></div>
-  <div class="center">
-    <div class="seal">Ա</div>
-    <h2 data-i18n="open_title">ՀՐԱՎԵ</h2>
-    <p data-i18n="open_sub">մի առանձնահատուկ երեկոյի</p>
-    <button class="btn-gold" id="openBtn" data-i18n="open_btn">Բացել հրավերը ✨</button>
-  </div>
+  <div id="goldLight"></div>
 </div>
 
-<div id="ytPlayer"></div>
-<button id="musicBtn" title="Music">🔊</button>
-
-<!-- FULL SCREEN ՆԱՐ -->
-<section class="hero">
-  <div class="hero-photo"><img data-img="photo" alt="Armine"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-text">
-    <h1 class="name" data-i18n="name">Արմինե</h1>
-    <div class="tagline">A Night to Celebrate with Armine</div>
-    <span class="date-badge">14 • 01 • 1982</span>
-  </div>
-</section>
+<button id="musicBtn" aria-label="Music on/off">♪</button>
 
 <main>
-  <!-- ՀԵՏՀԱՇՎԱՐԿ -->
-  <section class="reveal">
-    <h2 class="title" data-i18n="cd_title">Մինչ տոնը</h2>
-    <p class="sub" data-i18n="cd_sub">հետհաշվարկը սկսված է…</p>
-    <div class="count">
-      <div class="cell"><b id="cd-d">00</b><span data-i18n="cd_d">Օր</span></div>
-      <div class="cell"><b id="cd-h">00</b><span data-i18n="cd_h">Ժամ</span></div>
-      <div class="cell"><b id="cd-m">00</b><span data-i18n="cd_m">Րոպե</span></div>
-      <div class="cell"><b id="cd-s">00</b><span data-i18n="cd_s">Վայրկյան</span></div>
-    </div>
-    <p id="ageLine"></p>
-  </section>
 
-  <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
-
-  <!-- ՀՐԱՎԵՐ -->
-  <section class="card reveal">
-    <p class="lead" data-i18n="inv_lead">Սիրելի՛ հյուրեր,</p>
-    <p data-i18n="inv_1">Կան օրեր, որոնք ստեղծված են գեղեցիկ հիշողություններ դառնալու համար… ✨</p>
-    <p data-i18n="inv_2">Սիրով հրավիրում եմ ձեզ՝ կիսելու ինձ հետ այս առանձնահատուկ երեկոն և ձեր ներկայությամբ այն դարձնելու իսկապես անմոռանալի։ 🤍</p>
-  </section>
-
-  <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
-
-  <!-- ՎԱՅՐԸ -->
-  <section class="reveal">
-    <h2 class="title" data-i18n="loc_title">Մեր երեկոյի վայրը</h2>
-    <p class="sub" data-i18n="loc_text">Սպասում ենք ձեզ «Դվին» ռեստորանային համալիրում, որտեղ միասին կստեղծենք այս օրվա ամենագեղեցիկ հիշողությունները։</p>
-    <figure>
-      <div class="frame kenburns"><img data-img="dvin" alt="Dvin Restaurant"></div>
-      <figcaption data-i18n="loc_caption">«Դվին» ռեստորանային համալիր</figcaption>
-    </figure>
-  </section>
-
-  <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
-
-  <!-- ՇԱՄՊԱՅՆ -->
-  <section class="reveal">
-    <figure>
-      <div class="frame kenburns"><img data-img="champagne" alt="Champagne"></div>
-    </figure>
-    <p class="sub" style="margin-top:18px" data-i18n="champ_line">🥂 Բաժակները բարձրացնում ենք անմոռանալի երեկոյի համար 🥂</p>
-  </section>
-
-  <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
-
-  <!-- RSVP -->
-  <section class="reveal" style="text-align:center">
-    <h2 class="title">RSVP</h2>
-    <p class="sub" data-i18n="rsvp_sub">խնդրում եմ հաստատել ձեր ներկայությունը</p>
-    <button class="btn-gold" id="rsvpBtn" data-i18n="rsvp_btn">Նշել մասնակցությունը 🤍</button>
-  </section>
-
-  <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
-
-  <!-- A WISH FOR ME -->
-  <section class="reveal">
-    <h2 class="script" style="text-align:center;font-size:clamp(34px,7vw,48px)">A Wish for Me</h2>
-    <p class="sub" data-i18n="wish_sub">Գրիր քո բարեմաղթանքը ինձ համար ✨</p>
-    <form id="wishForm" class="card">
-      <input id="wishName" data-i18n-ph="w_name_ph" placeholder="Ձեր անունը (ըստ ցանկության)">
-      <div style="height:12px"></div>
-      <textarea id="wishText" required data-i18n-ph="w_text_ph" placeholder="Իմ բարեմաղթանքը Արմինեին…"></textarea>
-      <div style="text-align:center;margin-top:14px">
-        <button type="submit" class="btn-gold" data-i18n="w_btn">Նվիրել բարեմաղթանքը 💌</button>
+  <!-- 3–4. Hero -->
+  <section id="heroWrap">
+    <div class="hero">
+      <div class="hero-img"></div>
+      <div class="hero-shade"></div>
+      <div id="heroDark"></div>
+      <div class="hero-text">
+        <p class="kicker">A Night to Celebrate</p>
+        <h1 class="name">Armine</h1>
+        <p class="sub">Birthday Celebration • 2026</p>
       </div>
-    </form>
-    <div class="wishes" id="wishesWall"></div>
+      <div class="scroll-hint"><span></span></div>
+    </div>
   </section>
+
+  <!-- 5. Story + ամսաթիվ -->
+  <section id="story">
+    <p class="story-line reveal">Կան օրեր, որոնք ստեղծված են<br>գեղեցիկ հիշողություններ դառնալու համար…</p>
+    <p class="story-sub reveal">Սիրով հրավիրում եմ ձեզ կիսելու ինձ հետ այս առանձնահատուկ երեկոն և ձեր ներկայությամբ այն դարձնելու իսկապես անմոռանալի։</p>
+
+    <div class="date" id="bigDate" aria-label="14 January 1982">
+      <span>14</span><span class="dot">•</span><span>January</span><span class="dot">•</span><span>1982</span>
+    </div>
+
+    <p class="time reveal">19 : 00</p>
+    <button id="calBtn" class="reveal">Add to Calendar</button>
+  </section>
+
+  <!-- 6. Venue -->
+  <section id="venue">
+    <div class="venue-bg" id="venueBg"></div>
+    <div class="venue-shade"></div>
+    <div class="venue-text">
+      <p class="venue-kicker reveal">The Venue</p>
+      <h2 class="venue-name reveal">Dvin Restaurant Complex</h2>
+      <a class="map-link reveal" href="https://www.google.com/maps/search/?api=1&query=Dvin+Restaurant+Complex" target="_blank" rel="noopener">View on Map →</a>
+    </div>
+  </section>
+
+  <!-- 7. Moments -->
+  <section id="moments">
+    <p class="moments-kicker reveal">Moments</p>
+    <div class="m-grid">
+      <figure class="m1 reveal"><img src="moment-1.jpg" alt=""><figcaption>the cake</figcaption></figure>
+      <figure class="m2 reveal"><img src="moment-2.jpg" alt=""><figcaption>the toast</figcaption></figure>
+      <figure class="m3 reveal"><img src="moment-3.jpg" alt=""><figcaption>the light</figcaption></figure>
+      <figure class="m4 reveal"><img src="moment-4.jpg" alt=""><figcaption>the gift</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 8. RSVP -->
+  <section id="rsvp">
+    <h2 class="rsvp-q reveal">Will you join me?</h2>
+    <div class="rsvp-btns reveal">
+      <a id="yesBtn" class="btn primary" href="#" target="_blank" rel="noopener">With pleasure ♡</a>
+      <a id="noBtn" class="btn ghost" href="#" target="_blank" rel="noopener">Unfortunately, I can’t</a>
+    </div>
+
+    <form id="wishForm" class="reveal">
+      <label class="wish-label" for="wish">Leave a Wish ✨</label>
+      <textarea id="wish" rows="3" placeholder="Your words for Armine…"></textarea>
+      <button class="wish-send" type="submit">Send ✨</button>
+      <p class="wish-thanks" hidden>Thank you — your wish is on its way ✨</p>
+    </form>
+  </section>
+
+  <footer>With love — Armine •</footer>
+
 </main>
 
-<footer>
-  <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
-  <div class="sign" data-i18n="sign">Սիրով, Արմինե 🤍</div>
-  <div class="bd">14 · 01 · 1982</div>
-</footer>
-
-<!-- RSVP MODAL -->
-<div class="modal" id="rsvpModal">
-  <div class="box">
-    <button class="close" id="rsvpClose">×</button>
-    <div id="rsvpFormWrap">
-      <h2 class="title" style="font-size:26px" data-i18n="m_title">Հաստատել ներկայությունը</h2>
-      <form id="rsvpForm">
-        <label data-i18n="m_name">ԱՆՈՒՆ</label>
-        <input id="rsvpName" required data-i18n-ph="m_name_ph" placeholder="Ձեր անունը">
-        <label data-i18n="m_att">ՆՐԿԱՅՈՒԹՅՈՒՆ</label>
-        <div class="radio-row">
-          <label><input type="radio" name="att" value="yes" checked><span class="opt" data-i18n="m_yes">Սիրով կներկայանամ 🤍</span></label>
-          <label><input type="radio" name="att" value="no"><span class="opt" data-i18n="m_no">Ցավոք, չեմ կարող</span></label>
-        </div>
-        <div style="text-align:center;margin-top:22px">
-          <button type="submit" class="btn-gold" data-i18n="m_send">Ուղարկել 🤍</button>
-        </div>
-      </form>
-    </div>
-    <div id="rsvpThanks" style="display:none;text-align:center">
-      <div style="font-size:44px">🤍</div>
-      <h2 class="title" style="font-size:26px" id="thanksTitle"></h2>
-      <p id="thanksText" style="line-height:1.8;color:#4a4a42"></p>
-    </div>
-  </div>
-</div>
+<div id="yt" aria-hidden="true"></div>
 
 <script>
-/* ================== ԿԱՐԳԱՎՈՐՈՒՄՆԵՐ ================== */
-const CONFIG = {
-  youtubeId : '2Vv-BfVoq4g',   // <<== ԴԻՐ ՔՈ YOUTUBE ԵՐԻ ID-ն (հղման v=... մասը)
-  photo     : 'photo.jpg',     // <<== քո լուսանկարը
-  dvin      : 'dvin.jpg',      // <<== «Դվին» ռեստորանի նկարը (ստեղծվածը պահպանիր որպես dvin.jpg)
-  champagne : 'champagne.jpg'  // շամպայնի նկարը
-};
-document.querySelectorAll('img[data-img]').forEach(i => i.src = CONFIG[i.dataset.img]);
-
-/* ================== ԹԱՐԳՄԱՆՈՒԹՅՈՒՆՆԵ ================== */
-const I18N = {
- hy:{open_title:'ՀՐԱՎԵ',open_sub:'մի առանձնահատուկ երեկոյի',open_btn:'Բացել հրավերը ✨',name:'Արմինե',
-  cd_title:'Մինչ տոնը',cd_sub:'հետհաշվարկը սկսված է…',cd_d:'Օր',cd_h:'Ժամ',cd_m:'Րոպե',cd_s:'Վայրկյան',
-  today:'Այսօր իմ տոնն է 🥳',ageLine:'«Դվին»-ում կտոնենք իմ {age}-ամյակը 🥂',
-  inv_lead:'Սիրելի՛ հյուրեր,',inv_1:'Կան օրեր, որոնք ստեղծված են գեղեցիկ հիշողություններ դառնալու համար… ✨',
-  inv_2:'Սիրով հրավիրում եմ ձեզ՝ կիսելու ինձ հետ այս առանձնահատուկ երեկոն և ձեր ներկայությամբ այն դարձնելու իսկապես անմոռանալի։ 🤍',
-  loc_title:'Մեր երեկոյի վայրը',loc_text:'Սպասում ենք ձեզ «Դվին» ռեստորանային համալիրում, որտեղ միասին կստեղծենք այս օրվա ամենագեղեցիկ հիշողությունները։',
-  loc_caption:'«Դվին» ռեստորանային համալիր',champ_line:'🥂 աժակները բարձրացնում ենք անմոռանալի երեկոյի համար 🥂',
-  rsvp_sub:'խնդրում եմ հաստատել ձեր ներկայությունը',rsvp_btn:'Նշել մասնակցությունը 🤍',
-  m_title:'Հաստատել ներկայությունը',m_name:'ԱՆՈՒՆ',m_name_ph:'Ձեր անունը',m_att:'ՆԵԿԱՅՈՒԹՅՈՒՆ',
-  m_yes:'Սիրով կներկայանամ 🤍',m_no:'Ցավոք, չեմ կարող',m_send:'Ուղարկել 🤍',
-  thanks_title:'Շնորհակալ եմ, {name} 🤍',thanks_yes:'Ձեր ներկայությունը ամենամեծ նվերն է։ Սպասում եմ ձեզ «Դվին»-ում 🥂',
-  thanks_no:'Ափսոս… բայց ձեր ջերմ խոսքերը միշտ հետս են 🤍',
-  wish_sub:'Գրիր քո բարեմաղթանքը ինձ համար ✨',w_name_ph:'Ձեր անունը (ըստ ցանկության)',w_text_ph:'Իմ բարեմաղթանքը Արմինեին…',
-  w_btn:'Նվիրել բարեմաղթանքը 💌',sign:'Սիրով, Արմինե 🤍'},
- en:{open_title:'INVITATION',open_sub:'to a very special evening',open_btn:'Open the invitation ✨',name:'Armine',
-  cd_title:'Until the Celebration',cd_sub:'the countdown has begun…',cd_d:'Days',cd_h:'Hours',cd_m:'Minutes',cd_s:'Seconds',
-  today:'Today is my day 🥳',ageLine:'We’ll celebrate my {age} birthday at “Dvin” 🥂',
-  inv_lead:'Dear guests,',inv_1:'There are days that are meant to become beautiful memories… ✨',
-  inv_2:'With love, I invite you to share this special evening with me and make it truly unforgettable with your presence. 🤍',
-  loc_title:'The Venue of Our Evening',loc_text:'We await you at the “Dvin” restaurant complex, where together we will create the most beautiful memories of this day.',
-  loc_caption:'“Dvin” Restaurant Complex',champ_line:'🥂 We raise our glasses to an unforgettable evening 🥂',
-  rsvp_sub:'please confirm your presence',rsvp_btn:'Confirm attendance 🤍',
-  m_title:'Confirm your presence',m_name:'NAME',m_name_ph:'Your name',m_att:'ATTENDANCE',
-  m_yes:'I will gladly attend 🤍',m_no:'Unfortunately, I can’t',m_send:'Send 🤍',
-  thanks_title:'Thank you, {name} 🤍',thanks_yes:'Your presence is the greatest gift. Waiting for you at “Dvin” 🥂',
-  thanks_no:'What a pity… but your warm words are always with me 🤍',
-  wish_sub:'Write your wish for me ✨',w_name_ph:'Your name (optional)',w_text_ph:'My wish for Armine…',
-  w_btn:'Gift the wish 💌',sign:'With love, Armine 🤍'},
- ru:{open_title:'ПРИГЛАШЕНИЕ',open_sub:'на особенный вечер',open_btn:'Открыть приглашение ✨',name:'Армине',
-  cd_title:'До праздника',cd_sub:'отсчёт начался…',cd_d:'Дней',cd_h:'Часов',cd_m:'Минут',cd_s:'Секунд',
-  today:'Сегодня мой праздник 🥳',ageLine:'Отметим мой {age}-й день рождения в «Двин» 🥂',
-  inv_lead:'Дорогие гости,',inv_1:'Есть дни, которые созданы, чтобы стать красивыми воспоминаниями… ✨',
-  inv_2:'С любовью приглашаю вас разделить со мной этот особенный вечер и вашим присутствием сделать его по-настоящему незабываемым. 🤍',
-  loc_title:'Место нашего вечера',loc_text:'Мы ждём вас в ресторанном комплексе «Двин», где вместе создадим самые красивые воспоминания этого дня.',
-  loc_caption:'Ресторанный комплекс «Двин»',champ_line:'🥂 Поднимаем бокалы за незабываемый вечер 🥂',
-  rsvp_sub:'просим подтвердить ваше присутствие',rsvp_btn:'Подтвердить участие 🤍',
-  m_title:'Подтвердить присутствие',m_name:'ИМЯ',m_name_ph:'Ваше имя',m_att:'ПРИСУТСТВИЕ',
-  m_yes:'С любовью приду 🤍',m_no:'К сожалению, не смогу',m_send:'Отправить 🤍',
-  thanks_title:'Спасибо, {name} 🤍',thanks_yes:'Ваше присутствие — самый большой подарок. Ждём вас в «Двин» 🥂',
-  thanks_no:'Жаль… но ваши тёплые слова всегда со мной 🤍',
-  wish_sub:'Напиши своё пожелание для меня ✨',w_name_ph:'Ваше имя (по желанию)',w_text_ph:'Моё пожелание Армине…',
-  w_btn:'Подарить пожелание 💌',sign:'С любовью, Армине 🤍'}
-};
-let LANG = 'hy';
-const T = k => (I18N[LANG] && I18N[LANG][k]) || I18N.hy[k] || k;
-function applyLang(){
-  document.documentElement.lang = LANG;
-  document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = T(el.dataset.i18n));
-  document.querySelectorAll('[data-i18n-ph]').forEach(el => el.placeholder = T(el.dataset.i18n-ph));
-  document.querySelectorAll('#langBar button').forEach(b => b.classList.toggle('active', b.dataset.lang === LANG));
-  renderThanks(); tick();
-}
-document.querySelectorAll('#langBar button').forEach(b => b.addEventListener('click', () => { LANG = b.dataset.lang; applyLang(); }));
-
-/* ================== ԵՐԱԺՇՏՈՒԹՅՈՒՆ ================== */
-let player = null, opened = false, musicOn = true;
-(function(){ const s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(s); })();
-window.onYouTubeIframeAPIReady = function(){
-  player = new YT.Player('ytPlayer', { height:'2', width:'2', videoId: CONFIG.youtubeId,
-    playerVars:{ controls:0, rel:0, loop:1, playlist:CONFIG.youtubeId, playsinline:1 },
-    events:{ onReady: e => { e.target.setVolume(60); if(opened) e.target.playVideo(); } } });
-};
-const musicBtn = document.getElementById('musicBtn');
-musicBtn.addEventListener('click', () => {
-  if(!player || !player.playVideo) return;
-  if(musicOn){ player.pauseVideo(); musicBtn.textContent = '🔇'; } else { player.playVideo(); musicBtn.textContent = '🔊'; }
-  musicOn = !musicOn;
-});
-
-/* ================== ՎԱՐԱԳՈՒՅՐՆԵՐԻ ԲԱՑՈՒՄ ================== */
-document.getElementById('openBtn').addEventListener('click', () => {
-  opened = true;
-  document.getElementById('curtains').classList.add('open');
-  document.body.classList.add('revealed');
-  musicBtn.style.display = 'flex';
-  setTimeout(() => { try{ player && player.playVideo && player.playVideo(); }catch(e){} }, 1200);
-  setTimeout(() => { document.getElementById('curtains').style.display = 'none'; document.body.classList.remove('locked'); }, 3200);
-  startParticles();
-});
-
-/* ================== ՀԵՏՀԱՇՎԱՐԿ ================== */
-function pad(n){ return String(n).padStart(2,'0'); }
-function ord(n){ const s=['th','st','nd','rd'], v=n%100; return n + (s[(v-20)%10] || s[v] || s[0]); }
-function tick(){
-  const now = new Date();
-  let y = now.getFullYear();
-  if(now > new Date(y,0,14,23,59,59)) y += 1;
-  const target = new Date(y,0,14,18,0,0);
-  const isToday = now.getMonth()===0 && now.getDate()===14;
-  const diff = Math.max(0, target - now);
-  document.getElementById('cd-d').textContent = pad(Math.floor(diff/864e5));
-  document.getElementById('cd-h').textContent = pad(Math.floor(diff/36e5)%24);
-  document.getElementById('cd-m').textContent = pad(Math.floor(diff/6e4)%60);
-  document.getElementById('cd-s').textContent = pad(Math.floor(diff/1e3)%60);
-  const age = y - 1982;
-  const ageTxt = LANG === 'en' ? ord(age) : age;
-  document.getElementById('ageLine').textContent = isToday ? T('today') : T('ageLine').replace('{age}', ageTxt);
-}
-tick(); setInterval(tick, 1000);
-
-/* ================== SCROLL REVEAL ================== */
-const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } }), {threshold:.15});
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-/* ================== ՄԱՍՆԻԿՆԵՐ / ՍՐՏԻԿՆԵՐ ================== */
-function startParticles(){
-  const box = document.getElementById('particles');
-  for(let i=0;i<26;i++){
-    const s = document.createElement('span');
-    const size = 3 + Math.random()*5;
-    s.style.width = s.style.height = size + 'px';
-    s.style.left = Math.random()*100 + 'vw';
-    s.style.animationDuration = (8 + Math.random()*9) + 's';
-    s.style.animationDelay = (Math.random()*10) + 's';
-    box.appendChild(s);
-  }
-}
-function hearts(x, y){
-  for(let i=0;i<8;i++){
-    const h = document.createElement('span');
-    h.className = 'float-heart';
-    h.textContent = Math.random() > .5 ? '🤍' : '✨';
-    h.style.left = (x + (Math.random()*80-40)) + 'px';
-    h.style.top  = (y + (Math.random()*20-10)) + 'px';
-    document.body.appendChild(h);
-    setTimeout(() => h.remove(), 1700);
-  }
-}
-
-/* ================== RSVP ================== */
-let lastRsvp = null;
-const modal = document.getElementById('rsvpModal');
-document.getElementById('rsvpBtn').addEventListener('click', () => modal.classList.add('show'));
-document.getElementById('rsvpClose').addEventListener('click', () => modal.classList.remove('show'));
-modal.addEventListener('click', e => { if(e.target === modal) modal.classList.remove('show'); });
-function renderThanks(){
-  if(!lastRsvp) return;
-  document.getElementById('thanksTitle').textContent = T('thanks_title').replace('{name}', lastRsvp.name);
-  document.getElementById('thanksText').textContent = lastRsvp.yes ? T('thanks_yes') : T('thanks_no');
-}
-document.getElementById('rsvpForm').addEventListener('submit', e => {
-  e.preventDefault();
-  lastRsvp = {
-    name: document.getElementById('rsvpName').value.trim() || '🤍',
-    yes : document.querySelector('input[name="att"]:checked').value === 'yes'
+(function(){
+  /* ================= CONFIG — փոխի՛ր այստեղ ================= */
+  var CONFIG = {
+    phone : '37477858676',                    // WhatsApp (077 858676)
+    yt    : 'zDEs0uwfus8',                    // Լիլիթ Հովհաննիսյան — Տորթիկ
+    icsStart : '20260114T190000',
+    icsEnd   : '20260114T230000'
   };
-  document.getElementById('rsvpFormWrap').style.display = 'none';
-  document.getElementById('rsvpThanks').style.display = 'block';
-  renderThanks();
-  hearts(innerWidth/2, innerHeight/2);
-});
+  /* =========================================================== */
 
-/* ================== ԲԱՐԵՄԱՂԹԱՆՔՆԵՐ ================== */
-document.getElementById('wishForm').addEventListener('submit', e => {
-  e.preventDefault();
-  const name = document.getElementById('wishName').value.trim() || 'Հյուր';
-  const text = document.getElementById('wishText').value.trim();
-  if(!text) return;
-  const w = document.createElement('div');
-  w.className = 'wish';
-  w.innerHTML = '<b></b><p></p>';
-  w.querySelector('b').textContent = name + ' 🤍';
-  w.querySelector('p').textContent = text;
-  document.getElementById('wishesWall').prepend(w);
-  document.getElementById('wishText').value = '';
-  hearts(innerWidth/2, 200);
-});
+  var body=document.body,
+      intro=document.getElementById('intro'),
+      curtains=document.getElementById('curtains'),
+      musicBtn=document.getElementById('musicBtn'),
+      heroWrap=document.getElementById('heroWrap'),
+      heroDark=document.getElementById('heroDark'),
+      heroText=document.querySelector('.hero-text'),
+      venueSec=document.getElementById('venue'),
+      venueBg=document.getElementById('venueBg');
 
-applyLang();
+  /* WhatsApp հաստատում */
+  document.getElementById('yesBtn').href =
+    'https://wa.me/'+CONFIG.phone+'?text='+
+    encodeURIComponent('Բարև ձեզ ♡ Շնորհակալություն հրավերի համար — հաճույքով կմասնակցեմ Արմինեի երեկոյին։');
+  document.getElementById('noBtn').href =
+    'https://wa.me/'+CONFIG.phone+'?text='+
+    encodeURIComponent('Ցավոք այս անգամ չեմ կարողանա մասնակցել, բայց սերն ու լավագույն մաղթանքներս ուղարկում եմ ♡');
+
+  /* YouTube — երաժշտություն */
+  var player=null, apiReady=false, wantPlay=false, playing=false;
+  window.onYouTubeIframeAPIReady=function(){
+    apiReady=true;
+    player=new YT.Player('yt',{
+      width:'2',height:'2',
+      videoId:CONFIG.yt,
+      playerVars:{controls:0,rel:0,playsinline:1,loop:1,playlist:CONFIG.yt},
+      events:{onReady:function(){ if(wantPlay) startMusic(); }}
+    });
+  };
+  function startMusic(){ try{ player.setVolume(70); player.playVideo(); playing=true; }catch(e){} }
+
+  musicBtn.addEventListener('click',function(){
+    if(!player) return;
+    if(playing){ player.pauseVideo(); playing=false; musicBtn.classList.add('paused'); }
+    else       { player.playVideo();  playing=true;  musicBtn.classList.remove('paused'); }
+  });
+
+  /* Tap to Enter → երաժշտություն + վարագույրներ */
+  var entered=false;
+  intro.addEventListener('click',function(){
+    if(entered) return; entered=true;
+    wantPlay=true;
+    if(apiReady && player && player.playVideo) startMusic();
+    body.classList.add('entered');
+    body.classList.remove('locked');
+    window.scrollTo(0,0);
+    setTimeout(function(){ intro.style.display='none'; },1100);
+    setTimeout(function(){ curtains.style.visibility='hidden'; },2900);
+  });
+
+  /* Scroll — hero-ի մթնում + venue parallax */
+  var ticking=false;
+  function onScroll(){
+    var vh=window.innerHeight,
+        total=heroWrap.offsetHeight-vh,
+        p=Math.min(1,Math.max(0,window.scrollY/total));
+    heroDark.style.opacity=(p*0.9).toFixed(3);
+    heroText.style.opacity=Math.max(0,1-p*1.15).toFixed(3);
+    var r=venueSec.getBoundingClientRect();
+    if(r.top<vh && r.bottom>0){
+      var t=(r.top+r.height/2-vh/2)/vh;
+      venueBg.style.transform='translateY('+(t*-7).toFixed(2)+'%) scale(1.12)';
+    }
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!ticking){ ticking=true; requestAnimationFrame(onScroll); }
+  },{passive:true});
+  onScroll();
+
+  /* Scroll reveal */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  },{threshold:.18});
+  document.querySelectorAll('.reveal, .date').forEach(function(el){ io.observe(el); });
+
+  /* Add to Calendar (.ics) */
+  document.getElementById('calBtn').addEventListener('click',function(){
+    var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Armine Birthday//EN',
+      'BEGIN:VEVENT','UID:armine-birthday-2026@invite','DTSTAMP:20260101T000000Z',
+      'DTSTART:'+CONFIG.icsStart,'DTEND:'+CONFIG.icsEnd,
+      'SUMMARY:Armine — Birthday Celebration ♡',
+      'LOCATION:Dvin Restaurant Complex',
+      'DESCRIPTION:A night to celebrate. With love\\, Armine.',
+      'END:VEVENT','END:VCALENDAR'].join('\r\n');
+    var blob=new Blob([ics],{type:'text/calendar'}),
+        a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='Armine-Birthday-2026.ics';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); },2000);
+  });
+
+  /* Leave a Wish → WhatsApp */
+  document.getElementById('wishForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=document.getElementById('wish').value.trim();
+    if(!v) return;
+    window.open('https://wa.me/'+CONFIG.phone+'?text='+
+      encodeURIComponent('✨ A wish for Armine — '+v),'_blank');
+    this.querySelector('.wish-thanks').hidden=false;
+    this.querySelector('.wish-send').disabled=true;
+  });
+})();
 </script>
+<script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
-
