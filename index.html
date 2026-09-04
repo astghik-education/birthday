@@ -1,791 +1,454 @@
-
 <!DOCTYPE html>
 <html lang="hy">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Լիլիթի 20-ամյակ</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Արմինեի ծննդյան հրավերը 🤍</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Armenian:wght@400;600;700&family=Noto+Sans+Armenian:wght@300;400;600&family=Great+Vibes&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-900:#1d3527; --green-800:#24422f; --green-700:#2e4b3a;
+  --green-soft:#87977b;
+  --gold:#c9a227; --gold-soft:#a8842f; --gold-light:#e6c87a;
+  --cream:#f6f1e7; --paper:#fffdf7; --ink:#2b2b26;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Noto Sans Armenian',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+body.locked{overflow:hidden}
+body::before{content:"";position:fixed;inset:0;background:
+  radial-gradient(60% 40% at 15% 10%, rgba(201,162,39,.07), transparent 60%),
+  radial-gradient(50% 40% at 90% 90%, rgba(46,75,58,.08), transparent 60%);
+  pointer-events:none;z-index:0}
 
-    <style>
-        :root {
-            --beige: #F5F1E8;
-            --beige-dark: #E8DFD0;
-            --soft-green: #588157;
-            --soft-green-light: #a3b18a;
-            --soft-green-dark: #3a5a40;
-            --gold: #C9B99A;
-            --text-dark: #3D3D3D;
-            --text-muted: #6B6B6B;
-            --white: #FFFFFF;
-        }
+/* ---------- ՎԱՐԱԳՈՒՅՐՆԵՐ ---------- */
+#curtains{position:fixed;inset:0;z-index:60;overflow:hidden}
+.curtain{position:absolute;top:0;bottom:0;width:53%;
+  background:repeating-linear-gradient(90deg,#1c3325 0 18px,#274434 18px 36px,#16281d 36px 54px,#2b4a38 54px 72px);
+  box-shadow:inset 0 -50px 70px rgba(0,0,0,.4);
+  animation:sway 5s ease-in-out infinite}
+.curtain::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.09) 50%,transparent 58%);
+  background-size:300% 100%;animation:wind 4s linear infinite}
+.curtain.left{left:0;border-right:3px solid var(--gold)}
+.curtain.right{right:0;border-left:3px solid var(--gold);animation-delay:-2.5s}
+.valance{position:absolute;top:0;left:0;right:0;height:62px;z-index:3;
+  background:repeating-linear-gradient(90deg,#1c3325 0 26px,#2b4a38 26px 52px);
+  border-bottom:3px solid var(--gold);box-shadow:0 8px 20px rgba(0,0,0,.45)}
+@keyframes sway{0%,100%{transform:skewY(.4deg)}50%{transform:skewY(-.4deg)}}
+@keyframes wind{0%{background-position:120% 0}100%{background-position:-180% 0}}
+#curtains.open .left{animation:openL 3s cubic-bezier(.7,.05,.3,1) forwards}
+#curtains.open .right{animation:openR 3s cubic-bezier(.7,.05,.3,1) forwards}
+#curtains.open .valance{animation:valUp 1.8s ease forwards}
+#curtains.open .center{opacity:0;transition:opacity .5s}
+@keyframes openL{0%{transform:translateX(0) skewX(0)}25%{transform:translateX(-12%) skewX(5deg)}55%{transform:translateX(-46%) skewX(-7deg)}100%{transform:translateX(-115%) skewX(0)}}
+@keyframes openR{0%{transform:translateX(0) skewX(0)}25%{transform:translateX(12%) skewX(-5deg)}55%{transform:translateX(46%) skewX(7deg)}100%{transform:translateX(115%) skewX(0)}}
+@keyframes valUp{to{transform:translateY(-110%)}}
+.center{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:20px}
+.seal{width:112px;height:112px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 35% 30%,#35573f,#1d3527 72%);
+  border:2px solid var(--gold);box-shadow:0 0 0 7px rgba(201,162,39,.16),0 16px 34px rgba(0,0,0,.5);
+  font-family:'Noto Serif Armenian',serif;font-size:54px;color:var(--gold-light)}
+.center h2{margin:0;font-family:'Noto Serif Armenian',serif;color:var(--cream);letter-spacing:.14em;font-size:22px}
+.center p{margin:0;color:var(--gold-light);font-size:14px;letter-spacing:.08em}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+/* ---------- ԿՃԱՆԵ ---------- */
+.btn-gold{position:relative;display:inline-block;padding:15px 38px;border-radius:999px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,#e6c87a,#c9a227 45%,#a8842f);color:#241d08;
+  font-family:'Noto Sans Armenian',sans-serif;font-weight:700;font-size:15px;letter-spacing:.06em;
+  box-shadow:0 12px 26px rgba(168,132,47,.4),inset 0 1px 0 rgba(255,255,255,.6);overflow:hidden;transition:transform .25s}
+.btn-gold:hover{transform:translateY(-2px) scale(1.02)}
+.btn-gold::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+  transform:skewX(-20deg);animation:shine 3.2s ease infinite}
+@keyframes shine{0%{left:-70%}55%{left:130%}100%{left:130%}}
 
-        .curtain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            display: flex;
-            pointer-events: none;
-        }
+/* ---------- ԳԼԽԱՎՈՐ ---------- */
+main{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 22px 90px}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity 1s ease,transform 1s ease}
+.reveal.visible{opacity:1;transform:none}
+.hero{position:relative;text-align:center;padding-top:20px}
+.hero::before{content:"";position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);
+  width:min(560px,94vw);height:min(560px,94vw);border:1px solid rgba(201,162,39,.45);border-radius:50%;z-index:-1}
+.photo-frame{width:min(300px,74vw);margin:0 auto;padding:10px;border-radius:999px 999px 26px 26px;
+  background:linear-gradient(160deg,#e6c87a,#a8842f);box-shadow:0 26px 54px rgba(29,53,39,.28)}
+.photo-frame .inner{border-radius:999px 999px 18px 18px;overflow:hidden;background:#fff}
+#herPhoto{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;opacity:0;transform:scale(1.15);filter:blur(8px)}
+body.revealed #herPhoto{opacity:1;transform:scale(1);filter:blur(0);transition:all 1.8s ease 1s}
+h1.name{font-family:'Noto Serif Armenian',serif;font-weight:700;color:var(--green-800);
+  font-size:clamp(46px,9vw,74px);margin:26px 0 4px;letter-spacing:.04em}
+.script{font-family:'Great Vibes',cursive;color:var(--gold-soft);font-size:clamp(26px,5vw,36px)}
+.date-badge{display:inline-block;margin-top:14px;padding:9px 26px;border-radius:999px;
+  background:var(--green-800);color:var(--gold-light);letter-spacing:.35em;font-size:14px;font-weight:600;
+  box-shadow:0 10px 22px rgba(29,53,39,.25)}
 
-        .curtain-left, .curtain-right {
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--beige) 0%, var(--beige-dark) 100%);
-            transition: transform 2s cubic-bezier(0.77, 0, 0.175, 1);
-            position: relative;
-            overflow: hidden;
-        }
+/* ---------- ԲԱԺԱՆԱՐԱՐ ---------- */
+.divider{display:flex;align-items:center;gap:12px;max-width:430px;margin:44px auto}
+.divider span{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.divider span:last-child{background:linear-gradient(90deg,var(--gold),transparent)}
+.divider svg{width:22px;height:22px;fill:none;stroke:var(--gold);stroke-width:1.6;flex:none}
 
-        .curtain-left::before, .curtain-right::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(88, 129, 87, 0.1) 50px, rgba(88, 129, 87, 0.1) 51px);
-        }
+/* ---------- ՀԵՏՀԱՇՎԱՐԿ ---------- */
+h2.title{font-family:'Noto Serif Armenian',serif;color:var(--green-800);text-align:center;font-size:clamp(26px,5vw,36px);margin:0 0 8px}
+.sub{text-align:center;color:var(--gold-soft);letter-spacing:.06em;margin:0 0 26px}
+.count{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.cell{min-width:88px;padding:18px 10px 14px;background:var(--paper);border:1px solid rgba(201,162,39,.55);
+  border-radius:18px;box-shadow:0 14px 28px rgba(46,75,58,.12);text-align:center}
+.cell b{display:block;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:38px;color:var(--green-800);line-height:1}
+.cell span{display:block;margin-top:6px;font-size:11px;letter-spacing:.22em;color:var(--gold-soft);text-transform:uppercase}
+#ageLine{text-align:center;margin-top:20px;color:var(--green-700);font-weight:600}
 
-        .curtain-left { transform-origin: left; border-right: 2px solid var(--gold); }
-        .curtain-right { transform-origin: right; border-left: 2px solid var(--gold); }
+/* ---------- ՔԱՐՏԵՐ / ՆԿԱՐՆԵՐ ---------- */
+.card{background:var(--paper);border:1px solid rgba(201,162,39,.4);border-radius:22px;padding:32px 28px;
+  box-shadow:0 18px 40px rgba(46,75,58,.12);font-size:17px;line-height:1.9}
+.card .lead{font-family:'Noto Serif Armenian',serif;color:var(--green-800);font-size:21px;font-weight:600}
+figure{margin:0}
+figure .frame{border-radius:20px;overflow:hidden;border:6px solid var(--paper);outline:1px solid var(--gold);
+  box-shadow:0 22px 46px rgba(29,53,39,.22)}
+figure img{display:block;width:100%;height:auto;object-fit:cover}
+.kenburns img{animation:kb 14s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.12) translate(2%,-2%)}}
+figcaption{text-align:center;color:var(--gold-soft);font-size:14px;letter-spacing:.12em;margin-top:12px;text-transform:uppercase}
+.chip{display:inline-block;background:var(--green-800);color:var(--gold-light);padding:6px 18px;border-radius:999px;
+  font-size:13px;letter-spacing:.18em;margin-bottom:14px}
 
-        .curtain.open .curtain-left { transform: translateX(-100%) skewY(-3deg); }
-        .curtain.open .curtain-right { transform: translateX(100%) skewY(3deg); }
+/* ---------- ՁՎԵ ---------- */
+input,textarea{width:100%;padding:13px 16px;border-radius:12px;border:1px solid rgba(46,75,58,.28);
+  background:#fff;font-family:inherit;font-size:15px;color:var(--ink);outline:none;transition:border .25s,box-shadow .25s}
+input:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,162,39,.15)}
+textarea{min-height:110px;resize:vertical}
+label{display:block;font-size:13px;letter-spacing:.1em;color:var(--green-700);margin:14px 0 6px;font-weight:600}
+.field{margin-bottom:6px}
 
-        .curtain-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 10;
-            opacity: 1;
-            transition: opacity 0.5s;
-        }
+/* ---------- MODAL ---------- */
+.modal{position:fixed;inset:0;z-index:80;background:rgba(18,28,20,.55);backdrop-filter:blur(5px);
+  display:none;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
+.modal .box{background:var(--cream);border:1px solid var(--gold);border-radius:24px;max-width:430px;width:100%;
+  padding:34px 28px;position:relative;box-shadow:0 30px 70px rgba(0,0,0,.35);animation:pop .5s ease}
+@keyframes pop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+.modal .close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:26px;color:var(--gold-soft);cursor:pointer}
+.radio-row{display:flex;gap:10px;flex-wrap:wrap}
+.radio-row label{flex:1;margin:0;cursor:pointer}
+.radio-row input{position:absolute;opacity:0}
+.radio-row .opt{display:block;text-align:center;padding:12px 10px;border-radius:12px;border:1px solid rgba(46,75,58,.28);
+  background:#fff;font-weight:600;color:var(--green-700);transition:all .25s;font-size:14px}
+.radio-row input:checked + .opt{background:var(--green-800);color:var(--gold-light);border-color:var(--green-800);box-shadow:0 8px 18px rgba(29,53,39,.3)}
 
-        .curtain.open .curtain-content { opacity: 0; }
+/* ---------- ԲԱՐԵՄԱՂԹԱՆՔՆԵՐ ---------- */
+.wishes{display:grid;gap:14px;margin-top:24px}
+.wish{background:var(--paper);border-left:3px solid var(--gold);border-radius:14px;padding:14px 18px;
+  box-shadow:0 10px 22px rgba(46,75,58,.1);animation:pop .6s ease}
+.wish b{color:var(--green-800)}
+.wish p{margin:6px 0 0;line-height:1.7;color:#4a4a42}
 
-        .curtain-btn {
-            padding: 18px 50px;
-            background: var(--soft-green);
-            color: white;
-            border: none;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            letter-spacing: 3px;
-            cursor: pointer;
-            border-radius: 50px;
-            box-shadow: 0 5px 20px rgba(88, 129, 87, 0.4);
-            transition: all 0.3s ease;
-            pointer-events: all;
-        }
+/* ---------- ԶԱՐԴԵՐ ---------- */
+.branch{position:fixed;width:130px;opacity:.5;z-index:0;pointer-events:none}
+.branch-bl{left:-20px;bottom:-12px;transform:rotate(6deg)}
+.branch-tr{right:-20px;top:-12px;transform:rotate(186deg)}
+#particles{position:fixed;inset:0;pointer-events:none;z-index:2}
+#particles span{position:absolute;bottom:-12px;border-radius:50%;
+  background:radial-gradient(circle,#ffe9a8,#c9a227);opacity:0;animation:rise linear infinite}
+@keyframes rise{0%{transform:translateY(0);opacity:0}12%{opacity:.85}100%{transform:translateY(-110vh);opacity:0}}
+.float-heart{position:fixed;z-index:90;pointer-events:none;font-size:20px;animation:heartUp 1.6s ease forwards}
+@keyframes heartUp{to{transform:translateY(-140px) rotate(14deg);opacity:0}}
 
-        .curtain-btn:hover {
-            background: var(--soft-green-dark);
-            transform: scale(1.05);
-        }
+footer{text-align:center;padding:10px 20px 46px;position:relative;z-index:1}
+footer .sign{font-family:'Noto Serif Armenian',serif;font-size:24px;color:var(--green-800);font-weight:600}
+footer .bd{color:var(--gold-soft);letter-spacing:.3em;font-size:13px;margin-top:6px}
 
-        body {
-            font-family: 'Cormorant Garamond', serif;
-            background-color: var(--beige);
-            color: var(--text-dark);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        .flower-decoration {
-            position: fixed;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.2;
-            font-size: 3rem;
-        }
-
-        .flower-1 { top: 5%; left: 5%; color: var(--soft-green); transform: rotate(-15deg); animation: float 6s ease-in-out infinite; }
-        .flower-2 { top: 10%; right: 5%; color: var(--soft-green-light); transform: rotate(25deg); animation: float 7s ease-in-out infinite 1s; }
-        .flower-3 { bottom: 15%; left: 3%; color: var(--soft-green); transform: rotate(-10deg); animation: float 8s ease-in-out infinite 2s; }
-        .flower-4 { bottom: 10%; right: 8%; color: var(--soft-green-light); transform: rotate(15deg); animation: float 6.5s ease-in-out infinite 0.5s; }
-        .flower-5 { top: 30%; left: 2%; color: var(--soft-green-light); transform: rotate(10deg); animation: float 7.5s ease-in-out infinite 1.5s; }
-        .flower-6 { top: 40%; right: 3%; color: var(--soft-green); transform: rotate(-20deg); animation: float 6s ease-in-out infinite 2.5s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(var(--rotation, 0deg)); }
-            50% { transform: translateY(-20px) rotate(var(--rotation, 0deg)); }
-        }
-
-        .champagne {
-            position: fixed;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.15;
-            font-size: 2.5rem;
-            color: var(--gold);
-        }
-
-        .champagne-1 { top: 15%; left: 8%; transform: rotate(-20deg); animation: float 7s ease-in-out infinite; }
-        .champagne-2 { top: 20%; right: 10%; transform: rotate(15deg); animation: float 6s ease-in-out infinite 1s; }
-        .champagne-3 { bottom: 20%; left: 5%; transform: rotate(10deg); animation: float 8s ease-in-out infinite 2s; }
-        .champagne-4 { bottom: 25%; right: 5%; transform: rotate(-15deg); animation: float 7.5s ease-in-out infinite 0.5s; }
-
-        html { scroll-behavior: smooth; }
-
-        .lang-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 8px 15px;
-            border-radius: 30px;
-            border: 1px solid var(--soft-green);
-            box-shadow: 0 4px 15px rgba(88, 129, 87, 0.2);
-        }
-
-        .lang-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .lang-btn:hover, .lang-btn.active {
-            color: var(--soft-green);
-            font-weight: 600;
-        }
-
-        .music-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: var(--white);
-            border: 2px solid var(--soft-green);
-            color: var(--soft-green);
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(88, 129, 87, 0.3);
-        }
-
-        .music-btn:hover { transform: scale(1.1); }
-        .music-btn.playing i { animation: pulse 1.5s infinite; }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-image {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--white);
-            box-shadow: 0 10px 40px rgba(88, 129, 87, 0.3);
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: scale(0.8);
-            animation: fadeInScale 1.5s ease forwards 0.5s;
-        }
-
-        @keyframes fadeInScale {
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .hero-subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--soft-green);
-            margin-bottom: 15px;
-            opacity: 0;
-            animation: fadeInDown 1s ease forwards 1s;
-        }
-
-        .hero-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: clamp(3rem, 10vw, 6rem);
-            color: var(--soft-green);
-            line-height: 1.2;
-            margin-bottom: 10px;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 1.2s;
-        }
-
-        .hero-age {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            color: var(--gold);
-            font-style: italic;
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 1.4s;
-        }
-
-        .divider {
-            width: 120px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--soft-green), transparent);
-            margin: 25px auto;
-            opacity: 0;
-            animation: fadeIn 1s ease forwards 1.6s;
-        }
-
-        .hero-date {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            color: var(--text-muted);
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 1.8s;
-        }
-
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        .countdown-container {
-            display: flex;
-            gap: 30px;
-            margin-top: 50px;
-            opacity: 0;
-            animation: fadeIn 1s ease forwards 2s;
-        }
-
-        .countdown-box {
-            text-align: center;
-            background: var(--white);
-            padding: 20px 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(88, 129, 87, 0.15);
-            min-width: 90px;
-        }
-
-        .countdown-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--soft-green);
-            display: block;
-            line-height: 1;
-        }
-
-        .countdown-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            margin-top: 8px;
-            display: block;
-        }
-
-        .details-card {
-            background: var(--white);
-            border: 2px solid var(--beige-dark);
-            padding: 60px 50px;
-            border-radius: 20px;
-            max-width: 650px;
-            width: 100%;
-            box-shadow: 0 15px 50px rgba(88, 129, 87, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .details-card::before { content: ''; position: absolute; top: 20px; right: 20px; font-size: 2rem; opacity: 0.3; }
-        .details-card::after { content: ''; position: absolute; bottom: 20px; left: 20px; font-size: 2rem; opacity: 0.3; }
-
-        .details-card h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            color: var(--soft-green);
-            margin-bottom: 40px;
-            font-weight: 400;
-        }
-
-        .detail-item {
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            font-size: 1.2rem;
-        }
-
-        .detail-item i { color: var(--gold); font-size: 1.3rem; width: 25px; }
-        .detail-item span { font-family: 'Montserrat', sans-serif; font-size: 1rem; color: var(--text-dark); letter-spacing: 1px; }
-
-        .restaurant-image {
-            width: 100%;
-            max-width: 400px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin: 30px auto;
-            display: block;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-        }
-
-        .map-container {
-            width: 100%;
-            max-width: 500px;
-            margin: 30px auto;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 2px solid var(--beige-dark);
-            box-shadow: 0 8px 30px rgba(88, 129, 87, 0.2);
-        }
-
-        .map-container iframe { width: 100%; height: 300px; border: none; }
-
-        .rsvp-section { background: linear-gradient(135deg, var(--beige) 0%, var(--beige-dark) 100%); }
-
-        .rsvp-card {
-            background: var(--white);
-            padding: 50px 40px;
-            border-radius: 20px;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 15px 50px rgba(88, 129, 87, 0.2);
-        }
-
-        .rsvp-card h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.3rem;
-            color: var(--soft-green);
-            margin-bottom: 20px;
-        }
-
-        .rsvp-text {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
-        .rsvp-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .rsvp-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 35px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.4s ease;
-            border: 2px solid transparent;
-        }
-
-        .rsvp-yes {
-            background: var(--soft-green);
-            color: white;
-            box-shadow: 0 5px 20px rgba(88, 129, 87, 0.4);
-        }
-
-        .rsvp-yes:hover {
-            background: var(--soft-green-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(88, 129, 87, 0.5);
-        }
-
-        .rsvp-no {
-            background: transparent;
-            color: var(--text-muted);
-            border-color: var(--beige-dark);
-        }
-
-        .rsvp-no:hover {
-            border-color: var(--soft-green);
-            color: var(--soft-green);
-            transform: translateY(-3px);
-        }
-
-        .footer {
-            padding: 40px 20px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            text-align: center;
-            background: var(--white);
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* YouTube Player - թաքնված */
-        #youtube-player {
-            position: fixed;
-            top: -9999px;
-            left: -9999px;
-            visibility: hidden;
-        }
-
-        @media (max-width: 768px) {
-            .countdown-container { gap: 15px; flex-wrap: wrap; justify-content: center; }
-            .countdown-box { min-width: 70px; padding: 15px 18px; }
-            .countdown-num { font-size: 2rem; }
-            .details-card { padding: 40px 25px; }
-            .rsvp-buttons { flex-direction: column; align-items: center; }
-            .rsvp-btn { width: 100%; max-width: 300px; justify-content: center; }
-            .flower-decoration { display: none; }
-            .champagne { display: none; }
-        }
-    </style>
+#musicBtn{position:fixed;right:18px;bottom:18px;z-index:70;width:54px;height:54px;border-radius:50%;
+  background:var(--green-800);border:2px solid var(--gold);color:var(--gold-light);font-size:22px;cursor:pointer;
+  box-shadow:0 12px 26px rgba(0,0,0,.35);display:none;align-items:center;justify-content:center}
+#ytPlayer{position:fixed;bottom:-200px;left:-200px;width:2px;height:2px;opacity:0;pointer-events:none}
+@media (max-width:560px){.card{padding:26px 20px}.cell{min-width:74px}.cell b{font-size:30px}}
+</style>
 </head>
-<body>
+<body class="locked">
 
-    <!-- Վարագույր -->
-    <div class="curtain" id="curtain">
-        <div class="curtain-left"></div>
-        <div class="curtain-right"></div>
-        <div class="curtain-content">
-            <button class="curtain-btn" onclick="openCurtain()">
-                <i class="fas fa-gift" style="margin-right: 10px;"></i>
-                ԱՑԵԼ ՀՐԱՎԵՐԸ
-            </button>
-        </div>
+<!-- Զարդային ճյուղեր -->
+<svg class="branch branch-bl" viewBox="0 0 140 300" aria-hidden="true">
+  <path d="M70 300 C 66 230 74 150 70 12" fill="none" stroke="#87977b" stroke-width="2.5"/>
+  <g fill="#87977b">
+    <path d="M70 268 C 48 262 34 246 32 224 C 54 230 68 246 70 268 Z"/><path d="M70 268 C 92 262 106 246 108 224 C 86 230 72 246 70 268 Z"/>
+    <path d="M70 224 C 50 218 38 204 36 184 C 56 190 68 204 70 224 Z"/><path d="M70 224 C 90 218 102 204 104 184 C 84 190 72 204 70 224 Z"/>
+    <path d="M70 180 C 52 174 42 162 40 144 C 58 150 68 162 70 180 Z"/><path d="M70 180 C 88 174 98 162 100 144 C 82 150 72 162 70 180 Z"/>
+    <path d="M70 136 C 54 130 46 120 44 104 C 60 110 68 120 70 136 Z"/><path d="M70 136 C 86 130 94 120 96 104 C 80 110 72 120 70 136 Z"/>
+    <path d="M70 92 C 56 86 50 78 48 64 C 62 70 68 78 70 92 Z"/><path d="M70 92 C 84 86 90 78 92 64 C 78 70 72 78 70 92 Z"/>
+    <path d="M70 48 C 60 42 56 36 55 26 C 65 31 69 37 70 48 Z"/><path d="M70 48 C 80 42 84 36 85 26 C 75 31 71 37 70 48 Z"/>
+  </g>
+</svg>
+<svg class="branch branch-tr" viewBox="0 0 140 300" aria-hidden="true">
+  <path d="M70 300 C 66 230 74 150 70 12" fill="none" stroke="#87977b" stroke-width="2.5"/>
+  <g fill="#87977b">
+    <path d="M70 268 C 48 262 34 246 32 224 C 54 230 68 246 70 268 Z"/><path d="M70 268 C 92 262 106 246 108 224 C 86 230 72 246 70 268 Z"/>
+    <path d="M70 224 C 50 218 38 204 36 184 C 56 190 68 204 70 224 Z"/><path d="M70 224 C 90 218 102 204 104 184 C 84 190 72 204 70 224 Z"/>
+    <path d="M70 180 C 52 174 42 162 40 144 C 58 150 68 162 70 180 Z"/><path d="M70 180 C 88 174 98 162 100 144 C 82 150 72 162 70 180 Z"/>
+    <path d="M70 136 C 54 130 46 120 44 104 C 60 110 68 120 70 136 Z"/><path d="M70 136 C 86 130 94 120 96 104 C 80 110 72 120 70 136 Z"/>
+    <path d="M70 92 C 56 86 50 78 48 64 C 62 70 68 78 70 92 Z"/><path d="M70 92 C 84 86 90 78 92 64 C 78 70 72 78 70 92 Z"/>
+  </g>
+</svg>
+
+<div id="particles"></div>
+
+<!-- ՎԱՐԱԳՈՒՅՐՆԵ -->
+<div id="curtains">
+  <div class="valance"></div>
+  <div class="curtain left"></div>
+  <div class="curtain right"></div>
+  <div class="center">
+    <div class="seal">Ա</div>
+    <h2>ՀՐԱՎԵՐ</h2>
+    <p>մի առանձնահատուկ երեկոյի</p>
+    <button class="btn-gold" id="openBtn">Բացել հրավերը ✨</button>
+  </div>
+</div>
+
+<div id="ytPlayer"></div>
+<button id="musicBtn" title="Երաժշտություն">🔊</button>
+
+<main>
+  <!-- ՀԵՐՈՍ -->
+  <section class="hero reveal">
+    <div class="photo-frame"><div class="inner">
+      <!-- Փոխարինիր քո նկարով՝ CONFIG-ում կամ այստեղ src-ում -->
+      <img id="herPhoto" src="photo.jpg" alt="Արմինե">
+    </div></div>
+    <h1 class="name">Արմինե</h1>
+    <div class="script">An Unforgettable Evening</div>
+    <div><span class="date-badge">14 • 01 • 1982</span></div>
+  </section>
+
+  <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
+
+  <!-- ՀԵՏՀԱՇՎԱՐԿ -->
+  <section class="reveal">
+    <h2 class="title">Մինչ տոնը</h2>
+    <p class="sub">հետհաշվարկը սկսված է…</p>
+    <div class="count">
+      <div class="cell"><b id="cd-d">00</b><span>Օր</span></div>
+      <div class="cell"><b id="cd-h">00</b><span>Ժամ</span></div>
+      <div class="cell"><b id="cd-m">00</b><span>Րոպե</span></div>
+      <div class="cell"><b id="cd-s">00</b><span>Վայրկյան</span></div>
     </div>
+    <p id="ageLine"></p>
+  </section>
 
-    <!-- Ծաղիկներ -->
-    <div class="flower-decoration flower-1">🌸</div>
-    <div class="flower-decoration flower-2">🌺</div>
-    <div class="flower-decoration flower-3">🌷</div>
-    <div class="flower-decoration flower-4">🌼</div>
-    <div class="flower-decoration flower-5">🌿</div>
-    <div class="flower-decoration flower-6">🍃</div>
-    
-    <div class="champagne champagne-1"><i class="fas fa-wine-glass-alt"></i></div>
-    <div class="champagne champagne-2"><i class="fas fa-wine-glass-alt"></i></div>
-    <div class="champagne champagne-3"><i class="fas fa-champagne-glasses"></i></div>
-    <div class="champagne champagne-4"><i class="fas fa-champagne-glasses"></i></div>
+  <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
 
-    <!-- Լեզվի փոխարկիչ -->
-    <div class="lang-switcher">
-        <button class="lang-btn active" onclick="setLanguage('am')">ՀԱՅ</button>
-        <button class="lang-btn" onclick="setLanguage('en')">ENG</button>
-        <button class="lang-btn" onclick="setLanguage('ru')">РУС</button>
+  <!-- ՀՐԱՎԵՐԻ ՏԵՔՍԸ -->
+  <section class="card reveal">
+    <p class="lead">Սիրելի՛ հյուրեր,</p>
+    <p>Կան օրեր, որոնք ստեղծված են գեղեցիկ հիշողություններ դառնալու համար… ✨</p>
+    <p>Սիրով հրավիրում եմ ձեզ՝ կիսելու ինձ հետ այս առանձնահատուկ երեկոն և ձեր ներկայությամբ այն դարձնելու իսկապես անմոռանալի 🤍</p>
+  </section>
+
+  <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
+
+  <!-- ՎԱՅՐԸ -->
+  <section class="reveal">
+    <h2 class="title">Փարթին կլինի Դվինում</h2>
+    <p class="sub">հնագույն բլուրներ, ոսկե լույս և լավ ընկերություն</p>
+    <figure>
+      <div class="frame kenburns"><img src="dvin.jpg" alt="Դվին"></div>
+      <figcaption>Դվին · Հայաստան</figcaption>
+    </figure>
+  </section>
+
+  <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
+
+  <!-- ՇԱՄՊԱՅՆ -->
+  <section class="reveal">
+    <figure>
+      <div class="frame kenburns"><img src="champagne.jpg" alt="Կենացդ"></div>
+    </figure>
+    <p class="sub" style="margin-top:18px">🥂 Բաժակները բարձրացնում ենք անմոռանալի երեկոյի համար 🥂</p>
+  </section>
+
+  <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
+
+  <!-- RSVP -->
+  <section class="reveal" style="text-align:center">
+    <h2 class="title">RSVP</h2>
+    <p class="sub">խնդրում եմ հաստատել ձեր ներկայությունը</p>
+    <button class="btn-gold" id="rsvpBtn">Նշել մասնակցությունը 🤍</button>
+  </section>
+
+  <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
+
+  <!-- A WISH FOR ME -->
+  <section class="reveal">
+    <h2 class="script" style="text-align:center;font-size:clamp(34px,7vw,48px)">A Wish for Me</h2>
+    <p class="sub">Գրիր քո բարեմաղթանքը ինձ համար ✨</p>
+    <form id="wishForm" class="card">
+      <div class="field"><input id="wishName" placeholder="Ձեր անունը (ըստ ցանկության)"></div>
+      <div class="field"><textarea id="wishText" required placeholder="Իմ բարեմաղթանքը Արմինեին…"></textarea></div>
+      <div style="text-align:center;margin-top:14px">
+        <button type="submit" class="btn-gold">Նվիրել բարեմաղթանքը 💌</button>
+      </div>
+    </form>
+    <div class="wishes" id="wishesWall"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
+  <div class="sign">Սիրով, Արմինե 🤍</div>
+  <div class="bd">14 · 01 · 1982</div>
+</footer>
+
+<!-- RSVP MODAL -->
+<div class="modal" id="rsvpModal">
+  <div class="box">
+    <button class="close" id="rsvpClose">×</button>
+    <div id="rsvpFormWrap">
+      <h2 class="title" style="font-size:26px">Հաստատել ներկայությունը</h2>
+      <form id="rsvpForm">
+        <label>ԱՆՈՒՆ</label>
+        <input id="rsvpName" required placeholder="Ձեր անունը">
+        <label>ՆԵՐԿԱՅՈՒԹՅՈՒՆ</label>
+        <div class="radio-row">
+          <label><input type="radio" name="att" value="yes" checked><span class="opt">Սիրով կներկայանամ 🤍</span></label>
+          <label><input type="radio" name="att" value="no"><span class="opt">Ցավոք, չեմ կարող</span></label>
+        </div>
+        <div style="text-align:center;margin-top:22px">
+          <button type="submit" class="btn-gold">Ուղարկել 🤍</button>
+        </div>
+      </form>
     </div>
+    <div id="rsvpThanks" style="display:none;text-align:center">
+      <div style="font-size:44px">🤍</div>
+      <h2 class="title" style="font-size:26px" id="thanksTitle">Շնորհակալ եմ, սիրելի՛ս</h2>
+      <p id="thanksText" style="line-height:1.8;color:#4a4a42">Ձեր ներկայությունը ամենամեծ նվերն է։</p>
+    </div>
+  </div>
+</div>
 
-    <!-- Երաժշտության կոակ -->
-    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
-        <i class="fas fa-music"></i>
-    </button>
+<script>
+/* ================== ԿԱՐԳԱՎՈՐՈՒՄՆԵ ================== */
+const CONFIG = {
+  youtubeId : '2Vv-BfVoq4g',   // <<== ԱՅՍՏԵՂ ԴԻ ՔՈ YOUTUBE ԵՐԳ ID-ն (հղման v=... մասը)
+  photo     : 'photo.jpg',     // <<== քո նկարը (ֆայլ կամ հղում)
+  dvin      : 'dvin.jpg',      // Դվինի նկարը
+  champagne : 'champagne.jpg', // շամպայնի նկարը
+  birthYear : 1982, birthMonth : 0, birthDay : 14 // 14.01.1982
+};
+document.getElementById('herPhoto').src = CONFIG.photo;
+document.querySelectorAll('img')[1].src = CONFIG.dvin;
+document.querySelectorAll('img')[2].src = CONFIG.champagne;
 
-    <!-- YouTube iframe API -->
-    <div id="youtube-player"></div>
+/* ================== ԵՐԱԺՇՏՈՒԹՅՈՒՆ ================== */
+let player = null, opened = false, musicOn = true;
+(function(){ const s=document.createElement('script'); s.src='https://www.youtube.com/iframe_api'; document.head.appendChild(s); })();
+window.onYouTubeIframeAPIReady = function(){
+  player = new YT.Player('ytPlayer',{ height:'2', width:'2', videoId: CONFIG.youtubeId,
+    playerVars:{ controls:0, rel:0, loop:1, playlist:CONFIG.youtubeId, playsinline:1 },
+    events:{ onReady: e => { e.target.setVolume(60); if(opened) e.target.playVideo(); } } });
+};
+const musicBtn = document.getElementById('musicBtn');
+musicBtn.addEventListener('click', () => {
+  if(!player || !player.playVideo) return;
+  if(musicOn){ player.pauseVideo(); musicBtn.textContent='🔇'; } else { player.playVideo(); musicBtn.textContent='🔊'; }
+  musicOn = !musicOn;
+});
 
-    <!-- Գլխավոր -->
-    <section>
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" alt="Lilit" class="hero-image" id="heroImage">
-        
-        <p class="hero-subtitle" data-lang-key="subtitle">Սիրով հրավիրում եմ</p>
-        <h1 class="hero-title">Լիլիթ</h1>
-        <p class="hero-age" data-lang-key="ageText">20-ամյակս միասին նշենք</p>
-        <div class="divider"></div>
-        <p class="hero-date" data-lang-key="heroDate">Հոկտեմբերի 11, 2026 • 17:00</p>
-        
-        <div class="countdown-container">
-            <div class="countdown-box">
-                <span class="countdown-num" id="days">00</span>
-                <span class="countdown-label" data-lang-key="days">Օր</span>
-            </div>
-            <div class="countdown-box">
-                <span class="countdown-num" id="hours">00</span>
-                <span class="countdown-label" data-lang-key="hours">Ժամ</span>
-            </div>
-            <div class="countdown-box">
-                <span class="countdown-num" id="minutes">00</span>
-                <span class="countdown-label" data-lang-key="minutes">Րոպե</span>
-            </div>
-            <div class="countdown-box">
-                <span class="countdown-num" id="seconds">00</span>
-                <span class="countdown-label" data-lang-key="seconds">Վայրկյան</span>
-            </div>
-        </div>
-    </section>
+/* ================== ՎԱՐԱԳՈՒՅՐՆԵԻ ԲԱՑՈՒՄ ================== */
+document.getElementById('openBtn').addEventListener('click', () => {
+  opened = true;
+  document.getElementById('curtains').classList.add('open');
+  document.body.classList.add('revealed');
+  musicBtn.style.display = 'flex';
+  setTimeout(()=>{ try{ player && player.playVideo && player.playVideo(); }catch(e){} }, 1200);
+  setTimeout(()=>{ document.getElementById('curtains').style.display='none'; document.body.classList.remove('locked'); }, 3200);
+  startParticles();
+});
 
-    <!-- Մանրամասներ -->
-    <section>
-        <div class="details-card reveal">
-            <h2 data-lang-key="detailsTitle">Միջոցառման մանրամասներ</h2>
-            
-            <div class="detail-item">
-                <i class="far fa-calendar-alt"></i>
-                <span data-lang-key="dateDetail">իրակի, Հոկտեմբերի 11, 2026</span>
-            </div>
-            
-            <div class="detail-item">
-                <i class="far fa-clock"></i>
-                <span data-lang-key="timeDetail">Ժամը 17:00</span>
-            </div>
-            
-            <div class="detail-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span data-lang-key="locationDetail">Ապոլլո ռեստորան, Երևան</span>
-            </div>
+/* ================== ՀԵՏՀԱՇՎԱՐԿ ================== */
+function pad(n){ return String(n).padStart(2,'0'); }
+function tick(){
+  const now = new Date();
+  let y = now.getFullYear();
+  if(now > new Date(y, CONFIG.birthMonth, CONFIG.birthDay, 23,59,59)) y += 1;
+  const target = new Date(y, CONFIG.birthMonth, CONFIG.birthDay, 18,0,0);
+  const isToday = now.getMonth()===CONFIG.birthMonth && now.getDate()===CONFIG.birthDay;
+  let diff = Math.max(0, target - now);
+  document.getElementById('cd-d').textContent = pad(Math.floor(diff/864e5));
+  document.getElementById('cd-h').textContent = pad(Math.floor(diff/36e5)%24);
+  document.getElementById('cd-m').textContent = pad(Math.floor(diff/6e4)%60);
+  document.getElementById('cd-s').textContent = pad(Math.floor(diff/1e3)%60);
+  const age = y - CONFIG.birthYear;
+  document.getElementById('ageLine').textContent = isToday
+    ? 'Այսօր իմ տոնն է 🥳'
+    : `Դվինում կտոնենք իմ ${age}-ամյակը 🥂`;
+}
+tick(); setInterval(tick, 1000);
 
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="Apollo Restaurant" class="restaurant-image">
+/* ================== REVEAL SCROLL ================== */
+const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} }), {threshold:.15});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps?q=Apollo+Yerevan&output=embed" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </div>
-    </section>
+/* ================== ՈՍԵ ՄԱՍՆԻԿՆԵՐ ================== */
+function startParticles(){
+  const box = document.getElementById('particles');
+  for(let i=0;i<26;i++){
+    const s = document.createElement('span');
+    const size = 3 + Math.random()*5;
+    s.style.width = s.style.height = size+'px';
+    s.style.left = Math.random()*100+'vw';
+    s.style.animationDuration = (8+Math.random()*9)+'s';
+    s.style.animationDelay = (Math.random()*10)+'s';
+    box.appendChild(s);
+  }
+}
+function hearts(x, y){
+  for(let i=0;i<8;i++){
+    const h = document.createElement('span');
+    h.className = 'float-heart';
+    h.textContent = Math.random()>.5 ? '🤍' : '✨';
+    h.style.left = (x + (Math.random()*80-40))+'px';
+    h.style.top  = (y + (Math.random()*20-10))+'px';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(), 1700);
+  }
+}
 
-    <!-- RSVP -->
-    <section class="rsvp-section">
-        <div class="rsvp-card reveal">
-            <h2 data-lang-key="rsvpTitle">եր մասնակցությունը</h2>
-            <p class="rsvp-text" data-lang-key="rsvpText">
-                ատ կուրախանամ, եթե կկարողանաք միանալ մեզ այս հատուկ օրը։<br>
-                նդրում եմ տեղեկացրեք՝ կկարողանա՞ք ներկա ինել։
-            </p>
-            
-            <div class="rsvp-buttons">
-                <a href="https://wa.me/37477599195?text=" id="waLinkYes" target="_blank" class="rsvp-btn rsvp-yes">
-                    <i class="fas fa-check"></i>
-                    <span data-lang-key="yesBtn">Այո, կգամ</span>
-                </a>
-                <a href="https://wa.me/37477599195?text=" id="waLinkNo" target="_blank" class="rsvp-btn rsvp-no">
-                    <i class="fas fa-times"></i>
-                    <span data-lang-key="noBtn">ավոք, չեմ կարող</span>
-                </a>
-            </div>
-            
-            <p style="margin-top: 30px; color: var(--gold); font-family: 'Montserrat', sans-serif; font-size: 0.9rem;">
-                <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>
-                077 599195
-            </p>
-        </div>
-    </section>
+/* ================== RSVP ================== */
+const modal = document.getElementById('rsvpModal');
+document.getElementById('rsvpBtn').addEventListener('click', ()=> modal.classList.add('show'));
+document.getElementById('rsvpClose').addEventListener('click', ()=> modal.classList.remove('show'));
+modal.addEventListener('click', e => { if(e.target===modal) modal.classList.remove('show'); });
+document.getElementById('rsvpForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('rsvpName').value.trim() || 'Սիրելի հյուր';
+  const yes  = document.querySelector('input[name="att"]:checked').value === 'yes';
+  document.getElementById('rsvpFormWrap').style.display = 'none';
+  document.getElementById('rsvpThanks').style.display = 'block';
+  document.getElementById('thanksTitle').textContent = 'Շնորհակալ եմ, ' + name + ' 🤍';
+  document.getElementById('thanksText').textContent = yes
+    ? 'Ձեր ներկայությունը ամենամեծ նվերն է։ Սպասում եմ ձեզ Դվինում 🥂'
+    : 'Ափսոս… բայց ձեր ջերմ խոսքերը միշտ հետս են 🤍';
+  const r = e.submitter ? null : null;
+  hearts(innerWidth/2, innerHeight/2);
+});
 
-    <footer class="footer">
-        <p data-lang-key="footer">Սպասում եմ Ձեզ իմ 20-ամյակի տոնակատարությանը 💚</p>
-    </footer>
-
-    <script>
-        // YouTube Player
-        let player;
-        let isPlaying = false;
-        
-        // Load YouTube IFrame API
-        const tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        const firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('youtube-player', {
-                height: '0',
-                width: '0',
-                videoId: 'nSDgHBxUbVQ', // Katy Perry - Birthday (official video ID)
-                playerVars: {
-                    'autoplay': 0,
-                    'controls': 0,
-                    'loop': 1,
-                    'playlist': 'nSDgHBxUbVQ'
-                },
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            // Player is ready
-        }
-
-        function openCurtain() {
-            const curtain = document.getElementById('curtain');
-            curtain.classList.add('open');
-            
-            // Միացնել երաժշտությունը 1 վայրկյան անց
-            setTimeout(() => {
-                if (player && player.playVideo) {
-                    player.playVideo();
-                    isPlaying = true;
-                    document.getElementById('musicBtn').classList.add('playing');
-                    document.getElementById('musicBtn').innerHTML = '<i class="fas fa-pause"></i>';
-                }
-            }, 1000);
-            
-            setTimeout(() => {
-                curtain.style.display = 'none';
-            }, 2000);
-        }
-
-        function toggleMusic() {
-            if (!player) return;
-            
-            if (isPlaying) {
-                player.pauseVideo();
-                document.getElementById('musicBtn').classList.remove('playing');
-                document.getElementById('musicBtn').innerHTML = '<i class="fas fa-music"></i>';
-            } else {
-                player.playVideo();
-                document.getElementById('musicBtn').classList.add('playing');
-                document.getElementById('musicBtn').innerHTML = '<i class="fas fa-pause"></i>';
-            }
-            isPlaying = !isPlaying;
-        }
-
-        const translations = {
-            am: {
-                subtitle: "Սիրով հրավիրում եմ",
-                ageText: "20-ամյակս միասին նշենք",
-                heroDate: "Հոկտեմբերի 11, 2026 • 17:00",
-                days: "Օր", hours: "Ժամ", minutes: "Րոպե", seconds: "Վայրկյան",
-                detailsTitle: "Միջոցառման մանրամասներ",
-                dateDetail: "Կիրակի, Հոկտեմբերի 11, 2026",
-                timeDetail: "Ժամը 17:00",
-                locationDetail: "Ապոլլո ռեստորան, Երևան",
-                rsvpTitle: "Ձեր մասնակցությունը",
-                rsvpText: "Շատ կուրախանամ, եթե կկարողանաք միանալ մեզ այս հատուկ օրը։ Խնդրում եմ տեղեկացրեք՝ կկարողանա՞ք ներկա ինել։",
-                yesBtn: "Այո, կգամ",
-                noBtn: "Ցավոք, չեմ կարող",
-                footer: "Սպասում եմ Ձեզ իմ 20-ամյակի տոնակատարությանը 💚",
-                waYes: "Ողջույն։ Այո, ուրախությամբ կներկայանամ Լիլիթի 20-ամյակի տոնակատարությանը։",
-                waNo: "Ողջույն։ Ցավոք, չեմ կարող ներկա գտնվել Լիլիթի 20-ամյակի տոնակատարությանը։"
-            },
-            en: {
-                subtitle: "You're invited to celebrate",
-                ageText: "My 20th Birthday Together",
-                heroDate: "October 11, 2026 • 17:00",
-                days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds",
-                detailsTitle: "Event Details",
-                dateDetail: "Sunday, October 11, 2026",
-                timeDetail: "17:00",
-                locationDetail: "Apollo Restaurant, Yerevan",
-                rsvpTitle: "Your Participation",
-                rsvpText: "I would be delighted if you could join me on this special day. Please let me know if you can attend.",
-                yesBtn: "Yes, I'll be there",
-                noBtn: "Sorry, can't make it",
-                footer: "Looking forward to celebrating my 20th with you 💚",
-                waYes: "Hello! Yes, I will gladly attend Lilit's 20th Birthday celebration!",
-                waNo: "Hello! Unfortunately, I cannot attend Lilit's 20th Birthday celebration."
-            },
-            ru: {
-                subtitle: "Приглашаю вас отметить",
-                ageText: "Мой 20-й день рождения вместе",
-                heroDate: "11 октября 2026 • 17:00",
-                days: "Дней", hours: "Часов", minutes: "Минут", seconds: "Секунд",
-                detailsTitle: "Детали события",
-                dateDetail: "Воскресенье, 11 октября 2026",
-                timeDetail: "17:00",
-                locationDetail: "Ресторан Аполло, Ереван",
-                rsvpTitle: "Ваше участие",
-                rsvpText: "Я буду очень рада, если вы сможете присоединиться ко мне в этот особенный день. Пожалуйста, сообщите, сможете ли вы прийти.",
-                yesBtn: "Да, я приду",
-                noBtn: "К сожалению, не смогу",
-                footer: "Жду вас на праздновании моего 20-летия 💚",
-                waYes: "Привет! Да, я с радостью приду на празднование 20-летия Лилит!",
-                waNo: "Привет! К сожалению, я не смогу прийти на празднование 20-летия Лилит."
-            }
-        };
-
-        let currentLang = 'am';
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            const keys = Object.keys(translations[lang]);
-            keys.forEach(key => {
-                if (!key.startsWith('wa')) {
-                    const elements = document.querySelectorAll(`[data-lang-key="${key}"]`);
-                    elements.forEach(el => el.textContent = translations[lang][key]);
-                }
-            });
-            
-            document.getElementById('waLinkYes').href = "https://wa.me/37477599195?text=" + encodeURIComponent(translations[lang].waYes);
-            document.getElementById('waLinkNo').href = "https://wa.me/37477599195?text=" + encodeURIComponent(translations[lang].waNo);
-        }
-
-        const eventDate = new Date('2026-10-11T17:00:00+04:00').getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = eventDate - now;
-
-            if (distance < 0) {
-                ["days", "hours", "minutes", "seconds"].forEach(id => document.getElementById(id).textContent = "00");
-                return;
-            }
-
-            document.getElementById("days").textContent = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-            document.getElementById("hours").textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-            document.getElementById("minutes").textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-            document.getElementById("seconds").textContent = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-        }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.reveal').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-                    el.classList.add('active');
-                }
-            });
-        });
-
-        document.getElementById('waLinkYes').href = "https://wa.me/37477599195?text=" + encodeURIComponent(translations.am.waYes);
-        document.getElementById('waLinkNo').href = "https://wa.me/37477599195?text=" + encodeURIComponent(translations.am.waNo);
-    </script>
+/* ================== ԲԱՐԵՄԱՂԹԱՆՔՆԵՐ ================== */
+document.getElementById('wishForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('wishName').value.trim() || 'Հյուր';
+  const text = document.getElementById('wishText').value.trim();
+  if(!text) return;
+  const w = document.createElement('div');
+  w.className = 'wish';
+  w.innerHTML = '<b></b><p></p>';
+  w.querySelector('b').textContent = name + ' 🤍';
+  w.querySelector('p').textContent = text;
+  document.getElementById('wishesWall').prepend(w);
+  document.getElementById('wishText').value = '';
+  const rect = e.target.getBoundingClientRect();
+  hearts(innerWidth/2, rect.top + 40);
+});
+</script>
 </body>
 </html>
