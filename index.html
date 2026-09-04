@@ -3,40 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Արմինեի ծննդյան հրավերը 🤍</title>
+<title>Արմինեի հրավերը 🤍</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Armenian:wght@400;600;700&family=Noto+Sans+Armenian:wght@300;400;600&family=Great+Vibes&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Armenian:wght@400;600;700&family=Noto+Sans+Armenian:wght@300;400;600&family=Noto+Sans:wght@400;600&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 <style>
 :root{
   --green-900:#1d3527; --green-800:#24422f; --green-700:#2e4b3a;
-  --green-soft:#87977b;
   --gold:#c9a227; --gold-soft:#a8842f; --gold-light:#e6c87a;
   --cream:#f6f1e7; --paper:#fffdf7; --ink:#2b2b26;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:'Noto Sans Armenian',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+body{margin:0;font-family:'Noto Sans Armenian','Noto Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
 body.locked{overflow:hidden}
 body::before{content:"";position:fixed;inset:0;background:
   radial-gradient(60% 40% at 15% 10%, rgba(201,162,39,.07), transparent 60%),
   radial-gradient(50% 40% at 90% 90%, rgba(46,75,58,.08), transparent 60%);
   pointer-events:none;z-index:0}
 
-/* ---------- ՎԱՐԱԳՈՒՅՐՆԵՐ ---------- */
+/* ---------- ԼԵԶՎԻ ԱՆՋԱՏԻՉ ---------- */
+#langBar{position:fixed;top:14px;right:14px;z-index:95;display:flex;gap:4px;
+  background:rgba(255,253,247,.85);backdrop-filter:blur(6px);
+  border:1px solid rgba(201,162,39,.6);border-radius:999px;padding:5px;box-shadow:0 8px 20px rgba(29,53,39,.15)}
+#langBar button{border:none;background:transparent;padding:6px 13px;border-radius:999px;font-size:12px;
+  letter-spacing:.06em;cursor:pointer;color:var(--green-700);font-weight:600;font-family:inherit;transition:all .25s}
+#langBar button.active{background:var(--green-800);color:var(--gold-light)}
+
+/* ---------- ՄԵՂՄ ԿԱԹՆԱԳՈՒՅՆ ՎԱՐԱԳՈՒՅՐՆԵ ---------- */
 #curtains{position:fixed;inset:0;z-index:60;overflow:hidden}
 .curtain{position:absolute;top:0;bottom:0;width:53%;
-  background:repeating-linear-gradient(90deg,#1c3325 0 18px,#274434 18px 36px,#16281d 36px 54px,#2b4a38 54px 72px);
-  box-shadow:inset 0 -50px 70px rgba(0,0,0,.4);
+  background:repeating-linear-gradient(90deg,#fdfaf3 0 18px,#f5eee0 18px 36px,#efe6d4 36px 54px,#f9f4ea 54px 72px);
+  box-shadow:inset 0 -60px 90px rgba(170,150,110,.28), inset 0 40px 60px rgba(255,255,255,.65);
   animation:sway 5s ease-in-out infinite}
 .curtain::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.09) 50%,transparent 58%);
+  background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.55) 50%,transparent 58%);
   background-size:300% 100%;animation:wind 4s linear infinite}
 .curtain.left{left:0;border-right:3px solid var(--gold)}
 .curtain.right{right:0;border-left:3px solid var(--gold);animation-delay:-2.5s}
-.valance{position:absolute;top:0;left:0;right:0;height:62px;z-index:3;
-  background:repeating-linear-gradient(90deg,#1c3325 0 26px,#2b4a38 26px 52px);
-  border-bottom:3px solid var(--gold);box-shadow:0 8px 20px rgba(0,0,0,.45)}
+.valance{position:absolute;top:0;left:0;right:0;height:58px;z-index:3;
+  background:repeating-linear-gradient(90deg,#fdfaf3 0 26px,#f1e9d9 26px 52px);
+  border-bottom:3px solid var(--gold);box-shadow:0 8px 20px rgba(150,130,90,.35)}
 @keyframes sway{0%,100%{transform:skewY(.4deg)}50%{transform:skewY(-.4deg)}}
 @keyframes wind{0%{background-position:120% 0}100%{background-position:-180% 0}}
 #curtains.open .left{animation:openL 3s cubic-bezier(.7,.05,.3,1) forwards}
@@ -46,18 +53,18 @@ body::before{content:"";position:fixed;inset:0;background:
 @keyframes openL{0%{transform:translateX(0) skewX(0)}25%{transform:translateX(-12%) skewX(5deg)}55%{transform:translateX(-46%) skewX(-7deg)}100%{transform:translateX(-115%) skewX(0)}}
 @keyframes openR{0%{transform:translateX(0) skewX(0)}25%{transform:translateX(12%) skewX(-5deg)}55%{transform:translateX(46%) skewX(7deg)}100%{transform:translateX(115%) skewX(0)}}
 @keyframes valUp{to{transform:translateY(-110%)}}
-.center{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:20px}
-.seal{width:112px;height:112px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+.center{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:20px}
+.seal{width:108px;height:108px;border-radius:50%;display:flex;align-items:center;justify-content:center;
   background:radial-gradient(circle at 35% 30%,#35573f,#1d3527 72%);
-  border:2px solid var(--gold);box-shadow:0 0 0 7px rgba(201,162,39,.16),0 16px 34px rgba(0,0,0,.5);
-  font-family:'Noto Serif Armenian',serif;font-size:54px;color:var(--gold-light)}
-.center h2{margin:0;font-family:'Noto Serif Armenian',serif;color:var(--cream);letter-spacing:.14em;font-size:22px}
-.center p{margin:0;color:var(--gold-light);font-size:14px;letter-spacing:.08em}
+  border:2px solid var(--gold);box-shadow:0 0 0 7px rgba(201,162,39,.16),0 16px 34px rgba(0,0,0,.35);
+  font-family:'Noto Serif Armenian',serif;font-size:52px;color:var(--gold-light)}
+.center h2{margin:0;font-family:'Noto Serif Armenian',serif;color:var(--green-800);letter-spacing:.16em;font-size:22px}
+.center p{margin:0;color:var(--gold-soft);font-size:14px;letter-spacing:.08em}
 
-/* ---------- ԿՃԱՆԵ ---------- */
+/* ---------- ԿՃԱԿ ---------- */
 .btn-gold{position:relative;display:inline-block;padding:15px 38px;border-radius:999px;border:none;cursor:pointer;
   background:linear-gradient(135deg,#e6c87a,#c9a227 45%,#a8842f);color:#241d08;
-  font-family:'Noto Sans Armenian',sans-serif;font-weight:700;font-size:15px;letter-spacing:.06em;
+  font-family:inherit;font-weight:700;font-size:15px;letter-spacing:.06em;
   box-shadow:0 12px 26px rgba(168,132,47,.4),inset 0 1px 0 rgba(255,255,255,.6);overflow:hidden;transition:transform .25s}
 .btn-gold:hover{transform:translateY(-2px) scale(1.02)}
 .btn-gold::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
@@ -65,34 +72,35 @@ body::before{content:"";position:fixed;inset:0;background:
   transform:skewX(-20deg);animation:shine 3.2s ease infinite}
 @keyframes shine{0%{left:-70%}55%{left:130%}100%{left:130%}}
 
-/* ---------- ԳԼԽԱՎՈՐ ---------- */
-main{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:60px 22px 90px}
+/* ---------- FULL SCREEN ՀԵՐՈՍ ---------- */
+.hero{position:relative;height:100svh;min-height:620px;overflow:hidden}
+.hero-photo,.hero-photo img{position:absolute;inset:0;width:100%;height:100%}
+.hero-photo img{object-fit:cover;opacity:0;transform:scale(1.12);filter:blur(10px)}
+body.revealed .hero-photo img{opacity:1;transform:scale(1);filter:blur(0);transition:all 2.2s ease 1s}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(246,241,231,0) 50%,rgba(246,241,231,.55) 74%,rgba(246,241,231,.95) 92%,var(--cream) 100%)}
+.hero-text{position:absolute;left:0;right:0;bottom:5vh;text-align:center;padding:0 16px;
+  opacity:0;transform:translateY(34px);transition:all 1.2s ease 1.8s}
+body.revealed .hero-text{opacity:1;transform:none}
+h1.name{font-family:'Noto Serif Armenian',serif;font-weight:700;color:var(--green-800);
+  font-size:clamp(52px,10vw,86px);margin:0;letter-spacing:.04em;text-shadow:0 2px 18px rgba(246,241,231,.8)}
+.tagline{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-soft);
+  font-size:clamp(19px,4.4vw,28px);margin:8px 0 16px;letter-spacing:.04em}
+.date-badge{display:inline-block;padding:9px 28px;border-radius:999px;background:var(--green-800);
+  color:var(--gold-light);letter-spacing:.35em;font-size:14px;font-weight:600;box-shadow:0 10px 22px rgba(29,53,39,.25)}
+
+/* ---------- ԸՆԴՀԱՆՈՒՐ ---------- */
+main{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:30px 22px 90px}
 .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s ease,transform 1s ease}
 .reveal.visible{opacity:1;transform:none}
-.hero{position:relative;text-align:center;padding-top:20px}
-.hero::before{content:"";position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);
-  width:min(560px,94vw);height:min(560px,94vw);border:1px solid rgba(201,162,39,.45);border-radius:50%;z-index:-1}
-.photo-frame{width:min(300px,74vw);margin:0 auto;padding:10px;border-radius:999px 999px 26px 26px;
-  background:linear-gradient(160deg,#e6c87a,#a8842f);box-shadow:0 26px 54px rgba(29,53,39,.28)}
-.photo-frame .inner{border-radius:999px 999px 18px 18px;overflow:hidden;background:#fff}
-#herPhoto{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;opacity:0;transform:scale(1.15);filter:blur(8px)}
-body.revealed #herPhoto{opacity:1;transform:scale(1);filter:blur(0);transition:all 1.8s ease 1s}
-h1.name{font-family:'Noto Serif Armenian',serif;font-weight:700;color:var(--green-800);
-  font-size:clamp(46px,9vw,74px);margin:26px 0 4px;letter-spacing:.04em}
-.script{font-family:'Great Vibes',cursive;color:var(--gold-soft);font-size:clamp(26px,5vw,36px)}
-.date-badge{display:inline-block;margin-top:14px;padding:9px 26px;border-radius:999px;
-  background:var(--green-800);color:var(--gold-light);letter-spacing:.35em;font-size:14px;font-weight:600;
-  box-shadow:0 10px 22px rgba(29,53,39,.25)}
-
-/* ---------- ԲԱԺԱՆԱՐԱՐ ---------- */
 .divider{display:flex;align-items:center;gap:12px;max-width:430px;margin:44px auto}
 .divider span{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
 .divider span:last-child{background:linear-gradient(90deg,var(--gold),transparent)}
 .divider svg{width:22px;height:22px;fill:none;stroke:var(--gold);stroke-width:1.6;flex:none}
-
-/* ---------- ՀԵՏՀԱՇՎԱՐԿ ---------- */
 h2.title{font-family:'Noto Serif Armenian',serif;color:var(--green-800);text-align:center;font-size:clamp(26px,5vw,36px);margin:0 0 8px}
-.sub{text-align:center;color:var(--gold-soft);letter-spacing:.06em;margin:0 0 26px}
+.sub{text-align:center;color:var(--gold-soft);letter-spacing:.06em;margin:0 0 26px;line-height:1.8}
+.script{font-family:'Great Vibes',cursive;color:var(--gold-soft)}
+
+/* ---------- ՀԵՏՀԱՇՎԱՐ ---------- */
 .count{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .cell{min-width:88px;padding:18px 10px 14px;background:var(--paper);border:1px solid rgba(201,162,39,.55);
   border-radius:18px;box-shadow:0 14px 28px rgba(46,75,58,.12);text-align:center}
@@ -100,7 +108,7 @@ h2.title{font-family:'Noto Serif Armenian',serif;color:var(--green-800);text-ali
 .cell span{display:block;margin-top:6px;font-size:11px;letter-spacing:.22em;color:var(--gold-soft);text-transform:uppercase}
 #ageLine{text-align:center;margin-top:20px;color:var(--green-700);font-weight:600}
 
-/* ---------- ՔԱՐՏԵՐ / ՆԿԱՐՆԵՐ ---------- */
+/* ---------- ՔԱՐՏԵՐ / ՆԿԱՐՆԵ ---------- */
 .card{background:var(--paper);border:1px solid rgba(201,162,39,.4);border-radius:22px;padding:32px 28px;
   box-shadow:0 18px 40px rgba(46,75,58,.12);font-size:17px;line-height:1.9}
 .card .lead{font-family:'Noto Serif Armenian',serif;color:var(--green-800);font-size:21px;font-weight:600}
@@ -111,8 +119,6 @@ figure img{display:block;width:100%;height:auto;object-fit:cover}
 .kenburns img{animation:kb 14s ease-in-out infinite alternate}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.12) translate(2%,-2%)}}
 figcaption{text-align:center;color:var(--gold-soft);font-size:14px;letter-spacing:.12em;margin-top:12px;text-transform:uppercase}
-.chip{display:inline-block;background:var(--green-800);color:var(--gold-light);padding:6px 18px;border-radius:999px;
-  font-size:13px;letter-spacing:.18em;margin-bottom:14px}
 
 /* ---------- ՁՎԵ ---------- */
 input,textarea{width:100%;padding:13px 16px;border-radius:12px;border:1px solid rgba(46,75,58,.28);
@@ -120,7 +126,6 @@ input,textarea{width:100%;padding:13px 16px;border-radius:12px;border:1px solid 
 input:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,162,39,.15)}
 textarea{min-height:110px;resize:vertical}
 label{display:block;font-size:13px;letter-spacing:.1em;color:var(--green-700);margin:14px 0 6px;font-weight:600}
-.field{margin-bottom:6px}
 
 /* ---------- MODAL ---------- */
 .modal{position:fixed;inset:0;z-index:80;background:rgba(18,28,20,.55);backdrop-filter:blur(5px);
@@ -137,17 +142,19 @@ label{display:block;font-size:13px;letter-spacing:.1em;color:var(--green-700);ma
   background:#fff;font-weight:600;color:var(--green-700);transition:all .25s;font-size:14px}
 .radio-row input:checked + .opt{background:var(--green-800);color:var(--gold-light);border-color:var(--green-800);box-shadow:0 8px 18px rgba(29,53,39,.3)}
 
-/* ---------- ԲԱՐԵՄԱՂԹԱՆՔՆԵՐ ---------- */
+/* ---------- ԲԱՐԵԱՂԹԱՆՔՆԵՐ ---------- */
 .wishes{display:grid;gap:14px;margin-top:24px}
 .wish{background:var(--paper);border-left:3px solid var(--gold);border-radius:14px;padding:14px 18px;
   box-shadow:0 10px 22px rgba(46,75,58,.1);animation:pop .6s ease}
 .wish b{color:var(--green-800)}
 .wish p{margin:6px 0 0;line-height:1.7;color:#4a4a42}
 
-/* ---------- ԶԱՐԴԵՐ ---------- */
-.branch{position:fixed;width:130px;opacity:.5;z-index:0;pointer-events:none}
-.branch-bl{left:-20px;bottom:-12px;transform:rotate(6deg)}
-.branch-tr{right:-20px;top:-12px;transform:rotate(186deg)}
+/* ---------- ՆՈՒՐԲ ԾԱՂԻԿՆԵՐ ---------- */
+.flowers{position:fixed;width:150px;opacity:.6;z-index:0;pointer-events:none;filter:drop-shadow(0 6px 10px rgba(120,90,40,.15))}
+.fl-bl{left:-14px;bottom:-10px}
+.fl-tr{right:-14px;top:-8px;transform:rotate(180deg)}
+
+/* ---------- ՄԱՍՆԻԿՆԵ / ՍՐՏԻԿՆԵՐ ---------- */
 #particles{position:fixed;inset:0;pointer-events:none;z-index:2}
 #particles span{position:absolute;bottom:-12px;border-radius:50%;
   background:radial-gradient(circle,#ffe9a8,#c9a227);opacity:0;animation:rise linear infinite}
@@ -163,97 +170,124 @@ footer .bd{color:var(--gold-soft);letter-spacing:.3em;font-size:13px;margin-top:
   background:var(--green-800);border:2px solid var(--gold);color:var(--gold-light);font-size:22px;cursor:pointer;
   box-shadow:0 12px 26px rgba(0,0,0,.35);display:none;align-items:center;justify-content:center}
 #ytPlayer{position:fixed;bottom:-200px;left:-200px;width:2px;height:2px;opacity:0;pointer-events:none}
-@media (max-width:560px){.card{padding:26px 20px}.cell{min-width:74px}.cell b{font-size:30px}}
+@media (max-width:560px){.card{padding:26px 20px}.cell{min-width:74px}.cell b{font-size:30px}.flowers{width:110px}}
 </style>
 </head>
 <body class="locked">
 
-<!-- Զարդային ճյուղեր -->
-<svg class="branch branch-bl" viewBox="0 0 140 300" aria-hidden="true">
-  <path d="M70 300 C 66 230 74 150 70 12" fill="none" stroke="#87977b" stroke-width="2.5"/>
-  <g fill="#87977b">
-    <path d="M70 268 C 48 262 34 246 32 224 C 54 230 68 246 70 268 Z"/><path d="M70 268 C 92 262 106 246 108 224 C 86 230 72 246 70 268 Z"/>
-    <path d="M70 224 C 50 218 38 204 36 184 C 56 190 68 204 70 224 Z"/><path d="M70 224 C 90 218 102 204 104 184 C 84 190 72 204 70 224 Z"/>
-    <path d="M70 180 C 52 174 42 162 40 144 C 58 150 68 162 70 180 Z"/><path d="M70 180 C 88 174 98 162 100 144 C 82 150 72 162 70 180 Z"/>
-    <path d="M70 136 C 54 130 46 120 44 104 C 60 110 68 120 70 136 Z"/><path d="M70 136 C 86 130 94 120 96 104 C 80 110 72 120 70 136 Z"/>
-    <path d="M70 92 C 56 86 50 78 48 64 C 62 70 68 78 70 92 Z"/><path d="M70 92 C 84 86 90 78 92 64 C 78 70 72 78 70 92 Z"/>
-    <path d="M70 48 C 60 42 56 36 55 26 C 65 31 69 37 70 48 Z"/><path d="M70 48 C 80 42 84 36 85 26 C 75 31 71 37 70 48 Z"/>
+<!-- Նուրբ ծաղիկներ -->
+<svg class="flowers fl-bl" viewBox="0 0 220 340" aria-hidden="true">
+  <defs>
+    <g id="bloom">
+      <g fill="#f7ecdc" stroke="#d9b45e" stroke-width=".8">
+        <ellipse cx="0" cy="-9" rx="5.5" ry="9"/>
+        <ellipse cx="0" cy="-9" rx="5.5" ry="9" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-9" rx="5.5" ry="9" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-9" rx="5.5" ry="9" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-9" rx="5.5" ry="9" transform="rotate(288)"/>
+      </g>
+      <circle r="4" fill="#c9a227"/>
+    </g>
+    <g id="bud"><ellipse rx="4.5" ry="7" fill="#e9d8b8" stroke="#cbb06a" stroke-width="1"/></g>
+  </defs>
+  <g fill="none" stroke="#c2a25c" stroke-width="2" stroke-linecap="round">
+    <path d="M110 340 C 106 268 114 196 108 96"/>
+    <path d="M109 240 C 78 220 58 196 50 164"/>
+    <path d="M110 196 C 142 176 160 152 168 120"/>
+    <path d="M108 140 C 86 122 74 104 70 80"/>
+    <path d="M108 112 C 126 98 136 84 140 64"/>
   </g>
+  <use href="#bloom" transform="translate(108,88)"/>
+  <use href="#bloom" transform="translate(50,158) scale(.85)"/>
+  <use href="#bloom" transform="translate(168,114) scale(.9)"/>
+  <use href="#bloom" transform="translate(70,74) scale(.72)"/>
+  <use href="#bud" transform="translate(140,58) rotate(20)"/>
+  <circle cx="126" cy="252" r="3" fill="#e6d3ae"/><circle cx="92" cy="288" r="2.5" fill="#e6d3ae"/><circle cx="134" cy="300" r="2" fill="#e6d3ae"/>
 </svg>
-<svg class="branch branch-tr" viewBox="0 0 140 300" aria-hidden="true">
-  <path d="M70 300 C 66 230 74 150 70 12" fill="none" stroke="#87977b" stroke-width="2.5"/>
-  <g fill="#87977b">
-    <path d="M70 268 C 48 262 34 246 32 224 C 54 230 68 246 70 268 Z"/><path d="M70 268 C 92 262 106 246 108 224 C 86 230 72 246 70 268 Z"/>
-    <path d="M70 224 C 50 218 38 204 36 184 C 56 190 68 204 70 224 Z"/><path d="M70 224 C 90 218 102 204 104 184 C 84 190 72 204 70 224 Z"/>
-    <path d="M70 180 C 52 174 42 162 40 144 C 58 150 68 162 70 180 Z"/><path d="M70 180 C 88 174 98 162 100 144 C 82 150 72 162 70 180 Z"/>
-    <path d="M70 136 C 54 130 46 120 44 104 C 60 110 68 120 70 136 Z"/><path d="M70 136 C 86 130 94 120 96 104 C 80 110 72 120 70 136 Z"/>
-    <path d="M70 92 C 56 86 50 78 48 64 C 62 70 68 78 70 92 Z"/><path d="M70 92 C 84 86 90 78 92 64 C 78 70 72 78 70 92 Z"/>
+<svg class="flowers fl-tr" viewBox="0 0 220 340" aria-hidden="true">
+  <g fill="none" stroke="#c2a25c" stroke-width="2" stroke-linecap="round">
+    <path d="M110 340 C 106 268 114 196 108 96"/>
+    <path d="M109 240 C 78 220 58 196 50 164"/>
+    <path d="M110 196 C 142 176 160 152 168 120"/>
+    <path d="M108 140 C 86 122 74 104 70 80"/>
+    <path d="M108 112 C 126 98 136 84 140 64"/>
   </g>
+  <use href="#bloom" transform="translate(108,88)"/>
+  <use href="#bloom" transform="translate(50,158) scale(.85)"/>
+  <use href="#bloom" transform="translate(168,114) scale(.9)"/>
+  <use href="#bloom" transform="translate(70,74) scale(.72)"/>
+  <use href="#bud" transform="translate(140,58) rotate(20)"/>
+  <circle cx="126" cy="252" r="3" fill="#e6d3ae"/><circle cx="92" cy="288" r="2.5" fill="#e6d3ae"/>
 </svg>
 
 <div id="particles"></div>
 
-<!-- ՎԱՐԱԳՈՒՅՐՆԵ -->
+<!-- ԼԵԶՈՒՆԵՐ -->
+<div id="langBar">
+  <button data-lang="hy" class="active">Հայ</button>
+  <button data-lang="en">Eng</button>
+  <button data-lang="ru">Рус</button>
+</div>
+
+<!-- ԿԱԹՆԱԳՈՒՅՆ ՎԱՐԱԳՈՒՅՐՆԵ -->
 <div id="curtains">
   <div class="valance"></div>
   <div class="curtain left"></div>
   <div class="curtain right"></div>
   <div class="center">
     <div class="seal">Ա</div>
-    <h2>ՀՐԱՎԵՐ</h2>
-    <p>մի առանձնահատուկ երեկոյի</p>
-    <button class="btn-gold" id="openBtn">Բացել հրավերը ✨</button>
+    <h2 data-i18n="open_title">ՀՐԱՎԵ</h2>
+    <p data-i18n="open_sub">մի առանձնահատուկ երեկոյի</p>
+    <button class="btn-gold" id="openBtn" data-i18n="open_btn">Բացել հրավերը ✨</button>
   </div>
 </div>
 
 <div id="ytPlayer"></div>
-<button id="musicBtn" title="Երաժշտություն">🔊</button>
+<button id="musicBtn" title="Music">🔊</button>
+
+<!-- FULL SCREEN ՆԱՐ -->
+<section class="hero">
+  <div class="hero-photo"><img data-img="photo" alt="Armine"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h1 class="name" data-i18n="name">Արմինե</h1>
+    <div class="tagline">A Night to Celebrate with Armine</div>
+    <span class="date-badge">14 • 01 • 1982</span>
+  </div>
+</section>
 
 <main>
-  <!-- ՀԵՐՈՍ -->
-  <section class="hero reveal">
-    <div class="photo-frame"><div class="inner">
-      <!-- Փոխարինիր քո նկարով՝ CONFIG-ում կամ այստեղ src-ում -->
-      <img id="herPhoto" src="photo.jpg" alt="Արմինե">
-    </div></div>
-    <h1 class="name">Արմինե</h1>
-    <div class="script">An Unforgettable Evening</div>
-    <div><span class="date-badge">14 • 01 • 1982</span></div>
-  </section>
-
-  <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
-
   <!-- ՀԵՏՀԱՇՎԱՐԿ -->
   <section class="reveal">
-    <h2 class="title">Մինչ տոնը</h2>
-    <p class="sub">հետհաշվարկը սկսված է…</p>
+    <h2 class="title" data-i18n="cd_title">Մինչ տոնը</h2>
+    <p class="sub" data-i18n="cd_sub">հետհաշվարկը սկսված է…</p>
     <div class="count">
-      <div class="cell"><b id="cd-d">00</b><span>Օր</span></div>
-      <div class="cell"><b id="cd-h">00</b><span>Ժամ</span></div>
-      <div class="cell"><b id="cd-m">00</b><span>Րոպե</span></div>
-      <div class="cell"><b id="cd-s">00</b><span>Վայրկյան</span></div>
+      <div class="cell"><b id="cd-d">00</b><span data-i18n="cd_d">Օր</span></div>
+      <div class="cell"><b id="cd-h">00</b><span data-i18n="cd_h">Ժամ</span></div>
+      <div class="cell"><b id="cd-m">00</b><span data-i18n="cd_m">Րոպե</span></div>
+      <div class="cell"><b id="cd-s">00</b><span data-i18n="cd_s">Վայրկյան</span></div>
     </div>
     <p id="ageLine"></p>
   </section>
 
   <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
 
-  <!-- ՀՐԱՎԵՐԻ ՏԵՔՍԸ -->
+  <!-- ՀՐԱՎԵՐ -->
   <section class="card reveal">
-    <p class="lead">Սիրելի՛ հյուրեր,</p>
-    <p>Կան օրեր, որոնք ստեղծված են գեղեցիկ հիշողություններ դառնալու համար… ✨</p>
-    <p>Սիրով հրավիրում եմ ձեզ՝ կիսելու ինձ հետ այս առանձնահատուկ երեկոն և ձեր ներկայությամբ այն դարձնելու իսկապես անմոռանալի 🤍</p>
+    <p class="lead" data-i18n="inv_lead">Սիրելի՛ հյուրեր,</p>
+    <p data-i18n="inv_1">Կան օրեր, որոնք ստեղծված են գեղեցիկ հիշողություններ դառնալու համար… ✨</p>
+    <p data-i18n="inv_2">Սիրով հրավիրում եմ ձեզ՝ կիսելու ինձ հետ այս առանձնահատուկ երեկոն և ձեր ներկայությամբ այն դարձնելու իսկապես անմոռանալի։ 🤍</p>
   </section>
 
   <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
 
   <!-- ՎԱՅՐԸ -->
   <section class="reveal">
-    <h2 class="title">Փարթին կլինի Դվինում</h2>
-    <p class="sub">հնագույն բլուրներ, ոսկե լույս և լավ ընկերություն</p>
+    <h2 class="title" data-i18n="loc_title">Մեր երեկոյի վայրը</h2>
+    <p class="sub" data-i18n="loc_text">Սպասում ենք ձեզ «Դվին» ռեստորանային համալիրում, որտեղ միասին կստեղծենք այս օրվա ամենագեղեցիկ հիշողությունները։</p>
     <figure>
-      <div class="frame kenburns"><img src="dvin.jpg" alt="Դվին"></div>
-      <figcaption>Դվին · Հայաստան</figcaption>
+      <div class="frame kenburns"><img data-img="dvin" alt="Dvin Restaurant"></div>
+      <figcaption data-i18n="loc_caption">«Դվին» ռեստորանային համալիր</figcaption>
     </figure>
   </section>
 
@@ -262,9 +296,9 @@ footer .bd{color:var(--gold-soft);letter-spacing:.3em;font-size:13px;margin-top:
   <!-- ՇԱՄՊԱՅՆ -->
   <section class="reveal">
     <figure>
-      <div class="frame kenburns"><img src="champagne.jpg" alt="Կենացդ"></div>
+      <div class="frame kenburns"><img data-img="champagne" alt="Champagne"></div>
     </figure>
-    <p class="sub" style="margin-top:18px">🥂 Բաժակները բարձրացնում ենք անմոռանալի երեկոյի համար 🥂</p>
+    <p class="sub" style="margin-top:18px" data-i18n="champ_line">🥂 Բաժակները բարձրացնում ենք անմոռանալի երեկոյի համար 🥂</p>
   </section>
 
   <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
@@ -272,8 +306,8 @@ footer .bd{color:var(--gold-soft);letter-spacing:.3em;font-size:13px;margin-top:
   <!-- RSVP -->
   <section class="reveal" style="text-align:center">
     <h2 class="title">RSVP</h2>
-    <p class="sub">խնդրում եմ հաստատել ձեր ներկայությունը</p>
-    <button class="btn-gold" id="rsvpBtn">Նշել մասնակցությունը 🤍</button>
+    <p class="sub" data-i18n="rsvp_sub">խնդրում եմ հաստատել ձեր ներկայությունը</p>
+    <button class="btn-gold" id="rsvpBtn" data-i18n="rsvp_btn">Նշել մասնակցությունը 🤍</button>
   </section>
 
   <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
@@ -281,12 +315,13 @@ footer .bd{color:var(--gold-soft);letter-spacing:.3em;font-size:13px;margin-top:
   <!-- A WISH FOR ME -->
   <section class="reveal">
     <h2 class="script" style="text-align:center;font-size:clamp(34px,7vw,48px)">A Wish for Me</h2>
-    <p class="sub">Գրիր քո բարեմաղթանքը ինձ համար ✨</p>
+    <p class="sub" data-i18n="wish_sub">Գրիր քո բարեմաղթանքը ինձ համար ✨</p>
     <form id="wishForm" class="card">
-      <div class="field"><input id="wishName" placeholder="Ձեր անունը (ըստ ցանկության)"></div>
-      <div class="field"><textarea id="wishText" required placeholder="Իմ բարեմաղթանքը Արմինեին…"></textarea></div>
+      <input id="wishName" data-i18n-ph="w_name_ph" placeholder="Ձեր անունը (ըստ ցանկության)">
+      <div style="height:12px"></div>
+      <textarea id="wishText" required data-i18n-ph="w_text_ph" placeholder="Իմ բարեմաղթանքը Արմինեին…"></textarea>
       <div style="text-align:center;margin-top:14px">
-        <button type="submit" class="btn-gold">Նվիրել բարեմաղթանքը 💌</button>
+        <button type="submit" class="btn-gold" data-i18n="w_btn">Նվիրել բարեմաղթանքը 💌</button>
       </div>
     </form>
     <div class="wishes" id="wishesWall"></div>
@@ -295,7 +330,7 @@ footer .bd{color:var(--gold-soft);letter-spacing:.3em;font-size:13px;margin-top:
 
 <footer>
   <div class="divider"><span></span><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z"/></svg><span></span></div>
-  <div class="sign">Սիրով, Արմինե 🤍</div>
+  <div class="sign" data-i18n="sign">Սիրով, Արմինե 🤍</div>
   <div class="bd">14 · 01 · 1982</div>
 </footer>
 
@@ -304,101 +339,154 @@ footer .bd{color:var(--gold-soft);letter-spacing:.3em;font-size:13px;margin-top:
   <div class="box">
     <button class="close" id="rsvpClose">×</button>
     <div id="rsvpFormWrap">
-      <h2 class="title" style="font-size:26px">Հաստատել ներկայությունը</h2>
+      <h2 class="title" style="font-size:26px" data-i18n="m_title">Հաստատել ներկայությունը</h2>
       <form id="rsvpForm">
-        <label>ԱՆՈՒՆ</label>
-        <input id="rsvpName" required placeholder="Ձեր անունը">
-        <label>ՆԵՐԿԱՅՈՒԹՅՈՒՆ</label>
+        <label data-i18n="m_name">ԱՆՈՒՆ</label>
+        <input id="rsvpName" required data-i18n-ph="m_name_ph" placeholder="Ձեր անունը">
+        <label data-i18n="m_att">ՆՐԿԱՅՈՒԹՅՈՒՆ</label>
         <div class="radio-row">
-          <label><input type="radio" name="att" value="yes" checked><span class="opt">Սիրով կներկայանամ 🤍</span></label>
-          <label><input type="radio" name="att" value="no"><span class="opt">Ցավոք, չեմ կարող</span></label>
+          <label><input type="radio" name="att" value="yes" checked><span class="opt" data-i18n="m_yes">Սիրով կներկայանամ 🤍</span></label>
+          <label><input type="radio" name="att" value="no"><span class="opt" data-i18n="m_no">Ցավոք, չեմ կարող</span></label>
         </div>
         <div style="text-align:center;margin-top:22px">
-          <button type="submit" class="btn-gold">Ուղարկել 🤍</button>
+          <button type="submit" class="btn-gold" data-i18n="m_send">Ուղարկել 🤍</button>
         </div>
       </form>
     </div>
     <div id="rsvpThanks" style="display:none;text-align:center">
       <div style="font-size:44px">🤍</div>
-      <h2 class="title" style="font-size:26px" id="thanksTitle">Շնորհակալ եմ, սիրելի՛ս</h2>
-      <p id="thanksText" style="line-height:1.8;color:#4a4a42">Ձեր ներկայությունը ամենամեծ նվերն է։</p>
+      <h2 class="title" style="font-size:26px" id="thanksTitle"></h2>
+      <p id="thanksText" style="line-height:1.8;color:#4a4a42"></p>
     </div>
   </div>
 </div>
 
 <script>
-/* ================== ԿԱՐԳԱՎՈՐՈՒՄՆԵ ================== */
+/* ================== ԿԱՐԳԱՎՈՐՈՒՄՆԵՐ ================== */
 const CONFIG = {
-  youtubeId : '2Vv-BfVoq4g',   // <<== ԱՅՍՏԵՂ ԴԻ ՔՈ YOUTUBE ԵՐԳ ID-ն (հղման v=... մասը)
-  photo     : 'photo.jpg',     // <<== քո նկարը (ֆայլ կամ հղում)
-  dvin      : 'dvin.jpg',      // Դվինի նկարը
-  champagne : 'champagne.jpg', // շամպայնի նկարը
-  birthYear : 1982, birthMonth : 0, birthDay : 14 // 14.01.1982
+  youtubeId : '2Vv-BfVoq4g',   // <<== ԴԻՐ ՔՈ YOUTUBE ԵՐԻ ID-ն (հղման v=... մասը)
+  photo     : 'photo.jpg',     // <<== քո լուսանկարը
+  dvin      : 'dvin.jpg',      // <<== «Դվին» ռեստորանի նկարը (ստեղծվածը պահպանիր որպես dvin.jpg)
+  champagne : 'champagne.jpg'  // շամպայնի նկարը
 };
-document.getElementById('herPhoto').src = CONFIG.photo;
-document.querySelectorAll('img')[1].src = CONFIG.dvin;
-document.querySelectorAll('img')[2].src = CONFIG.champagne;
+document.querySelectorAll('img[data-img]').forEach(i => i.src = CONFIG[i.dataset.img]);
+
+/* ================== ԹԱՐԳՄԱՆՈՒԹՅՈՒՆՆԵ ================== */
+const I18N = {
+ hy:{open_title:'ՀՐԱՎԵ',open_sub:'մի առանձնահատուկ երեկոյի',open_btn:'Բացել հրավերը ✨',name:'Արմինե',
+  cd_title:'Մինչ տոնը',cd_sub:'հետհաշվարկը սկսված է…',cd_d:'Օր',cd_h:'Ժամ',cd_m:'Րոպե',cd_s:'Վայրկյան',
+  today:'Այսօր իմ տոնն է 🥳',ageLine:'«Դվին»-ում կտոնենք իմ {age}-ամյակը 🥂',
+  inv_lead:'Սիրելի՛ հյուրեր,',inv_1:'Կան օրեր, որոնք ստեղծված են գեղեցիկ հիշողություններ դառնալու համար… ✨',
+  inv_2:'Սիրով հրավիրում եմ ձեզ՝ կիսելու ինձ հետ այս առանձնահատուկ երեկոն և ձեր ներկայությամբ այն դարձնելու իսկապես անմոռանալի։ 🤍',
+  loc_title:'Մեր երեկոյի վայրը',loc_text:'Սպասում ենք ձեզ «Դվին» ռեստորանային համալիրում, որտեղ միասին կստեղծենք այս օրվա ամենագեղեցիկ հիշողությունները։',
+  loc_caption:'«Դվին» ռեստորանային համալիր',champ_line:'🥂 աժակները բարձրացնում ենք անմոռանալի երեկոյի համար 🥂',
+  rsvp_sub:'խնդրում եմ հաստատել ձեր ներկայությունը',rsvp_btn:'Նշել մասնակցությունը 🤍',
+  m_title:'Հաստատել ներկայությունը',m_name:'ԱՆՈՒՆ',m_name_ph:'Ձեր անունը',m_att:'ՆԵԿԱՅՈՒԹՅՈՒՆ',
+  m_yes:'Սիրով կներկայանամ 🤍',m_no:'Ցավոք, չեմ կարող',m_send:'Ուղարկել 🤍',
+  thanks_title:'Շնորհակալ եմ, {name} 🤍',thanks_yes:'Ձեր ներկայությունը ամենամեծ նվերն է։ Սպասում եմ ձեզ «Դվին»-ում 🥂',
+  thanks_no:'Ափսոս… բայց ձեր ջերմ խոսքերը միշտ հետս են 🤍',
+  wish_sub:'Գրիր քո բարեմաղթանքը ինձ համար ✨',w_name_ph:'Ձեր անունը (ըստ ցանկության)',w_text_ph:'Իմ բարեմաղթանքը Արմինեին…',
+  w_btn:'Նվիրել բարեմաղթանքը 💌',sign:'Սիրով, Արմինե 🤍'},
+ en:{open_title:'INVITATION',open_sub:'to a very special evening',open_btn:'Open the invitation ✨',name:'Armine',
+  cd_title:'Until the Celebration',cd_sub:'the countdown has begun…',cd_d:'Days',cd_h:'Hours',cd_m:'Minutes',cd_s:'Seconds',
+  today:'Today is my day 🥳',ageLine:'We’ll celebrate my {age} birthday at “Dvin” 🥂',
+  inv_lead:'Dear guests,',inv_1:'There are days that are meant to become beautiful memories… ✨',
+  inv_2:'With love, I invite you to share this special evening with me and make it truly unforgettable with your presence. 🤍',
+  loc_title:'The Venue of Our Evening',loc_text:'We await you at the “Dvin” restaurant complex, where together we will create the most beautiful memories of this day.',
+  loc_caption:'“Dvin” Restaurant Complex',champ_line:'🥂 We raise our glasses to an unforgettable evening 🥂',
+  rsvp_sub:'please confirm your presence',rsvp_btn:'Confirm attendance 🤍',
+  m_title:'Confirm your presence',m_name:'NAME',m_name_ph:'Your name',m_att:'ATTENDANCE',
+  m_yes:'I will gladly attend 🤍',m_no:'Unfortunately, I can’t',m_send:'Send 🤍',
+  thanks_title:'Thank you, {name} 🤍',thanks_yes:'Your presence is the greatest gift. Waiting for you at “Dvin” 🥂',
+  thanks_no:'What a pity… but your warm words are always with me 🤍',
+  wish_sub:'Write your wish for me ✨',w_name_ph:'Your name (optional)',w_text_ph:'My wish for Armine…',
+  w_btn:'Gift the wish 💌',sign:'With love, Armine 🤍'},
+ ru:{open_title:'ПРИГЛАШЕНИЕ',open_sub:'на особенный вечер',open_btn:'Открыть приглашение ✨',name:'Армине',
+  cd_title:'До праздника',cd_sub:'отсчёт начался…',cd_d:'Дней',cd_h:'Часов',cd_m:'Минут',cd_s:'Секунд',
+  today:'Сегодня мой праздник 🥳',ageLine:'Отметим мой {age}-й день рождения в «Двин» 🥂',
+  inv_lead:'Дорогие гости,',inv_1:'Есть дни, которые созданы, чтобы стать красивыми воспоминаниями… ✨',
+  inv_2:'С любовью приглашаю вас разделить со мной этот особенный вечер и вашим присутствием сделать его по-настоящему незабываемым. 🤍',
+  loc_title:'Место нашего вечера',loc_text:'Мы ждём вас в ресторанном комплексе «Двин», где вместе создадим самые красивые воспоминания этого дня.',
+  loc_caption:'Ресторанный комплекс «Двин»',champ_line:'🥂 Поднимаем бокалы за незабываемый вечер 🥂',
+  rsvp_sub:'просим подтвердить ваше присутствие',rsvp_btn:'Подтвердить участие 🤍',
+  m_title:'Подтвердить присутствие',m_name:'ИМЯ',m_name_ph:'Ваше имя',m_att:'ПРИСУТСТВИЕ',
+  m_yes:'С любовью приду 🤍',m_no:'К сожалению, не смогу',m_send:'Отправить 🤍',
+  thanks_title:'Спасибо, {name} 🤍',thanks_yes:'Ваше присутствие — самый большой подарок. Ждём вас в «Двин» 🥂',
+  thanks_no:'Жаль… но ваши тёплые слова всегда со мной 🤍',
+  wish_sub:'Напиши своё пожелание для меня ✨',w_name_ph:'Ваше имя (по желанию)',w_text_ph:'Моё пожелание Армине…',
+  w_btn:'Подарить пожелание 💌',sign:'С любовью, Армине 🤍'}
+};
+let LANG = 'hy';
+const T = k => (I18N[LANG] && I18N[LANG][k]) || I18N.hy[k] || k;
+function applyLang(){
+  document.documentElement.lang = LANG;
+  document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = T(el.dataset.i18n));
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => el.placeholder = T(el.dataset.i18n-ph));
+  document.querySelectorAll('#langBar button').forEach(b => b.classList.toggle('active', b.dataset.lang === LANG));
+  renderThanks(); tick();
+}
+document.querySelectorAll('#langBar button').forEach(b => b.addEventListener('click', () => { LANG = b.dataset.lang; applyLang(); }));
 
 /* ================== ԵՐԱԺՇՏՈՒԹՅՈՒՆ ================== */
 let player = null, opened = false, musicOn = true;
-(function(){ const s=document.createElement('script'); s.src='https://www.youtube.com/iframe_api'; document.head.appendChild(s); })();
+(function(){ const s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(s); })();
 window.onYouTubeIframeAPIReady = function(){
-  player = new YT.Player('ytPlayer',{ height:'2', width:'2', videoId: CONFIG.youtubeId,
+  player = new YT.Player('ytPlayer', { height:'2', width:'2', videoId: CONFIG.youtubeId,
     playerVars:{ controls:0, rel:0, loop:1, playlist:CONFIG.youtubeId, playsinline:1 },
     events:{ onReady: e => { e.target.setVolume(60); if(opened) e.target.playVideo(); } } });
 };
 const musicBtn = document.getElementById('musicBtn');
 musicBtn.addEventListener('click', () => {
   if(!player || !player.playVideo) return;
-  if(musicOn){ player.pauseVideo(); musicBtn.textContent='🔇'; } else { player.playVideo(); musicBtn.textContent='🔊'; }
+  if(musicOn){ player.pauseVideo(); musicBtn.textContent = '🔇'; } else { player.playVideo(); musicBtn.textContent = '🔊'; }
   musicOn = !musicOn;
 });
 
-/* ================== ՎԱՐԱԳՈՒՅՐՆԵԻ ԲԱՑՈՒՄ ================== */
+/* ================== ՎԱՐԱԳՈՒՅՐՆԵՐԻ ԲԱՑՈՒՄ ================== */
 document.getElementById('openBtn').addEventListener('click', () => {
   opened = true;
   document.getElementById('curtains').classList.add('open');
   document.body.classList.add('revealed');
   musicBtn.style.display = 'flex';
-  setTimeout(()=>{ try{ player && player.playVideo && player.playVideo(); }catch(e){} }, 1200);
-  setTimeout(()=>{ document.getElementById('curtains').style.display='none'; document.body.classList.remove('locked'); }, 3200);
+  setTimeout(() => { try{ player && player.playVideo && player.playVideo(); }catch(e){} }, 1200);
+  setTimeout(() => { document.getElementById('curtains').style.display = 'none'; document.body.classList.remove('locked'); }, 3200);
   startParticles();
 });
 
 /* ================== ՀԵՏՀԱՇՎԱՐԿ ================== */
 function pad(n){ return String(n).padStart(2,'0'); }
+function ord(n){ const s=['th','st','nd','rd'], v=n%100; return n + (s[(v-20)%10] || s[v] || s[0]); }
 function tick(){
   const now = new Date();
   let y = now.getFullYear();
-  if(now > new Date(y, CONFIG.birthMonth, CONFIG.birthDay, 23,59,59)) y += 1;
-  const target = new Date(y, CONFIG.birthMonth, CONFIG.birthDay, 18,0,0);
-  const isToday = now.getMonth()===CONFIG.birthMonth && now.getDate()===CONFIG.birthDay;
-  let diff = Math.max(0, target - now);
+  if(now > new Date(y,0,14,23,59,59)) y += 1;
+  const target = new Date(y,0,14,18,0,0);
+  const isToday = now.getMonth()===0 && now.getDate()===14;
+  const diff = Math.max(0, target - now);
   document.getElementById('cd-d').textContent = pad(Math.floor(diff/864e5));
   document.getElementById('cd-h').textContent = pad(Math.floor(diff/36e5)%24);
   document.getElementById('cd-m').textContent = pad(Math.floor(diff/6e4)%60);
   document.getElementById('cd-s').textContent = pad(Math.floor(diff/1e3)%60);
-  const age = y - CONFIG.birthYear;
-  document.getElementById('ageLine').textContent = isToday
-    ? 'Այսօր իմ տոնն է 🥳'
-    : `Դվինում կտոնենք իմ ${age}-ամյակը 🥂`;
+  const age = y - 1982;
+  const ageTxt = LANG === 'en' ? ord(age) : age;
+  document.getElementById('ageLine').textContent = isToday ? T('today') : T('ageLine').replace('{age}', ageTxt);
 }
 tick(); setInterval(tick, 1000);
 
-/* ================== REVEAL SCROLL ================== */
-const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} }), {threshold:.15});
+/* ================== SCROLL REVEAL ================== */
+const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } }), {threshold:.15});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* ================== ՈՍԵ ՄԱՍՆԻԿՆԵՐ ================== */
+/* ================== ՄԱՍՆԻԿՆԵՐ / ՍՐՏԻԿՆԵՐ ================== */
 function startParticles(){
   const box = document.getElementById('particles');
   for(let i=0;i<26;i++){
     const s = document.createElement('span');
     const size = 3 + Math.random()*5;
-    s.style.width = s.style.height = size+'px';
-    s.style.left = Math.random()*100+'vw';
-    s.style.animationDuration = (8+Math.random()*9)+'s';
-    s.style.animationDelay = (Math.random()*10)+'s';
+    s.style.width = s.style.height = size + 'px';
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.animationDuration = (8 + Math.random()*9) + 's';
+    s.style.animationDelay = (Math.random()*10) + 's';
     box.appendChild(s);
   }
 }
@@ -406,30 +494,34 @@ function hearts(x, y){
   for(let i=0;i<8;i++){
     const h = document.createElement('span');
     h.className = 'float-heart';
-    h.textContent = Math.random()>.5 ? '🤍' : '✨';
-    h.style.left = (x + (Math.random()*80-40))+'px';
-    h.style.top  = (y + (Math.random()*20-10))+'px';
+    h.textContent = Math.random() > .5 ? '🤍' : '✨';
+    h.style.left = (x + (Math.random()*80-40)) + 'px';
+    h.style.top  = (y + (Math.random()*20-10)) + 'px';
     document.body.appendChild(h);
-    setTimeout(()=>h.remove(), 1700);
+    setTimeout(() => h.remove(), 1700);
   }
 }
 
 /* ================== RSVP ================== */
+let lastRsvp = null;
 const modal = document.getElementById('rsvpModal');
-document.getElementById('rsvpBtn').addEventListener('click', ()=> modal.classList.add('show'));
-document.getElementById('rsvpClose').addEventListener('click', ()=> modal.classList.remove('show'));
-modal.addEventListener('click', e => { if(e.target===modal) modal.classList.remove('show'); });
+document.getElementById('rsvpBtn').addEventListener('click', () => modal.classList.add('show'));
+document.getElementById('rsvpClose').addEventListener('click', () => modal.classList.remove('show'));
+modal.addEventListener('click', e => { if(e.target === modal) modal.classList.remove('show'); });
+function renderThanks(){
+  if(!lastRsvp) return;
+  document.getElementById('thanksTitle').textContent = T('thanks_title').replace('{name}', lastRsvp.name);
+  document.getElementById('thanksText').textContent = lastRsvp.yes ? T('thanks_yes') : T('thanks_no');
+}
 document.getElementById('rsvpForm').addEventListener('submit', e => {
   e.preventDefault();
-  const name = document.getElementById('rsvpName').value.trim() || 'Սիրելի հյուր';
-  const yes  = document.querySelector('input[name="att"]:checked').value === 'yes';
+  lastRsvp = {
+    name: document.getElementById('rsvpName').value.trim() || '🤍',
+    yes : document.querySelector('input[name="att"]:checked').value === 'yes'
+  };
   document.getElementById('rsvpFormWrap').style.display = 'none';
   document.getElementById('rsvpThanks').style.display = 'block';
-  document.getElementById('thanksTitle').textContent = 'Շնորհակալ եմ, ' + name + ' 🤍';
-  document.getElementById('thanksText').textContent = yes
-    ? 'Ձեր ներկայությունը ամենամեծ նվերն է։ Սպասում եմ ձեզ Դվինում 🥂'
-    : 'Ափսոս… բայց ձեր ջերմ խոսքերը միշտ հետս են 🤍';
-  const r = e.submitter ? null : null;
+  renderThanks();
   hearts(innerWidth/2, innerHeight/2);
 });
 
@@ -446,9 +538,10 @@ document.getElementById('wishForm').addEventListener('submit', e => {
   w.querySelector('p').textContent = text;
   document.getElementById('wishesWall').prepend(w);
   document.getElementById('wishText').value = '';
-  const rect = e.target.getBoundingClientRect();
-  hearts(innerWidth/2, rect.top + 40);
+  hearts(innerWidth/2, 200);
 });
+
+applyLang();
 </script>
 </body>
 </html>
